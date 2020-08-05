@@ -1,25 +1,29 @@
 package com.mrozon.healthdiary.presentation.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.mrozon.core.base.BaseActivity
 import com.mrozon.healthdiary.R
 import com.mrozon.healthdiary.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    private lateinit var binding: ActivityMainBinding
+    lateinit var viewModel: MainActivityViewModel
+
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initNavigation()
+    }
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+    private fun initNavigation() {
         setSupportActionBar(binding.toolbar)
         val navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)

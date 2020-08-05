@@ -1,5 +1,5 @@
 package com.mrozon.healthdiary.presentation.showperson
 
-import androidx.lifecycle.ViewModel
+import com.mrozon.core.base.BaseViewModel
 
-class ShowPersonViewModal: ViewModel()
+class ShowPersonViewModal: BaseViewModel()

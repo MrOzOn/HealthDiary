@@ -1,2 +1,3 @@
 rootProject.name='HealthDiary'
 include ':app'
+include ':core'
