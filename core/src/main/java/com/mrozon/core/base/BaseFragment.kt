@@ -1,5 +1,7 @@
 package com.mrozon.core.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +12,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import dagger.android.AndroidInjection
+import dagger.android.support.AndroidSupportInjection
 
 abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
     ViewTreeObserver.OnGlobalLayoutListener {
@@ -22,6 +26,16 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
 
     override fun onGlobalLayout() {
         rootView!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
+    }
+
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        performDI()
+//        super.onCreate(savedInstanceState)
+//    }
+
+    override fun onAttach(context: Context) {
+        performDI()
+        super.onAttach(context)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -45,6 +59,10 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
             }
         }
         return rootView
+    }
+
+    private fun performDI() {
+        AndroidSupportInjection.inject(this)
     }
 
 }
