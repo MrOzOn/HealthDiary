@@ -1,0 +1,34 @@
+ext {
+
+    retrofitVersion = '2.6.1'
+    jsr330Version = '1'
+    daggerVersion = '2.25.2'
+    roomVersion = '2.1.0'
+    picassoVersion = '2.71828'
+    flexLayoutVersion = '1.1.1'
+    viewPager2Version = '1.0.0-rc01'
+    coroutinesVersion = '1.1.1'
+    materialVersion = '1.1.0-beta02'
+    navigationVersion = '2.3.0'
+
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    jsr330 = "javax.inject:javax.inject:$jsr330Version"
+    dagger = "com.google.dagger:dagger:$daggerVersion"
+    daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
+    room = "androidx.room:room-runtime:$roomVersion"
+    roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    picasso = "com.squareup.picasso:picasso:$picassoVersion"
+    flexLayout = "com.google.android:flexbox:$flexLayoutVersion"
+    viewPager2 = "androidx.viewpager2:viewpager2:$viewPager2Version"
+    coroutinesDependencies = [
+            'coroutines_core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+            'coroutines_android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    ]
+
+    material = "com.google.android.material:material:$materialVersion"
+
+    navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    // Dynamic Feature Module Support
+    navigationDynamicFeatures = "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion"
+}
