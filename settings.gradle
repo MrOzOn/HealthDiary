@@ -1,5 +1,3 @@
 rootProject.name='HealthDiary'
 include ':app'
-include ':core'
-include ':feature_auth_api'
-include ':feature_auth_impl'
+include ':utils'
