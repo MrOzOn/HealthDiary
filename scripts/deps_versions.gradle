@@ -10,6 +10,7 @@ ext {
     coroutinesVersion = '1.1.1'
     materialVersion = '1.1.0-beta02'
     navigationVersion = '2.3.0'
+    timberVersion = '4.7.1'
 
     retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
     jsr330 = "javax.inject:javax.inject:$jsr330Version"
@@ -31,4 +32,6 @@ ext {
     navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     // Dynamic Feature Module Support
     navigationDynamicFeatures = "androidx.navigation:navigation-dynamic-features-fragment:$navigationVersion"
+
+    timber = "com.jakewharton.timber:timber:$timberVersion"
 }
