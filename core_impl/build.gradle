@@ -34,6 +34,10 @@ dependencies {
     implementation dagger
     kapt daggerCompiler
     implementation room
+    implementation okhttp
+    implementation loggingInterceptor
+    implementation gson
+    implementation converterGson
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
