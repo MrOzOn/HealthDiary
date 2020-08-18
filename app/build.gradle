@@ -40,6 +40,8 @@ android {
 apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
+    api project(':core_api')
+    implementation project(':core')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     //DAGGER
     implementation dagger
