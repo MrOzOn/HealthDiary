@@ -1,4 +1,4 @@
-package com.mrozon.core_api.provides
+package com.mrozon.core_api.providers
 
 import android.content.Context
 
