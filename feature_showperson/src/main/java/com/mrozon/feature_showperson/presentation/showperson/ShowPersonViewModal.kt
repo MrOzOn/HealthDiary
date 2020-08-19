@@ -1,4 +1,4 @@
-package com.mrozon.healthdiary.presentation.showperson
+package com.mrozon.feature_showperson.presentation.showperson
 
 import com.mrozon.utils.base.BaseViewModel
 import javax.inject.Inject

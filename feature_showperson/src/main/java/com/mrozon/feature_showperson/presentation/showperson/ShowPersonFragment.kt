@@ -1,8 +1,7 @@
-package com.mrozon.healthdiary.presentation.showperson
+package com.mrozon.feature_showperson.presentation.showperson
 
-import com.mrozon.utils.base.BaseFragment
-import com.mrozon.healthdiary.R
-import com.mrozon.healthdiary.databinding.FragmentShowPersonBinding
+import com.mrozon.feature_showperson.R
+import com.mrozon.feature_showperson.databinding.FragmentShowPersonBinding
 import javax.inject.Inject
 
 class ShowPersonFragment: com.mrozon.utils.base.BaseFragment<FragmentShowPersonBinding>() {
