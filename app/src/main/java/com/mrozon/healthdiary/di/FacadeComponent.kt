@@ -6,11 +6,12 @@ import com.mrozon.core_api.db.DatabaseProvider
 import com.mrozon.core_api.network.NetworkProvider
 import com.mrozon.core_api.providers.AppProvider
 import com.mrozon.core_api.providers.ProvidersFacade
+import com.mrozon.core_api.viewmodel.ViewModelsProvider
 import com.mrozon.healthdiary.App
 import dagger.Component
 
 @Component(
-    dependencies = [AppProvider::class, DatabaseProvider::class, NetworkProvider::class]
+    dependencies = [AppProvider::class, ViewModelsProvider::class, DatabaseProvider::class, NetworkProvider::class]
 )
 interface FacadeComponent : ProvidersFacade {
 
