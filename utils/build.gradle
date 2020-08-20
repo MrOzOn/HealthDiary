@@ -35,8 +35,13 @@ android {
 
 }
 
+apply from: "$project.rootDir/scripts/deps_versions.gradle"
+
 dependencies {
+
+    implementation navigationUi
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

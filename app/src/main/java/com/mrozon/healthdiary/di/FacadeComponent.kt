@@ -11,7 +11,8 @@ import com.mrozon.healthdiary.App
 import dagger.Component
 
 @Component(
-    dependencies = [AppProvider::class, DatabaseProvider::class, NetworkProvider::class]
+    dependencies = [AppProvider::class, DatabaseProvider::class, NetworkProvider::class],
+    modules = [NavigationModule::class]
 )
 interface FacadeComponent : ProvidersFacade {
 

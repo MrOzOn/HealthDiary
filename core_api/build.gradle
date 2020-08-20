@@ -30,6 +30,8 @@ apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
 
+    implementation project(':utils')
+
     implementation dagger
     kapt daggerCompiler
     implementation room
