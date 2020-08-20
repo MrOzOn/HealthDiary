@@ -1,6 +1,4 @@
-@file:Suppress("UNCHECKED_CAST")
-
-package com.mrozon.core_impl.viewmodel
+package com.mrozon.feature_splash.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
