@@ -1,5 +1,6 @@
 package com.mrozon.feature_splash.presentation
 
+import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.utils.base.BaseViewModel
 import timber.log.Timber
 import javax.inject.Inject

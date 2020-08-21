@@ -39,6 +39,7 @@ apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
 
+    implementation navigationFragment
     implementation navigationUi
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 

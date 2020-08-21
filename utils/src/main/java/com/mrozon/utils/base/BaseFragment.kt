@@ -10,6 +10,8 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 
 abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
     ViewTreeObserver.OnGlobalLayoutListener {
@@ -46,5 +48,4 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
         }
         return rootView
     }
-
 }

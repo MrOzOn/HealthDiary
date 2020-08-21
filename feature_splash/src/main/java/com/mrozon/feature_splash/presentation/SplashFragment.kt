@@ -33,4 +33,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         SplashFragmentComponent.injectFragment(this)
     }
 
+
+
+
 }
