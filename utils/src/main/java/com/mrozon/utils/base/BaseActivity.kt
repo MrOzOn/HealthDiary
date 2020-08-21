@@ -13,10 +13,13 @@ abstract class BaseActivity<T : ViewDataBinding>: AppCompatActivity(){
     @LayoutRes
     protected abstract fun getLayoutId(): Int
 
+    abstract fun subscribeUi()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         performDataBinding()
+        subscribeUi()
     }
 
     private fun performDataBinding() {

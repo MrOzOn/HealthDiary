@@ -51,7 +51,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         SplashFragmentComponent.injectFragment(this)
     }
 
+    override fun subscribeUi() {
 
+    }
 
 
 }

@@ -16,16 +16,16 @@ class DatabaseModule {
 
     @Provides
     @Reusable
-    fun provideHabitsDao(healthDiaryDatabaseContract: HealthDiaryDatabaseContract): HealthDiaryDao {
+    fun provideHealthDiaryDao(healthDiaryDatabaseContract: HealthDiaryDatabaseContract): HealthDiaryDao {
         return healthDiaryDatabaseContract.healthDiaryDao()
     }
 
     @Provides
     @Singleton
-    fun provideHabitsDatabase(context: Context): HealthDiaryDatabaseContract {
+    fun provideHealthDiaryDatabase(context: Context): HealthDiaryDatabaseContract {
         return Room.databaseBuilder(
             context,
-            HabitsDatabase::class.java, DATABASE_NAME
+            HealthDiaryDb::class.java, DATABASE_NAME
         ).build()
     }
 }

@@ -16,6 +16,9 @@ data class UserDb(
     @ColumnInfo(name = "user_firstname")
     var firstname: String = "",
 
+    @ColumnInfo(name = "user_token")
+    var token: String = "",
+
     @ColumnInfo(name = "user_lastname")
     var lastname: String = ""
 )

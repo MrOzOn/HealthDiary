@@ -22,6 +22,8 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
     @LayoutRes
     abstract fun getLayoutId(): Int
 
+    abstract fun subscribeUi()
+
     override fun onGlobalLayout() {
         rootView!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
     }
@@ -46,6 +48,7 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
                 e.printStackTrace()
             }
         }
+        subscribeUi()
         return rootView
     }
 }

@@ -6,4 +6,4 @@ import com.mrozon.core_api.db.HealthDiaryDatabaseContract
 import com.mrozon.core_api.db.model.UserDb
 
 @Database(entities = [UserDb::class], version = 1)
-abstract class HabitsDatabase : RoomDatabase(), HealthDiaryDatabaseContract
+abstract class HealthDiaryDb : RoomDatabase(), HealthDiaryDatabaseContract
