@@ -15,4 +15,6 @@ class SplashFragmentViewModel @Inject constructor(): BaseViewModel() {
         Timber.d("init SplashFragmentViewModel")
     }
 
+
+
 }
