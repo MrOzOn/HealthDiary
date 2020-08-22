@@ -3,8 +3,11 @@ package com.mrozon.healthdiary.presentation.main
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
+import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -45,16 +48,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun initDI() {
-//        val component = SplashFragmentComponent.create(
-//            (fragment.activity?.application
-//                    as AppWithFacade).getFacade()
-//        )
-//        component.inject(fragment)
-//        return component
-//        DaggerMainActivityComponent.builder()
-//            .databaseProvider((application as AppWithFacade).getFacade().provideDatabase())
-//            .build()
-//            .inject(this)
         MainActivityComponent.create((application as AppWithFacade).getFacade())
             .inject(this)
     }
@@ -84,10 +77,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         viewModel.currentUser.observe(this, Observer {
             if(it==null){
                 Timber.d("user is null")
+                supportActionBar?.hide()
+                drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
             }
             else
             {
                 Timber.d("user not null")
+                supportActionBar?.show()
+                drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)
             }
         })
     }

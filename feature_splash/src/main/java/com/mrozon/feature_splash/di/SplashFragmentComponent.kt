@@ -6,11 +6,12 @@ import com.mrozon.core_api.providers.ProvidersFacade
 import com.mrozon.core_api.viewmodel.ViewModelsFactoryProvider
 import com.mrozon.feature_splash.presentation.SplashFragment
 import dagger.Component
+import javax.inject.Singleton
 
-//@Singleton
+@Singleton
 @Component(
     modules = [SplashFragmentModule::class],
-    dependencies = [SplashNavigator::class]
+    dependencies = [ProvidersFacade::class, SplashNavigator::class]
 )
 interface SplashFragmentComponent: ViewModelsFactoryProvider {
 
@@ -19,7 +20,7 @@ interface SplashFragmentComponent: ViewModelsFactoryProvider {
         fun create(providersFacade: ProvidersFacade): SplashFragmentComponent {
             return DaggerSplashFragmentComponent.builder()
                 .splashNavigator(providersFacade.provideSplashNavigator())
-//                .providersFacade(providersFacade)
+                .providersFacade(providersFacade)
                 .build()
         }
 

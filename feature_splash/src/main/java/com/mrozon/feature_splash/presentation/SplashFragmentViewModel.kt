@@ -1,20 +1,16 @@
 package com.mrozon.feature_splash.presentation
 
-import com.mrozon.core_api.navigation.SplashNavigator
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.mrozon.feature_splash.repository.LocalUser
 import com.mrozon.utils.base.BaseViewModel
 import timber.log.Timber
 import javax.inject.Inject
 
-class SplashFragmentViewModel @Inject constructor(): BaseViewModel() {
+class SplashFragmentViewModel @Inject constructor(
+    private val localUser: LocalUser
+): BaseViewModel() {
 
-    fun blaaa() {
-        Timber.d("blaaa")
-    }
-
-    init {
-        Timber.d("init SplashFragmentViewModel")
-    }
-
-
+    val currentUser = localUser.getLocalUser()
 
 }
