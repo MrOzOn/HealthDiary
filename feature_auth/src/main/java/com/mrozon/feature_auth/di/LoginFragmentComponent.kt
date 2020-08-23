@@ -1,5 +1,6 @@
 package com.mrozon.feature_auth.di
 
+import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.core_api.providers.AppWithFacade
 import com.mrozon.core_api.providers.ProvidersFacade
 import com.mrozon.core_api.viewmodel.ViewModelsFactoryProvider

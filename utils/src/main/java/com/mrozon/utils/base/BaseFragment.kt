@@ -12,11 +12,13 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import timber.log.Timber
 
-abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
-    ViewTreeObserver.OnGlobalLayoutListener {
+abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
+{
+//    ViewTreeObserver.OnGlobalLayoutListener {
 
-    var rootView: View? = null
+//    var rootView: View? = null
     var binding: T? = null
 
     @LayoutRes
@@ -24,31 +26,32 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment(),
 
     abstract fun subscribeUi()
 
-    override fun onGlobalLayout() {
-        rootView!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
-    }
+//    override fun onGlobalLayout() {
+//        rootView!!.viewTreeObserver.removeOnGlobalLayoutListener(this)
+//    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val layoutId = getLayoutId()
-        if (rootView != null) {
-            val parent = rootView!!.parent as ViewGroup
-            parent.removeView(rootView)
-        } else {
-            try {
-                binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
-                rootView = if (binding != null) {
-                    binding!!.root
-                } else {
-                    inflater.inflate(layoutId, container, false)
-                }
-                rootView!!.viewTreeObserver.addOnGlobalLayoutListener(this)
-                binding!!.executePendingBindings()
-
-            } catch (e: InflateException) {
-                e.printStackTrace()
-            }
-        }
+//        if (rootView != null) {
+//            val parent = rootView!!.parent as ViewGroup
+//            parent.removeView(rootView)
+//        } else {
+//            try {
+//                binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+//                rootView = if (binding != null) {
+//                    binding!!.root
+//                } else {
+//                    inflater.inflate(layoutId, container, false)
+//                }
+//                rootView!!.viewTreeObserver.addOnGlobalLayoutListener(this)
+//                binding!!.executePendingBindings()
+//
+//            } catch (e: InflateException) {
+//                e.printStackTrace()
+//            }
+//        }
+        binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         subscribeUi()
-        return rootView
+        return binding!!.root
     }
 }

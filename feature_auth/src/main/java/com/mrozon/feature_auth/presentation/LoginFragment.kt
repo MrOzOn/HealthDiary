@@ -25,7 +25,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     }
 
     override fun subscribeUi() {
-        TODO("Not yet implemented")
     }
 
 }

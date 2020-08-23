@@ -9,6 +9,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.feature_splash.R
 import com.mrozon.feature_splash.databinding.FragmentSplashBinding
 import com.mrozon.feature_splash.di.SplashFragmentComponent
@@ -23,6 +26,9 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var navigator: SplashNavigator
+
     private val viewModel by viewModels<SplashFragmentViewModel> { viewModelFactory }
 
     override fun onAttach(context: Context) {
@@ -34,6 +40,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         viewModel.currentUser.observe(viewLifecycleOwner, Observer { it ->
             if(it==null){
                 //auth user
+                navigator.navigateToAuth(findNavController())
             }
             else
             {

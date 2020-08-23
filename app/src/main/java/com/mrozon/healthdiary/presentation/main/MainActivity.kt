@@ -5,6 +5,7 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
@@ -27,24 +28,29 @@ import com.mrozon.utils.base.BaseActivity
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : AppCompatActivity(){ //BaseActivity<ActivityMainBinding>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by viewModels<MainActivityViewModel> { viewModelFactory }
 
-    override fun getLayoutId(): Int = R.layout.activity_main
+//    override fun getLayoutId(): Int = R.layout.activity_main
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
+    private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initDI()
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main)
         initNavigation()
+        subscribeUi()
     }
 
     private fun initDI() {
@@ -73,7 +79,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         }
     }
 
-    override fun subscribeUi() {
+    fun subscribeUi() {
         viewModel.currentUser.observe(this, Observer {
             if(it==null){
                 Timber.d("user is null")

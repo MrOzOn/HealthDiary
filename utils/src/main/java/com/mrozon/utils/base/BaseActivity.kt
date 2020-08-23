@@ -24,7 +24,7 @@ abstract class BaseActivity<T : ViewDataBinding>: AppCompatActivity(){
 
     private fun performDataBinding() {
         binding = DataBindingUtil.setContentView(this, getLayoutId())
-        binding.executePendingBindings()
+//        binding.executePendingBindings()
     }
 
 }

@@ -41,6 +41,7 @@ dependencies {
 
     implementation navigationFragment
     implementation navigationUi
+    implementation timber
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 
