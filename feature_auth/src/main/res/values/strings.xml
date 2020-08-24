@@ -1,4 +1,8 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="etUsername">Type Your e-mail</string>
+    <string name="etUserPassword">Type Your password</string>
+    <string name="btnLogin">Login</string>
+    <string name="btnRegistration">Registration</string>
 </resources>
