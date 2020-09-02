@@ -5,4 +5,12 @@
     <string name="etUserPassword">Type Your password</string>
     <string name="btnLogin">Login</string>
     <string name="btnRegistration">Registration</string>
+    <string name="btnRegistrationCancel">Cancel</string>
+    <string name="etUserPasswordAgain">Repeat Your password</string>
+    <string name="etFirstName">Type Your first name</string>
+    <string name="etLastName">Type Your last name</string>
+    <string name="equals_psw">passwords must match</string>
+    <string name="uncorrect_email">uncorrect e-mail</string>
+    <string name="empty_field">Empty filed</string>
+    <string name="userRegistered">Success! User registered\nNow login</string>
 </resources>

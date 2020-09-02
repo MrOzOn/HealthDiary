@@ -13,6 +13,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.mrozon.core_api.navigation.LoginNavigator
+import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.feature_auth.R
 import com.mrozon.feature_auth.databinding.FragmentLoginBinding
 import com.mrozon.feature_auth.di.LoginFragmentComponent
@@ -33,6 +36,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var navigator: LoginNavigator
+
     private val viewModel by viewModels<LoginFragmentViewModel> { viewModelFactory }
 
     override fun onAttach(context: Context) {
@@ -47,10 +53,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         binding?.etUserName?.offer(viewModel.userNameChannel)
         binding?.etUserPassword?.offer(viewModel.userPasswordChannel)
 
-        btnLogin.setOnClickListener {
+        binding?.btnLogin?.setOnClickListener {
             hideKeyboard()
             viewModel.loginUser(etUserName.text.toString().trim(),etUserPassword.text.toString().trim())
         }
+
+        binding?.btnRegistration?.setOnClickListener {
+            hideKeyboard()
+            navigator.navigateToRegisterUser(findNavController())
+        }
+
     }
 
 
@@ -67,6 +79,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             binding?.progressBar?.visible(progress)
             binding?.btnLogin?.isEnabled = !progress && viewModel.enableLogin.value?:false
             binding?.btnRegistration?.isEnabled = !progress
+        })
+
+        viewModel.error.observe(viewLifecycleOwner, Observer {error ->
+            if(error!=null)
+                showError(error) {}
         })
     }
 

@@ -23,6 +23,7 @@ ext {
     daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
     // Room
     room = "androidx.room:room-runtime:$roomVersion"
+    roomKtx = "androidx.room:room-ktx:$roomVersion"
     roomCompiler = "androidx.room:room-compiler:$roomVersion"
 //    picasso = "com.squareup.picasso:picasso:$picassoVersion"
 //    flexLayout = "com.google.android:flexbox:$flexLayoutVersion"

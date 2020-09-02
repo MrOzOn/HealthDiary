@@ -1,14 +1,22 @@
 package com.mrozon.core_api.network
 
+import com.mrozon.core_api.network.model.LoginRequest
+import com.mrozon.core_api.network.model.LoginResponse
+import com.mrozon.core_api.network.model.RegisterRequest
+import com.mrozon.core_api.network.model.RegisterResponse
 import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface HealthDiaryService {
     companion object {
-        const val ENDPOINT = "https://rebrickable.com/api/v3/"
+        const val ENDPOINT =  "http://10.0.2.2:8000/"//"https://hdb.mr-ozon-1982.tk/"
     }
+
+    @POST("login/")
+    suspend fun loginUser(@Body body: LoginRequest): Response<LoginResponse>
+
+    @POST("register/")
+    suspend fun registerUser(@Body body: RegisterRequest): Response<RegisterResponse>
 
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,

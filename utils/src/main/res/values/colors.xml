@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_snack_error">#F44336</color>
+    <color name="color_snack_info">#00c853</color>
+</resources>

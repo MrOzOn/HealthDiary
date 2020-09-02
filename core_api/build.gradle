@@ -35,6 +35,7 @@ dependencies {
     implementation dagger
     kapt daggerCompiler
     implementation room
+    implementation roomKtx
     implementation okhttp
     implementation converterGson
     implementation navigationFragment
