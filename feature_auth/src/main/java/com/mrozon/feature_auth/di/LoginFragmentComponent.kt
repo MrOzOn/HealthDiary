@@ -5,7 +5,9 @@ import com.mrozon.core_api.providers.AppWithFacade
 import com.mrozon.core_api.providers.ProvidersFacade
 import com.mrozon.core_api.viewmodel.ViewModelsFactoryProvider
 import com.mrozon.feature_auth.presentation.LoginFragment
+import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 import javax.inject.Singleton
 
 @Singleton

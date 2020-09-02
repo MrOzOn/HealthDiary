@@ -6,6 +6,9 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import com.mrozon.core_api.navigation.LoginNavigator
+import com.mrozon.core_api.navigation.RegistrationNavigator
 import com.mrozon.feature_auth.R
 import com.mrozon.feature_auth.databinding.FragmentRegistrationBinding
 import com.mrozon.feature_auth.di.LoginFragmentComponent
@@ -25,6 +28,9 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var navigator: RegistrationNavigator
 
     private val viewModel by viewModels<RegistrationFragmentViewModel> { viewModelFactory }
 
@@ -47,6 +53,11 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
             hideKeyboard()
             viewModel.registerUser()
         }
+
+        binding?.btnRegistrationCancel?.setOnClickListener {
+            hideKeyboard()
+            navigator.navigateToLoginUser(findNavController())
+        }
     }
 
     @ExperimentalCoroutinesApi
@@ -66,9 +77,9 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
         })
 
         viewModel.registered.observe(viewLifecycleOwner, Observer { registeredUser ->
-            if(registeredUser) {
+            if(registeredUser!=null) {
                 showInfo(getString(R.string.userRegistered)) {
-
+                    navigator.navigateToLoginUser(findNavController(), registeredUser)
                 }
             }
         })

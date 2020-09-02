@@ -34,8 +34,8 @@ class RegistrationFragmentViewModel @Inject constructor(
     val error: LiveData<String?>
         get() = _error
 
-    private val _registered = MutableLiveData<Boolean>(false)
-    val registered: LiveData<Boolean>
+    private val _registered = MutableLiveData<String?>()
+    val registered: LiveData<String?>
         get() = _registered
 
     @ExperimentalCoroutinesApi
@@ -110,7 +110,7 @@ class RegistrationFragmentViewModel @Inject constructor(
             if (response.status == com.mrozon.utils.network.Result.Status.SUCCESS) {
                 withContext(Dispatchers.Main) {
                     _progress.value = false
-                    _registered.value = true
+                    _registered.value = response.data?.username
                 }
             } else if (response.status == com.mrozon.utils.network.Result.Status.ERROR) {
                 Timber.e(response.message!!)

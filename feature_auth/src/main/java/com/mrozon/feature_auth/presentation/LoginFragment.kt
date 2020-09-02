@@ -14,6 +14,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.mrozon.core_api.navigation.LoginNavigator
 import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.feature_auth.R
@@ -49,6 +50,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     @ExperimentalCoroutinesApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding?.etUserName?.setText(arguments?.getString("userName"))
 
         binding?.etUserName?.offer(viewModel.userNameChannel)
         binding?.etUserPassword?.offer(viewModel.userPasswordChannel)

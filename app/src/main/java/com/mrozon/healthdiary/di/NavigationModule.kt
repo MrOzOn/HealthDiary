@@ -6,10 +6,12 @@ import androidx.navigation.fragment.findNavController
 import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import com.mrozon.core_api.navigation.LoginNavigator
+import com.mrozon.core_api.navigation.RegistrationNavigator
 import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.feature_splash.repository.LocalUser
 import com.mrozon.feature_splash.repository.LocalUserImp
 import com.mrozon.healthdiary.navigation.LoginNavigatorImpl
+import com.mrozon.healthdiary.navigation.RegistrationNavigatorImpl
 import com.mrozon.healthdiary.navigation.SplashNavigatorImpl
 import com.mrozon.utils.base.BaseFragment
 import dagger.Binds
@@ -28,4 +30,8 @@ interface NavigationModule {
     @Reusable
     @Binds
     fun loginNavigator(navigator: LoginNavigatorImpl): LoginNavigator
+
+    @Reusable
+    @Binds
+    fun registrationNavigator(navigator: RegistrationNavigatorImpl): RegistrationNavigator
 }
