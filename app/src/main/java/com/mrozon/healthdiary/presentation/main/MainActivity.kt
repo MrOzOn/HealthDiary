@@ -1,7 +1,10 @@
 package com.mrozon.healthdiary.presentation.main
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -28,27 +31,22 @@ import com.mrozon.utils.base.BaseActivity
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(){ //BaseActivity<ActivityMainBinding>() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by viewModels<MainActivityViewModel> { viewModelFactory }
 
-//    override fun getLayoutId(): Int = R.layout.activity_main
+    override fun getLayoutId(): Int = R.layout.activity_main
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
 
-    private lateinit var binding: ActivityMainBinding
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         initDI()
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,
-            R.layout.activity_main)
         initNavigation()
         subscribeUi()
     }
@@ -79,18 +77,39 @@ class MainActivity : AppCompatActivity(){ //BaseActivity<ActivityMainBinding>() 
         }
     }
 
-    fun subscribeUi() {
-        viewModel.currentUser.observe(this, Observer {
-            if(it==null){
+    override fun subscribeUi() {
+
+        viewModel.cleared.observe(this, Observer { cleared ->
+            if(cleared){
+                navController.navigate(R.id.action_global_loginFragment)
+            }
+        })
+
+        viewModel.currentUser.observe(this, Observer { user ->
+            val headerView = binding.navView.getHeaderView(0)
+            val tvUserEmail = headerView.findViewById<TextView>(R.id.tvUserEmail)
+            val tvUserName = headerView.findViewById<TextView>(R.id.tvUserName)
+            val ivLogout = headerView.findViewById<ImageView>(R.id.ivLogout)
+
+            if(user==null){
                 Timber.d("user is null")
                 supportActionBar?.hide()
                 drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
+                ivLogout.setOnClickListener(null)
             }
             else
             {
                 Timber.d("user not null")
                 supportActionBar?.show()
                 drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)
+                tvUserEmail.text = user.email
+                tvUserName.text = "${user.firstname}  ${user.lastname}"
+                ivLogout.setOnClickListener {
+                    if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                        drawerLayout.closeDrawer(GravityCompat.START)
+                    }
+                    viewModel.logoutUser(user)
+                }
             }
         })
     }

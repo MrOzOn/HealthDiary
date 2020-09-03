@@ -1,10 +1,7 @@
 package com.mrozon.core_api.db
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.mrozon.core_api.db.model.UserDb
 
 @Dao
@@ -15,4 +12,7 @@ interface HealthDiaryDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userDb: UserDb)
+
+    @Delete
+    suspend fun deleteUser(userDb: UserDb)
 }

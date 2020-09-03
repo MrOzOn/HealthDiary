@@ -51,9 +51,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding?.etUserName?.offer(viewModel.userNameChannel)
         binding?.etUserName?.setText(arguments?.getString("userName"))
 
-        binding?.etUserName?.offer(viewModel.userNameChannel)
         binding?.etUserPassword?.offer(viewModel.userPasswordChannel)
 
         binding?.btnLogin?.setOnClickListener {

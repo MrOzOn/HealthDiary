@@ -2,15 +2,13 @@ package com.mrozon.healthdiary.di.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.mrozon.core_api.db.DatabaseProvider
 import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import com.mrozon.core_api.viewmodel.ViewModelKey
 import com.mrozon.feature_splash.di.DaggerViewModelFactory
-import com.mrozon.feature_splash.presentation.SplashFragmentViewModel
 import com.mrozon.healthdiary.presentation.main.MainActivityViewModel
-import com.mrozon.healthdiary.repository.LocalUser
-import com.mrozon.healthdiary.repository.LocalUserImp
+import com.mrozon.healthdiary.repository.LocalUserDataSource
+import com.mrozon.healthdiary.repository.LocalUserDataSourceImp
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -36,7 +34,7 @@ abstract class MainActivityModule {
         fun provideLocalUser(
             healthDiaryDao: HealthDiaryDao,
             mapper: UserToUserDbMapper
-        ): LocalUser = LocalUserImp(healthDiaryDao, mapper)
+        ): LocalUserDataSource = LocalUserDataSourceImp(healthDiaryDao, mapper)
     }
 
 }
