@@ -13,5 +13,9 @@ class LoginNavigatorImpl @Inject constructor()
         navController.navigate(R.id.action_loginFragment_to_registrationFragment)
     }
 
+    override fun navigateToListPerson(navController: NavController) {
+        navController.navigate(R.id.action_loginFragment_to_listPersonFragment)
+    }
+
 
 }

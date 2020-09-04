@@ -12,9 +12,8 @@ class SplashNavigatorImpl @Inject constructor()
         navController.navigate(R.id.action_splashFragment_to_loginFragment)
     }
 
-//    override fun navigateToGameVideo() {
-//        navController?.navigate(R.id.action_gameListFragment_to_gameVideoFragment)
-//            ?: throw IllegalStateException("NavController must be bound to ${this.javaClass.name} before processing navigation")
-//    }
+    override fun navigateToListPerson(navController: NavController) {
+        navController.navigate(R.id.action_splashFragment_to_listPersonFragment)
+    }
 
 }

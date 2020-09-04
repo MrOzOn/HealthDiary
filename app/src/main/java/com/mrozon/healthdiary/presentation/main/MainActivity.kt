@@ -60,7 +60,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setSupportActionBar(binding.toolbar)
         drawerLayout = binding.drawerLayout
         navController = findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(navController.graph, binding.drawerLayout)
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.listPersonFragment), binding.drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 

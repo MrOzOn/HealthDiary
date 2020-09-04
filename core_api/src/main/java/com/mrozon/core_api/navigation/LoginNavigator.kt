@@ -4,4 +4,5 @@ import androidx.navigation.NavController
 
 interface LoginNavigator {
     fun navigateToRegisterUser(navController: NavController)
+    fun navigateToListPerson(navController: NavController)
 }

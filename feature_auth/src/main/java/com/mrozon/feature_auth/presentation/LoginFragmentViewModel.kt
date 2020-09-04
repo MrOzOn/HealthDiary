@@ -29,6 +29,10 @@ class LoginFragmentViewModel @Inject constructor(
     val progress: LiveData<Boolean>
         get() = _progress
 
+    private val _showPersons = MutableLiveData<Boolean>(false)
+    val showPersons: LiveData<Boolean>
+        get() = _showPersons
+
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?>
         get() = _error
@@ -73,6 +77,7 @@ class LoginFragmentViewModel @Inject constructor(
                     healthDiaryDao.insertUser(result?.toUserDb()!!)
                     Timber.d(result.token)
                     withContext(Dispatchers.Main) {
+                        _showPersons.value = true
                         _progress.value = false
                     }
                 } else if (response.status == com.mrozon.utils.network.Result.Status.ERROR) {

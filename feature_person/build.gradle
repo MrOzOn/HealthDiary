@@ -40,16 +40,17 @@ apply from: "$project.rootDir/scripts/deps_versions.gradle"
 dependencies {
     api project(':core_api')
     implementation project(':core')
-    //DAGGER
     implementation dagger
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt daggerCompiler
     implementation project(':utils')
     implementation constraintlayout
-    //Timber
     implementation timber
     implementation navigationFragment
     implementation retrofit
+    implementation cardview
+    implementation recyclerview
+    implementation material
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

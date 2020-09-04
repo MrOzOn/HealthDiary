@@ -44,7 +44,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
             }
             else
             {
-                //show profiles
+                navigator.navigateToListPerson(findNavController())
             }
         })
     }

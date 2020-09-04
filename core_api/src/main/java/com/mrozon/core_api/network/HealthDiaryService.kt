@@ -1,15 +1,13 @@
 package com.mrozon.core_api.network
 
-import com.mrozon.core_api.network.model.LoginRequest
-import com.mrozon.core_api.network.model.LoginResponse
-import com.mrozon.core_api.network.model.RegisterRequest
-import com.mrozon.core_api.network.model.RegisterResponse
+import com.mrozon.core_api.network.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
 interface HealthDiaryService {
     companion object {
-        const val ENDPOINT =  "http://10.0.2.2:8000/"//"https://hdb.mr-ozon-1982.tk/"
+        const val ENDPOINT = "http://10.0.2.2:8000/"
+//        const val ENDPOINT = "https://hdb.mr-ozon-1982.tk/"
     }
 
     @POST("login/")
@@ -17,6 +15,9 @@ interface HealthDiaryService {
 
     @POST("register/")
     suspend fun registerUser(@Body body: RegisterRequest): Response<RegisterResponse>
+
+    @GET("patients/")
+    suspend fun getPatients(): Response<List<PersonResponse>>
 
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,

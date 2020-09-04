@@ -2,6 +2,7 @@ package com.mrozon.core_api.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.mrozon.core_api.db.model.PersonDb
 import com.mrozon.core_api.db.model.UserDb
 
 @Dao
@@ -15,4 +16,7 @@ interface HealthDiaryDao {
 
     @Delete
     suspend fun deleteUser(userDb: UserDb)
+
+    @Query("SELECT * FROM person_table")
+    fun getPersons(): LiveData<PersonDb>
 }

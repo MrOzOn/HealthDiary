@@ -88,6 +88,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             if(error!=null)
                 showError(error) {}
         })
+
+        viewModel.showPersons.observe(viewLifecycleOwner, Observer { showPersons ->
+            if(showPersons) {
+                navigator.navigateToListPerson(findNavController())
+            }
+        })
     }
 
 }

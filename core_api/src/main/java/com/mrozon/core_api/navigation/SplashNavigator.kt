@@ -5,4 +5,5 @@ import androidx.navigation.NavController
 
 interface SplashNavigator {
     fun navigateToAuth(navController: NavController)
+    fun navigateToListPerson(navController: NavController)
 }
