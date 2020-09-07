@@ -8,6 +8,7 @@ import com.mrozon.core_api.db.model.UserDb
 @Dao
 interface HealthDiaryDao {
 
+    // USER
     @Query("SELECT * FROM user_table LIMIT 1")
     fun getUser(): LiveData<UserDb>
 
@@ -17,6 +18,14 @@ interface HealthDiaryDao {
     @Delete
     suspend fun deleteUser(userDb: UserDb)
 
+    // TOKEN
+    @Query("SELECT user_token from user_table LIMIT 1")
+    fun getAccessToken(): String
+
+    // PERSON
     @Query("SELECT * FROM person_table")
-    fun getPersons(): LiveData<PersonDb>
+    fun getPersons(): LiveData<List<PersonDb>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAllPerson(persons: List<PersonDb>)
 }

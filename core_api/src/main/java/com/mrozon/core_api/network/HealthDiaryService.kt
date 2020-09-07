@@ -17,7 +17,7 @@ interface HealthDiaryService {
     suspend fun registerUser(@Body body: RegisterRequest): Response<RegisterResponse>
 
     @GET("patients/")
-    suspend fun getPatients(): Response<List<PersonResponse>>
+    suspend fun getPersons(@Header("Authorization") token: String): Response<List<PersonResponse>>
 
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,

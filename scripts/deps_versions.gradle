@@ -18,6 +18,7 @@ ext {
     cardviewVersion = '1.0.0'
     recyclerviewViersion = '1.2.0-alpha05'
     materialVersion = '1.2.1'
+    lifecycleVersion = '2.3.0-alpha07'
 
 //    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
 //    jsr330 = "javax.inject:javax.inject:$jsr330Version"
@@ -56,4 +57,8 @@ ext {
     cardview =  "androidx.cardview:cardview:$cardviewVersion"
     recyclerview = "androidx.recyclerview:recyclerview:$recyclerviewViersion"
     material = "com.google.android.material:material:$materialVersion"
+    // Livecycle
+    lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 }

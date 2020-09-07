@@ -4,7 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="person"
+            type="com.mrozon.core_api.entity.Person" />
+        <variable
+            name="listener"
+            type="com.mrozon.feature_person.presentation.ListPersonAdapter.ListPersonListener" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,10 +29,12 @@
                 android:id="@+id/ivGender"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginBottom="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:alpha="0.75"
                 android:contentDescription="@string/ivGender"
+                app:gender="@{person}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -42,7 +49,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_toEndOf="@id/ivGender"
                 android:paddingTop="16dp"
-                android:text="textview_name"
+                app:name_with_age="@{person}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#000000"
                 android:textSize="20sp"
