@@ -10,4 +10,10 @@
     <string name="tvDOB">Date of birth</string>
     <string name="edit_person">Edit person</string>
     <string name="delete_person">Delete person</string>
+    <string name="sharePersonToUser">Give access to a person to another user</string>
+    <string name="dialog_share_txt">Who do you want to give access to for the current person?</string>
+    <string name="example_username">bla-bla-bla@mail.ru</string>
+    <string name="error_empty_string">Empty field</string>
+    <string name="error_invalid_email">Invalid format username (e-mail)</string>
+    <string name="share_done">Done</string>
 </resources>

@@ -7,6 +7,7 @@ import com.mrozon.core_api.entity.Gender
 import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.mapper.PersonToPersonDbMapper
 import com.mrozon.core_api.network.model.PersonRequest
+import com.mrozon.core_api.network.model.SharePersonRequest
 import com.mrozon.core_api.network.model.toPerson
 import com.mrozon.core_api.resultLiveData
 import com.mrozon.utils.extension.toDateString
@@ -96,6 +97,19 @@ class PersonRepository @Inject constructor(private val dao: HealthDiaryDao,
                 val personDb = mapper.map(response.data?.toPerson())
                 dao.insertPerson(personDb!!)
                 emit(success(response.data!!.toPerson()))
+            } else if (response.status == Result.Status.ERROR) {
+                emit(error(response.message!!))
+            }
+        }
+    }
+
+    fun sharePerson(id: Long, userName: String): Flow<Result<Unit>> {
+        return flow {
+            emit(loading())
+            val request = SharePersonRequest(patient_id = id.toInt(), username = userName)
+            val response = personRemoteDataSource.sharePerson(request)
+            if (response.status == Result.Status.SUCCESS) {
+                emit(success())
             } else if (response.status == Result.Status.ERROR) {
                 emit(error(response.message!!))
             }

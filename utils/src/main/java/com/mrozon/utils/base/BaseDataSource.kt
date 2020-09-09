@@ -3,6 +3,7 @@ package com.mrozon.utils.base
 import retrofit2.Response
 import timber.log.Timber
 import com.mrozon.utils.network.Result
+import org.json.JSONException
 import org.json.JSONObject
 
 abstract class BaseDataSource {
@@ -20,10 +21,16 @@ abstract class BaseDataSource {
             }
             var errMessage = response.message()
             val errorBody= response.errorBody()
-            val jObjError = JSONObject(errorBody?.string()?:"")
-            if(jObjError.length()>0){
-                val key = jObjError.names().get(0).toString()
-                errMessage = jObjError[key].toString().trim('[',']')
+            val textErrorBode = errorBody?.string()?:""
+            if(textErrorBode.startsWith("[")) {
+                errMessage = textErrorBode.trim('[',']').trim('"')
+            }
+            else {
+                val jObjError = JSONObject(textErrorBode)
+                if (jObjError.length() > 0) {
+                    val key = jObjError.names().get(0).toString()
+                    errMessage = jObjError[key].toString().trim('[', ']')
+                }
             }
 //            return error(" ${response.code()} $errMessage")
             return error(errMessage)

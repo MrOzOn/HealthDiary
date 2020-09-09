@@ -1,8 +1,11 @@
 package com.mrozon.feature_person.presentation
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
+import android.widget.EditText
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
 import androidx.core.view.get
 import androidx.fragment.app.viewModels
@@ -108,7 +111,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
-                        showError(result.message!!) {}
+                        showError(result.message!!)
                     }
                 }
             }
@@ -139,7 +142,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
-                        showError(result.message!!) {}
+                        showError(result.message!!)
                     }
                 }
             }
@@ -157,7 +160,25 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
-                        showError(result.message!!) {}
+                        showError(result.message!!)
+                    }
+                }
+            }
+        })
+
+        viewModel.sharePerson.observe(viewLifecycleOwner, Observer { result ->
+            if(result!=null){
+                when (result.status) {
+                    Result.Status.LOADING -> {
+                        binding?.progressBar?.visible(true)
+                    }
+                    Result.Status.SUCCESS -> {
+                        binding?.progressBar?.visible(false)
+                        show(getString(R.string.share_done))
+                    }
+                    Result.Status.ERROR -> {
+                        binding?.progressBar?.visible(false)
+                        showError(result.message!!)
                     }
                 }
             }
@@ -173,8 +194,10 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             saveMenuItem.isVisible = it ?: false
         }
         val deleteMenuItem = menu.findItem(R.id.deletePerson)
+        val shareMenu = menu.findItem(R.id.sharePersonToUser)
         val current_id = arguments?.getLong("current_id",-1)?:-1
         deleteMenuItem.isVisible = current_id>0
+        shareMenu.isVisible = current_id>0
         return super.onCreateOptionsMenu(menu, inflater)
     }
 
@@ -182,7 +205,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         hideKeyboard()
         if (!isActiveNetwork()){
-            showError(getString(R.string.network_inactive)) {}
+            showError(getString(R.string.network_inactive))
             return false
         }
         val current_id = arguments?.getLong("current_id",-1)?:-1
@@ -198,8 +221,30 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             R.id.deletePerson -> {
                 viewModel.deletePerson(current_id)
             }
+            R.id.sharePersonToUser -> {
+                showShareDialog(current_id)
+            }
         }
         return false
+    }
+
+    private fun showShareDialog(id: Long) {
+        val dialogBuilder = AlertDialog.Builder(requireContext())
+        dialogBuilder.apply {
+            val view = layoutInflater.inflate(R.layout.dialog_share, null)
+            setView(view)
+            val etShareToUser = view.findViewById<EditText>(R.id.etShareToUser)
+            setCancelable(false)
+            setPositiveButton("Ok") { dialog, p1 ->
+                dialog.dismiss()
+                viewModel.sharePersonToUser(id, etShareToUser.text.toString())
+            }
+            setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+        }
+        val alertDialog = dialogBuilder.create()
+        alertDialog.show()
     }
 
 

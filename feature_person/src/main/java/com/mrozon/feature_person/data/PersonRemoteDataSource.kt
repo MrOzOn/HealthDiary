@@ -3,6 +3,7 @@ package com.mrozon.feature_person.data
 import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.network.HealthDiaryService
 import com.mrozon.core_api.network.model.PersonRequest
+import com.mrozon.core_api.network.model.SharePersonRequest
 import com.mrozon.utils.base.BaseDataSource
 import javax.inject.Inject
 
@@ -31,5 +32,11 @@ class PersonRemoteDataSource @Inject constructor(private val service: HealthDiar
             = getResult {
         val token = "Token "+dao.getAccessToken()
         service.editPerson(token, id.toString(), personRequest)
+    }
+
+    suspend fun sharePerson(sharePersonRequest: SharePersonRequest)
+            = getResult {
+        val token = "Token "+dao.getAccessToken()
+        service.sharePerson(token, sharePersonRequest)
     }
 }

@@ -3,7 +3,6 @@ package com.mrozon.feature_person.presentation
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,11 +10,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.navigation.ListPersonNavigator
-import com.mrozon.core_api.navigation.LoginNavigator
 import com.mrozon.feature_person.R
 import com.mrozon.feature_person.databinding.FragmentListPersonBinding
 import com.mrozon.feature_person.di.ListPersonFragmentComponent
 import com.mrozon.utils.base.BaseFragment
+import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import timber.log.Timber
 import javax.inject.Inject
@@ -44,6 +43,8 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
         adapter = ListPersonAdapter(object : ListPersonAdapter.ListPersonClickListener {
             override fun onClick(person: Person) {
                 Timber.d("click to ${person.name}")
+                //TODO add logic for click item
+                show("will be soon))")
             }
 
             override fun onLongClick(person: Person) {
@@ -64,15 +65,15 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
         viewModel.persons.observe(viewLifecycleOwner, Observer { result ->
             when (result.status) {
                 Result.Status.LOADING -> {
-                    binding?.srlPerson?.isRefreshing = true
+                    binding?.progressBar?.visible(true)
                 }
                 Result.Status.SUCCESS -> {
-                    binding?.srlPerson?.isRefreshing = false
+                    binding?.progressBar?.visible(false)
                     adapter.submitList(result.data)
                 }
                 Result.Status.ERROR -> {
-                    binding?.srlPerson?.isRefreshing = false
-                    showError(result.message!!) { }
+                    binding?.progressBar?.visible(false)
+                    showError(result.message!!)
                 }
             }
         })

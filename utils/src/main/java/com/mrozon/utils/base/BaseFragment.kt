@@ -70,6 +70,16 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
         snackbar.show()
     }
 
+    fun showError(message: String) {
+        val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_INDEFINITE)
+        snackbar.view.setBackgroundColor(getColor(requireContext(),R.color.color_snack_error))
+        snackbar.setActionTextColor(Color.WHITE)
+        snackbar.setAction(R.string.Ok) {
+            snackbar.dismiss()
+        }
+        snackbar.show()
+    }
+
     fun showInfo(message: String, action:()->Unit) {
         val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_INDEFINITE)
         snackbar.view.setBackgroundColor(getColor(requireContext(),R.color.color_snack_info))
@@ -83,9 +93,6 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
 
     fun show(message: String) {
         val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_LONG)
-        snackbar.setAction(R.string.Ok) {
-            snackbar.dismiss()
-        }
         snackbar.show()
     }
 }

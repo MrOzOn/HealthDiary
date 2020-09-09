@@ -77,7 +77,7 @@
     <fragment
         android:id="@+id/listPersonFragment"
         android:name="com.mrozon.feature_person.presentation.ListPersonFragment"
-        android:label="ListPersonFragment"
+        android:label="@string/list_persons"
         tools:layout="@layout/fragment_list_person">
         <action
             android:id="@+id/action_listPersonFragment_to_editPersonFragment"

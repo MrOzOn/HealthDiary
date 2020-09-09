@@ -30,6 +30,9 @@ interface HealthDiaryService {
                            @Path("id") id: String,
                            @Body body: PersonRequest): Response<PersonResponse>
 
+    @POST("add-user-to-patient/")
+    suspend fun sharePerson(@Header("Authorization") token: String, @Body body: SharePersonRequest): Response<PersonResponse>
+
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,
 //                          @Query("page_size") pageSize: Int? = null,
