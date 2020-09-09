@@ -26,6 +26,18 @@ interface HealthDiaryDao {
     @Query("SELECT * FROM person_table")
     fun getPersons(): LiveData<List<PersonDb>>
 
+    @Query("SELECT * FROM person_table WHERE person_id=:id LIMIT 1")
+    suspend fun getPerson(id: Long): PersonDb
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllPerson(persons: List<PersonDb>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertPerson(person: PersonDb)
+
+    @Query("DELETE FROM person_table WHERE person_id=:id")
+    suspend fun deletePerson(id: Long)
+
+    @Query("DELETE FROM person_table")
+    suspend fun deleteAllPerson()
 }

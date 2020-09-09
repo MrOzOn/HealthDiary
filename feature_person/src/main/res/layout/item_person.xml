@@ -7,9 +7,6 @@
         <variable
             name="person"
             type="com.mrozon.core_api.entity.Person" />
-        <variable
-            name="listener"
-            type="com.mrozon.feature_person.presentation.ListPersonAdapter.ListPersonListener" />
     </data>
 
     <androidx.cardview.widget.CardView

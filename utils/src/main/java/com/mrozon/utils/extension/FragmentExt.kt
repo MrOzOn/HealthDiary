@@ -1,6 +1,8 @@
 package com.mrozon.utils.extension
 
 import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
@@ -20,4 +22,10 @@ fun Fragment.hideKeyboard() {
     if (activity is AppCompatActivity) {
         activity.hideKeyboard()
     }
+}
+
+fun Fragment.isActiveNetwork(): Boolean {
+    val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+    return activeNetwork?.isConnectedOrConnecting == true
 }

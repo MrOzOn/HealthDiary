@@ -13,7 +13,10 @@ abstract class BaseDataSource {
             //TODO response.errorBody()
             if (response.isSuccessful) {
                 val body = response.body()
-                if (body != null) return Result.success(body)
+                if (body != null)
+                    return Result.success(body)
+                else
+                    return Result.success()
             }
             var errMessage = response.message()
             val errorBody= response.errorBody()

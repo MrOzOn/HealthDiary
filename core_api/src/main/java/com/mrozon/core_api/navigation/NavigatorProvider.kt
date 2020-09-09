@@ -4,4 +4,6 @@ interface NavigatorProvider {
     fun provideSplashNavigator(): SplashNavigator
     fun provideLoginNavigator(): LoginNavigator
     fun provideRegistrationNavigator(): RegistrationNavigator
+    fun provideListPersonNavigator(): ListPersonNavigator
+    fun provideEditPersonNavigator(): EditPersonNavigator
 }

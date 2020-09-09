@@ -3,10 +3,15 @@ package com.mrozon.feature_person.presentation
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mrozon.core_api.entity.Person
+import com.mrozon.core_api.navigation.ListPersonNavigator
+import com.mrozon.core_api.navigation.LoginNavigator
 import com.mrozon.feature_person.R
 import com.mrozon.feature_person.databinding.FragmentListPersonBinding
 import com.mrozon.feature_person.di.ListPersonFragmentComponent
@@ -22,6 +27,9 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var navigator: ListPersonNavigator
+
     private val viewModel by viewModels<ListPersonFragmentViewModel> { viewModelFactory }
 
     private lateinit var adapter: ListPersonAdapter
@@ -33,12 +41,23 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = ListPersonAdapter(ListPersonAdapter.ListPersonListener { person ->
-            Timber.d("click to ${person.name}")
+        adapter = ListPersonAdapter(object : ListPersonAdapter.ListPersonClickListener {
+            override fun onClick(person: Person) {
+                Timber.d("click to ${person.name}")
+            }
+
+            override fun onLongClick(person: Person) {
+                Timber.d("long click to ${person.name}")
+                navigator.navigateToEditPerson(findNavController(),getString(R.string.edit_person),person.id)
+            }
         })
         binding?.rvPerson?.adapter = adapter
         val manager = LinearLayoutManager(context)
         binding?.rvPerson?.layoutManager = manager
+
+        binding?.fabAddPerson?.setOnClickListener {
+            navigator.navigateToEditPerson(findNavController(),getString(R.string.add_person),0)
+        }
     }
 
     override fun subscribeUi() {

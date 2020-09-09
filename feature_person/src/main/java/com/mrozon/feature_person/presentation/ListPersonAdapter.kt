@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mrozon.core_api.entity.Person
 import com.mrozon.feature_person.databinding.ItemPersonBinding
 
-class ListPersonAdapter(private val clickListener: ListPersonListener): ListAdapter<Person, ListPersonAdapter.ViewHolder>(ListPersonDiffCallback()){
+class ListPersonAdapter(private val clickListener: ListPersonClickListener): ListAdapter<Person, ListPersonAdapter.ViewHolder>(ListPersonDiffCallback()){
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -23,9 +23,16 @@ class ListPersonAdapter(private val clickListener: ListPersonListener): ListAdap
     class ViewHolder private constructor(val binding: ItemPersonBinding ): RecyclerView.ViewHolder(binding.root){
         fun bind(
             item: Person,
-            clickListener: ListPersonListener) {
+            clickListener: ListPersonClickListener) {
             binding.person = item
-            binding.listener = clickListener
+//            binding.listener = clickListener
+            binding.cvPerson.setOnClickListener {
+                clickListener.onClick(item)
+            }
+            binding.cvPerson.setOnLongClickListener{
+                clickListener.onLongClick(item)
+                true
+            }
             binding.executePendingBindings()
         }
 
@@ -50,8 +57,9 @@ class ListPersonAdapter(private val clickListener: ListPersonListener): ListAdap
         }
     }
 
-    class ListPersonListener(val clickListener:(person: Person) -> Unit) {
-        fun onClick(person: Person) = clickListener(person)
+    interface ListPersonClickListener {
+        fun onClick(person: Person)
+        fun onLongClick(person: Person)
     }
 
 }

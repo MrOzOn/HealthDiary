@@ -78,6 +78,30 @@
         android:id="@+id/listPersonFragment"
         android:name="com.mrozon.feature_person.presentation.ListPersonFragment"
         android:label="ListPersonFragment"
-        tools:layout="@layout/fragment_list_person"/>
+        tools:layout="@layout/fragment_list_person">
+        <action
+            android:id="@+id/action_listPersonFragment_to_editPersonFragment"
+            app:destination="@id/editPersonFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/editPersonFragment"
+        android:name="com.mrozon.feature_person.presentation.EditPersonFragment"
+        tools:layout="@layout/fragment_edit_person"
+        android:label="{title}" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_editPersonFragment_to_listPersonFragment"
+            app:destination="@id/listPersonFragment" />
+    </fragment>
 
 </navigation>

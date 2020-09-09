@@ -13,6 +13,10 @@ data class Result<out T>(val status: Status, val data: T?, val message: String?)
             return Result(Status.SUCCESS, data, null)
         }
 
+        fun <T> success(): Result<T> {
+            return Result(Status.SUCCESS, null, null)
+        }
+
         fun <T> error(message: String, data: T? = null): Result<T> {
             return Result(Status.ERROR, data, message)
         }

@@ -2,4 +2,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="ivGender">gender\'s person</string>
+    <string name="add_person">Add person</string>
+    <string name="hint_person_name">Type person name</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="etBorn">Type date of born</string>
+    <string name="tvDOB">Date of birth</string>
+    <string name="edit_person">Edit person</string>
+    <string name="delete_person">Delete person</string>
 </resources>
