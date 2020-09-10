@@ -2,21 +2,12 @@ package com.mrozon.feature_auth.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
-import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.mrozon.core_api.navigation.LoginNavigator
-import com.mrozon.core_api.navigation.SplashNavigator
 import com.mrozon.feature_auth.R
 import com.mrozon.feature_auth.databinding.FragmentLoginBinding
 import com.mrozon.feature_auth.di.LoginFragmentComponent
@@ -24,10 +15,9 @@ import com.mrozon.utils.base.BaseFragment
 import com.mrozon.utils.extension.hideKeyboard
 import com.mrozon.utils.extension.offer
 import com.mrozon.utils.extension.visible
-import kotlinx.android.synthetic.main.fragment_login.*
+import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import timber.log.Timber
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
@@ -58,7 +48,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
         binding?.btnLogin?.setOnClickListener {
             hideKeyboard()
-            viewModel.loginUser(etUserName.text.toString().trim(),etUserPassword.text.toString().trim())
+            viewModel.loginUser()
         }
 
         binding?.btnRegistration?.setOnClickListener {
@@ -78,22 +68,24 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         })
 
-        viewModel.progress.observe(viewLifecycleOwner, Observer { progress ->
-            binding?.progressBar?.visible(progress)
-            binding?.btnLogin?.isEnabled = !progress && viewModel.enableLogin.value?:false
-            binding?.btnRegistration?.isEnabled = !progress
-        })
-
-        viewModel.error.observe(viewLifecycleOwner, Observer {error ->
-            if(error!=null)
-                showError(error) {}
-        })
-
-        viewModel.showPersons.observe(viewLifecycleOwner, Observer { showPersons ->
-            if(showPersons) {
-                navigator.navigateToListPerson(findNavController())
+        viewModel.loggedUser.observe(viewLifecycleOwner, Observer { result ->
+            if(result!=null){
+                when (result.status) {
+                    Result.Status.LOADING -> {
+                        binding?.progressBar?.visible(true)
+                    }
+                    Result.Status.SUCCESS -> {
+                        binding?.progressBar?.visible(false)
+                        navigator.navigateToListPerson(findNavController())
+                    }
+                    Result.Status.ERROR -> {
+                        binding?.progressBar?.visible(false)
+                        showError(result.message!!)
+                    }
+                }
             }
         })
+
     }
 
 }

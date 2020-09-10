@@ -7,10 +7,14 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.db.model.UserDb
+import com.mrozon.core_api.entity.Person
+import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import com.mrozon.core_api.network.model.toUserDb
 import com.mrozon.feature_auth.data.UserAuthRemoteDataSource
+import com.mrozon.feature_auth.data.UserAuthRepository
 import com.mrozon.utils.base.BaseViewModel
+import com.mrozon.utils.network.Result
 //import com.mrozon.utils.extension.asFlow
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.ConflatedBroadcastChannel
@@ -22,21 +26,16 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class RegistrationFragmentViewModel @Inject constructor(
-    private val userAuthRemoteDataSource: UserAuthRemoteDataSource,
-    private val healthDiaryDao: HealthDiaryDao
+    private val repository: UserAuthRepository
 ): BaseViewModel() {
-
-    private val _progress = MutableLiveData<Boolean>(false)
-    val progress: LiveData<Boolean>
-        get() = _progress
 
     private val _error = MutableLiveData<String?>()
     val error: LiveData<String?>
         get() = _error
 
-    private val _registered = MutableLiveData<String?>()
-    val registered: LiveData<String?>
-        get() = _registered
+    private val _registeredUser = MutableLiveData<Result<User>?>(null)
+    val registeredUser: LiveData<Result<User>?>
+        get() = _registeredUser
 
     @ExperimentalCoroutinesApi
     val emailChannel = ConflatedBroadcastChannel<String>()
@@ -95,38 +94,17 @@ class RegistrationFragmentViewModel @Inject constructor(
 
     @ExperimentalCoroutinesApi
     fun registerUser() {
-        val email = emailChannel.value
         val psw = passwordChannel.value
-        val firstName = firstNameChannel.value
-        val lastName = lastNameChannel.value
-        _progress.value = true
-        CoroutineScope(Dispatchers.IO).launch(getJobErrorHandler()) {
-            val response = userAuthRemoteDataSource.registerUser(
-                email = email,
-                password = psw,
-                lastName = lastName,
-                firstName = firstName
-            )
-            if (response.status == com.mrozon.utils.network.Result.Status.SUCCESS) {
+        val user = User(email = emailChannel.value, firstname = firstNameChannel.value, lastname = lastNameChannel.value)
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.registerUser(user,psw).collect {
                 withContext(Dispatchers.Main) {
-                    _progress.value = false
-                    _registered.value = response.data?.username
-                }
-            } else if (response.status == com.mrozon.utils.network.Result.Status.ERROR) {
-                Timber.e(response.message!!)
-                withContext(Dispatchers.Main) {
-                    _progress.value = false
-                    _error.value = response.message!!
+                    _registeredUser.value = it
                 }
             }
-
         }
     }
 
-    private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
-        Timber.e(e)
-        _error.value = e.message
-    }
 }
 
 enum class ValidateDataError(val code: Int) {

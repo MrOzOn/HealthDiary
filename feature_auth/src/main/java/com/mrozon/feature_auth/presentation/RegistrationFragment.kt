@@ -17,6 +17,7 @@ import com.mrozon.utils.base.BaseFragment
 import com.mrozon.utils.extension.hideKeyboard
 import com.mrozon.utils.extension.offer
 import com.mrozon.utils.extension.visible
+import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import timber.log.Timber
@@ -64,22 +65,27 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
     @FlowPreview
     override fun subscribeUi() {
 
-        viewModel.progress.observe(viewLifecycleOwner, Observer { progress ->
-            binding?.progressBar?.visible(progress)
-            binding?.btnRegistrationCancel?.isEnabled = !progress
-            Timber.d("progress=${progress} and valid=${viewModel.validateData.value==ValidateDataError.OK}")
-            binding?.btnRegistration?.isEnabled = (!progress) and (viewModel.validateData.value==ValidateDataError.OK)
-        })
-
         viewModel.error.observe(viewLifecycleOwner, Observer {error ->
             if(error!=null)
                 showError(error) {}
         })
 
-        viewModel.registered.observe(viewLifecycleOwner, Observer { registeredUser ->
-            if(registeredUser!=null) {
-                showInfo(getString(R.string.userRegistered)) {
-                    navigator.navigateToLoginUser(findNavController(), registeredUser)
+        viewModel.registeredUser.observe(viewLifecycleOwner, Observer { result ->
+            if(result!=null){
+                when (result.status) {
+                    Result.Status.LOADING -> {
+                        binding?.progressBar?.visible(true)
+                    }
+                    Result.Status.SUCCESS -> {
+                        binding?.progressBar?.visible(false)
+                        showInfo(getString(R.string.userRegistered)) {
+                                navigator.navigateToLoginUser(findNavController(), result.data?.email?:"")
+                            }
+                    }
+                    Result.Status.ERROR -> {
+                        binding?.progressBar?.visible(false)
+                        showError(result.message!!)
+                    }
                 }
             }
         })
@@ -93,7 +99,7 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
             binding?.etLastName?.error = null
             when (it) {
                 ValidateDataError.OK -> {
-                    binding?.btnRegistration?.isEnabled = true and !(viewModel.progress.value!!)
+                    binding?.btnRegistration?.isEnabled = true //and !(viewModel.progress.value!!)
                 }
                 ValidateDataError.INCORRECT_EMAIL -> {
                     binding?.etUserName?.error = getString(R.string.uncorrect_email)

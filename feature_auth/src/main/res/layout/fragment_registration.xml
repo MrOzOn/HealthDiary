@@ -136,6 +136,8 @@
                 android:layout_width="128dp"
                 android:layout_height="128dp"
                 android:indeterminate="true"
+                android:visibility="invisible"
+                tools:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
