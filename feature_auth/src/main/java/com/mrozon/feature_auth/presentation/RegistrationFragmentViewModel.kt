@@ -3,16 +3,10 @@ package com.mrozon.feature_auth.presentation
 import android.util.Patterns.EMAIL_ADDRESS
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
-import com.mrozon.core_api.db.HealthDiaryDao
-import com.mrozon.core_api.db.model.UserDb
-import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.entity.User
-import com.mrozon.core_api.mapper.UserToUserDbMapper
-import com.mrozon.core_api.network.model.toUserDb
-import com.mrozon.feature_auth.data.UserAuthRemoteDataSource
 import com.mrozon.feature_auth.data.UserAuthRepository
+import com.mrozon.feature_auth.data.UserAuthRepositoryImpl
 import com.mrozon.utils.base.BaseViewModel
 import com.mrozon.utils.network.Result
 //import com.mrozon.utils.extension.asFlow
@@ -21,8 +15,6 @@ import kotlinx.coroutines.channels.ConflatedBroadcastChannel
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.combineLatest
-import timber.log.Timber
 import javax.inject.Inject
 
 class RegistrationFragmentViewModel @Inject constructor(
