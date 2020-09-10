@@ -5,7 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mrozon.core_api.entity.User
 import com.mrozon.healthdiary.data.UserRepository
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.CoroutineExceptionHandler
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -33,3 +37,4 @@ class MainActivityViewModel @Inject constructor(
     }
 
 }
+

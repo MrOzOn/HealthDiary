@@ -11,7 +11,6 @@ abstract class BaseDataSource {
     protected suspend fun <T> getResult(call: suspend () -> Response<T>): Result<T> {
         try {
             val response = call()
-            //TODO response.errorBody()
             if (response.isSuccessful) {
                 val body = response.body()
                 if (body != null)

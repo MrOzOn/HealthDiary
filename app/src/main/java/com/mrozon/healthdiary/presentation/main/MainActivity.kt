@@ -1,11 +1,9 @@
 package com.mrozon.healthdiary.presentation.main
 
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.core.app.ShareCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
@@ -23,8 +21,6 @@ import com.mrozon.healthdiary.R
 import com.mrozon.healthdiary.databinding.ActivityMainBinding
 import com.mrozon.healthdiary.di.main.MainActivityComponent
 import com.mrozon.utils.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -40,7 +36,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
-    private lateinit var nav_view: NavigationView
+    private lateinit var navView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initDI()
@@ -57,14 +53,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
     private fun initNavigation() {
         setSupportActionBar(binding.toolbar)
         drawerLayout = binding.drawerLayout
-        nav_view = binding.navView
+        navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.listPersonFragment),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        nav_view.setNavigationItemSelectedListener {
+        navView.setNavigationItemSelectedListener {
             val currentDestinationId = navController.currentDestination?.id?:0
             when(it.itemId){
                 R.id.show_person -> {
