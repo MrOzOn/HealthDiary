@@ -37,7 +37,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     override fun subscribeUi() {
-        viewModel.currentUser.observe(viewLifecycleOwner, Observer { it ->
+        viewModel.currentUser.observe(viewLifecycleOwner, Observer {
             if(it==null){
                 //auth user
                 navigator.navigateToAuth(findNavController())

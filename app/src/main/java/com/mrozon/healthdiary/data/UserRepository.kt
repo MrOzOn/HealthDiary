@@ -1,9 +1,9 @@
-package com.mrozon.healthdiary.repository
+package com.mrozon.healthdiary.data
 
 import androidx.lifecycle.LiveData
 import com.mrozon.core_api.entity.User
 
-interface LocalUserDataSource {
+interface UserRepository {
 
     fun getLocalUser(): LiveData<User>
 

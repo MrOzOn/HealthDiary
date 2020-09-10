@@ -4,16 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mrozon.core_api.entity.User
-import com.mrozon.healthdiary.repository.LocalUserDataSource
+import com.mrozon.healthdiary.data.UserRepository
 import kotlinx.coroutines.*
 import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivityViewModel @Inject constructor(
-    private val localUserDataSource: LocalUserDataSource
+    private val userRepository: UserRepository
 ): ViewModel() {
 
-    val currentUser = localUserDataSource.getLocalUser()
+    val currentUser = userRepository.getLocalUser()
 
     private val _cleared = MutableLiveData<Boolean>(false)
     val cleared: LiveData<Boolean>
@@ -21,7 +21,7 @@ class MainActivityViewModel @Inject constructor(
 
     fun logoutUser(user: User) {
         CoroutineScope(Dispatchers.IO).launch(getJobErrorHandler()) {
-            localUserDataSource.clearLocalUser(user)
+            userRepository.clearLocalUser(user)
             withContext(Dispatchers.Main){
                 _cleared.value = true
             }

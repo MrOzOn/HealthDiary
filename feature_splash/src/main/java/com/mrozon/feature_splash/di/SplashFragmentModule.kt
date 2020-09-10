@@ -6,8 +6,8 @@ import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import com.mrozon.core_api.viewmodel.ViewModelKey
 import com.mrozon.feature_splash.presentation.SplashFragmentViewModel
-import com.mrozon.feature_splash.repository.LocalUser
-import com.mrozon.feature_splash.repository.LocalUserImp
+import com.mrozon.feature_splash.data.LocalUserRepository
+import com.mrozon.feature_splash.data.LocalUserRepositoryImp
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -24,15 +24,7 @@ interface SplashFragmentModule {
     @Binds
     fun viewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
 
-    @Module
-    companion object {
+    @Binds
+    fun provideLocalUserRepository(repository: LocalUserRepositoryImp): LocalUserRepository
 
-        @Provides
-        @Singleton
-        @JvmStatic
-        fun provideLocalUser(
-            healthDiaryDao: HealthDiaryDao,
-            mapper: UserToUserDbMapper
-        ): LocalUser = LocalUserImp(healthDiaryDao, mapper)
-    }
 }
