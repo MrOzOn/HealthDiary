@@ -1,18 +1,15 @@
 package com.mrozon.healthdiary.presentation.main
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ShareCompat
 import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_LOCKED_CLOSED
 import androidx.drawerlayout.widget.DrawerLayout.LOCK_MODE_UNLOCKED
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -20,18 +17,18 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.android.material.navigation.NavigationView
 import com.mrozon.core_api.providers.AppWithFacade
-import com.mrozon.feature_splash.di.SplashFragmentComponent
-import com.mrozon.feature_splash.presentation.SplashFragmentViewModel
 import com.mrozon.healthdiary.R
 import com.mrozon.healthdiary.databinding.ActivityMainBinding
-import com.mrozon.healthdiary.di.main.DaggerMainActivityComponent
 import com.mrozon.healthdiary.di.main.MainActivityComponent
 import com.mrozon.utils.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.view.*
 import timber.log.Timber
 import javax.inject.Inject
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : BaseActivity<ActivityMainBinding>(){
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -43,6 +40,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
+    private lateinit var nav_view: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         initDI()
@@ -59,9 +57,24 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun initNavigation() {
         setSupportActionBar(binding.toolbar)
         drawerLayout = binding.drawerLayout
+        nav_view = binding.navView
         navController = findNavController(R.id.nav_host_fragment)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.listPersonFragment), binding.drawerLayout)
+        appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.listPersonFragment),
+            binding.drawerLayout
+        )
         setupActionBarWithNavController(navController, appBarConfiguration)
+        nav_view.setNavigationItemSelectedListener {
+            val currentDestinationId = navController.currentDestination?.id?:0
+            when(it.itemId){
+                R.id.show_person -> {
+                    if(currentDestinationId!=R.id.listPersonFragment)
+                        navController.navigate(R.id.action_global_listPersonFragment)
+                }
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -80,7 +93,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun subscribeUi() {
 
         viewModel.cleared.observe(this, Observer { cleared ->
-            if(cleared){
+            if (cleared) {
                 navController.navigate(R.id.action_global_loginFragment)
             }
         })
@@ -91,14 +104,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             val tvUserName = headerView.findViewById<TextView>(R.id.tvUserName)
             val ivLogout = headerView.findViewById<ImageView>(R.id.ivLogout)
 
-            if(user==null){
+            if (user == null) {
                 Timber.d("user is null")
                 supportActionBar?.hide()
                 drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
                 ivLogout.setOnClickListener(null)
-            }
-            else
-            {
+            } else {
                 Timber.d("user not null")
                 supportActionBar?.show()
                 drawerLayout.setDrawerLockMode(LOCK_MODE_UNLOCKED)

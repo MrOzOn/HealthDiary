@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/reward_dest"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/app_name"
+    <item android:id="@+id/show_person"
+        android:icon="@drawable/ic_persons_24"
+        android:title="@string/list_persons"
         />
 
 </menu>
