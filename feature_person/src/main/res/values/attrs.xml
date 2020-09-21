@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="GenderSwitch">
+        <attr name="isMale" format="boolean" />
+        <attr name="colorChecked" format="color" />
+        <attr name="colorUnchecked" format="color" />
+    </declare-styleable>
+</resources>
