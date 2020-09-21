@@ -16,6 +16,7 @@ import com.mrozon.feature_auth.di.RegistrationFragmentComponent
 import com.mrozon.utils.base.BaseFragment
 import com.mrozon.utils.extension.hideKeyboard
 import com.mrozon.utils.extension.offer
+import com.mrozon.utils.extension.shake
 import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -84,6 +85,7 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
+                        binding?.btnRegistration?.shake()
                         showError(result.message!!)
                     }
                 }
