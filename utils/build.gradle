@@ -42,6 +42,7 @@ dependencies {
     implementation navigationUi
     implementation timber
     implementation retrofit
+    implementation constraintlayout
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 
