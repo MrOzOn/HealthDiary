@@ -18,7 +18,7 @@ import com.mrozon.feature_person.R
 import timber.log.Timber
 
 
-class GenderSwitch(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class GenderSwitch(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
     private val paintChecked : Paint = Paint()
     private val paintUnchecked : Paint = Paint()
@@ -37,15 +37,15 @@ class GenderSwitch(context: Context?, attrs: AttributeSet?) : View(context, attr
     }
 
     init {
-        val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.GenderSwitch)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.GenderSwitch)
         try {
-            paintChecked.color = typedArray!!.getColor(R.styleable.GenderSwitch_colorChecked,
+            paintChecked.color = typedArray.getColor(R.styleable.GenderSwitch_colorChecked,
                 Color.parseColor("#03A9F4"))
             paintUnchecked.color = typedArray.getColor(R.styleable.GenderSwitch_colorUnchecked,
                 Color.parseColor("#E0E0E0"))
             mIsMale = typedArray.getBoolean(R.styleable.GenderSwitch_isMale, true)
         } finally {
-            typedArray?.recycle()
+            typedArray.recycle()
         }
     }
 
@@ -113,11 +113,8 @@ class GenderSwitch(context: Context?, attrs: AttributeSet?) : View(context, attr
     }
 
     @SuppressLint("ObsoleteSdkInt")
-    private fun getBitmapFromVectorDrawable(context: Context?, drawableId: Int, width:Int): Bitmap? {
-        var drawable = ContextCompat.getDrawable(context!!, drawableId)
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            drawable = DrawableCompat.wrap(drawable!!).mutate()
-        }
+    private fun getBitmapFromVectorDrawable(context: Context?, drawableId: Int, width:Int): Bitmap {
+        val drawable = ContextCompat.getDrawable(context!!, drawableId)
         val bitmap = Bitmap.createBitmap(
             width,
             width,

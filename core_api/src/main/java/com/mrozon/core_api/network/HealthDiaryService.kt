@@ -6,8 +6,8 @@ import retrofit2.http.*
 
 interface HealthDiaryService {
     companion object {
-        const val ENDPOINT = "http://10.0.2.2:8000/"
-//        const val ENDPOINT = "https://hdb.mr-ozon-1982.tk/"
+//        const val ENDPOINT = "http://10.0.2.2:8000/"
+        const val ENDPOINT = "https://hdb.mr-ozon-1982.tk/"
     }
 
     @POST("login/")
