@@ -1,22 +1,14 @@
 package com.mrozon.utils.base
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
-import android.view.InflateException
 import androidx.annotation.LayoutRes
-import androidx.core.content.ContextCompat.getColor
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.Snackbar
-import com.mrozon.utils.R
-import timber.log.Timber
 
 abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
 {
@@ -60,35 +52,18 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
     }
 
     fun showError(message: String, action:()->Unit) {
-        val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_INDEFINITE)
-        snackbar.view.setBackgroundColor(getColor(requireContext(),R.color.color_snack_error))
-        snackbar.setActionTextColor(Color.WHITE)
-        snackbar.setAction(R.string.Ok) {
-            snackbar.dismiss()
-            action()
-        }
-        snackbar.show()
+        MyInfoDialog.newInstance(MyInfoDialogType.ERROR,message, action)
+            .show(requireActivity().supportFragmentManager, MyInfoDialog.TAG)
     }
 
     fun showError(message: String) {
-        val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_INDEFINITE)
-        snackbar.view.setBackgroundColor(getColor(requireContext(),R.color.color_snack_error))
-        snackbar.setActionTextColor(Color.WHITE)
-        snackbar.setAction(R.string.Ok) {
-            snackbar.dismiss()
-        }
-        snackbar.show()
+        MyInfoDialog.newInstance(MyInfoDialogType.ERROR,message)
+            .show(requireActivity().supportFragmentManager, MyInfoDialog.TAG)
     }
 
     fun showInfo(message: String, action:()->Unit) {
-        val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_INDEFINITE)
-        snackbar.view.setBackgroundColor(getColor(requireContext(),R.color.color_snack_info))
-        snackbar.setActionTextColor(Color.WHITE)
-        snackbar.setAction(R.string.Ok) {
-            snackbar.dismiss()
-            action()
-        }
-        snackbar.show()
+        MyInfoDialog.newInstance(MyInfoDialogType.INFO,message, action)
+            .show(requireActivity().supportFragmentManager, MyInfoDialog.TAG)
     }
 
     fun show(message: String) {

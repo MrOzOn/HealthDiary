@@ -21,9 +21,11 @@ import javax.inject.Inject
 
 class EditPersonFragmentViewModel @Inject constructor(val context: Context, val repository: PersonRepository): BaseViewModel() {
 
-    private val _male = MutableLiveData<Boolean>(true)
-    val male: LiveData<Boolean>
-        get() = _male
+//    private val _male = MutableLiveData<Boolean>(true)
+//    val male: LiveData<Boolean>
+//        get() = _male
+
+    private var _male:Boolean = true
 
     private var _person = MutableLiveData<Result<Person>?>(null)
     val person: LiveData<Result<Person>?>
@@ -70,13 +72,13 @@ class EditPersonFragmentViewModel @Inject constructor(val context: Context, val 
     }
 
     fun setMaleGender(isMale: Boolean) {
-        _male.value = isMale
+        _male = isMale
     }
 
     @ExperimentalCoroutinesApi
     fun addPerson() {
         var gender = Gender.MALE
-        if(_male.value==false)
+        if(_male==false)
             gender = Gender.FEMALE
         val personEntity = Person(name = personNameChannel.value, gender = gender, born = personDobChannel.value )
         viewModelScope.launch(Dispatchers.IO) {
@@ -115,7 +117,7 @@ class EditPersonFragmentViewModel @Inject constructor(val context: Context, val 
     @ExperimentalCoroutinesApi
     fun editPerson(id: Long) {
         var gender = Gender.MALE
-        if(_male.value==false)
+        if(!_male)
             gender = Gender.FEMALE
         val personEntity = Person(id = id, name = personNameChannel.value, gender = gender, born = personDobChannel.value )
         viewModelScope.launch(Dispatchers.IO) {

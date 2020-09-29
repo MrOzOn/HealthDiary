@@ -2,20 +2,18 @@ package com.mrozon.feature_person.presentation
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.*
 import android.widget.EditText
 import androidx.core.app.ActivityCompat.invalidateOptionsMenu
-import androidx.core.view.get
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.mrozon.core_api.entity.Gender
 import com.mrozon.core_api.navigation.EditPersonNavigator
-import com.mrozon.core_api.navigation.ListPersonNavigator
 import com.mrozon.feature_person.R
+import com.mrozon.feature_person.customview.GenderSwitch
 import com.mrozon.feature_person.databinding.FragmentEditPersonBinding
 import com.mrozon.feature_person.di.EditPersonFragmentComponent
 import com.mrozon.utils.base.BaseFragment
@@ -23,7 +21,6 @@ import com.mrozon.utils.extension.*
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -58,16 +55,17 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.radioGroup?.setOnCheckedChangeListener { _, id ->
-            if(id==R.id.rbMale)
-                viewModel.setMaleGender(true)
-            else
-                viewModel.setMaleGender(false)
-        }
+        binding?.genderSwitch?.setOnGenderChangeListener(object : GenderSwitch.OnGenderChangeListener{
+            override fun onMaleSelected(male: Boolean) {
+                viewModel.setMaleGender(male)
+            }
+        })
+
+        binding?.genderSwitch?.isMale()
 
         binding?.etPersonName?.offer(viewModel.personNameChannel)
 
-        binding?.pickerBoD?.init(2020,1,1)
+        binding?.pickerBoD?.init(2020, 1, 1)
         { _, year, month, day ->
             val date = "$year-${month+1}-$day"
 //            Timber.d("string = $date date=${date.toSimpleDate().toDateString()}")
@@ -75,11 +73,13 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
         }
         val calendar = Calendar.getInstance()
         calendar.time = Date()
-        binding?.pickerBoD?.updateDate(calendar.get(Calendar.YEAR),
+        binding?.pickerBoD?.updateDate(
+            calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
-            calendar.get(Calendar.DAY_OF_MONTH))
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
 
-        val id = arguments?.getLong("id",0)?:0
+        val id = arguments?.getLong("id", 0)?:0
         if(id>0){
             viewModel.initValue(id)
         }
@@ -88,19 +88,13 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
     @ExperimentalCoroutinesApi
     @FlowPreview
     override fun subscribeUi() {
-        viewModel.male.observe(viewLifecycleOwner, Observer { isMale ->
-            if (isMale)
-                binding?.ivGenger?.setImageResource(R.drawable.ic_male_avatar)
-            else
-                binding?.ivGenger?.setImageResource(R.drawable.ic_female_avatar)
-        })
 
         viewModel.enableAdding.observe(viewLifecycleOwner, Observer { enabled ->
             invalidateOptionsMenu(activity)
         })
 
         viewModel.person.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
+            if (result != null) {
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -118,7 +112,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
         })
 
         viewModel.initPerson.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
+            if (result != null) {
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -127,17 +121,19 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
                         arguments?.remove("id")
                         binding?.progressBar?.visible(false)
                         binding?.etPersonName?.setText(result.data?.name)
-                        if (result.data?.gender==Gender.FEMALE)
-                            binding?.radioGroup?.check(R.id.rbFemale)
+                        if (result.data?.gender == Gender.FEMALE)
+                            binding?.genderSwitch?.setMale(false)
                         else
-                            binding?.radioGroup?.check(R.id.rbMale)
+                            binding?.genderSwitch?.setMale(true)
                         val calendar = Calendar.getInstance()
-                        calendar.time = result.data?.born?:Date()
-                        binding?.pickerBoD?.updateDate(calendar.get(Calendar.YEAR),
+                        calendar.time = result.data?.born ?: Date()
+                        binding?.pickerBoD?.updateDate(
+                            calendar.get(Calendar.YEAR),
                             calendar.get(Calendar.MONTH),
-                            calendar.get(Calendar.DAY_OF_MONTH))
+                            calendar.get(Calendar.DAY_OF_MONTH)
+                        )
                         viewModel.initDone()
-                        arguments?.putLong("current_id",result.data?.id?:-1)
+                        arguments?.putLong("current_id", result.data?.id ?: -1)
                         invalidateOptionsMenu(activity)
                     }
                     Result.Status.ERROR -> {
@@ -149,7 +145,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
         })
 
         viewModel.deletedPerson.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
+            if (result != null) {
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -167,7 +163,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
         })
 
         viewModel.sharePerson.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
+            if (result != null) {
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -195,7 +191,7 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
         }
         val deleteMenuItem = menu.findItem(R.id.deletePerson)
         val shareMenu = menu.findItem(R.id.sharePersonToUser)
-        val current_id = arguments?.getLong("current_id",-1)?:-1
+        val current_id = arguments?.getLong("current_id", -1)?:-1
         deleteMenuItem.isVisible = current_id>0
         shareMenu.isVisible = current_id>0
         return super.onCreateOptionsMenu(menu, inflater)
@@ -208,13 +204,12 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             showError(getString(R.string.network_inactive))
             return false
         }
-        val current_id = arguments?.getLong("current_id",-1)?:-1
+        val current_id = arguments?.getLong("current_id", -1)?:-1
         when(item.itemId){
             R.id.addPerson -> {
-                if(current_id>0){
+                if (current_id > 0) {
                     viewModel.editPerson(current_id)
-                }
-                else {
+                } else {
                     viewModel.addPerson()
                 }
             }

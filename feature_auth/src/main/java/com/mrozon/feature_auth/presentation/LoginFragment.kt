@@ -3,6 +3,7 @@ package com.mrozon.feature_auth.presentation
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import com.mrozon.feature_auth.di.LoginFragmentComponent
 import com.mrozon.utils.base.BaseFragment
 import com.mrozon.utils.extension.hideKeyboard
 import com.mrozon.utils.extension.offer
+import com.mrozon.utils.extension.shake
 import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -80,6 +82,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
+                        binding?.btnLogin?.shake()
                         showError(result.message!!)
                     }
                 }
