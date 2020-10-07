@@ -12,6 +12,7 @@ import com.mrozon.utils.network.Result
 import com.mrozon.utils.network.Result.Companion.error
 import com.mrozon.utils.network.Result.Companion.loading
 import com.mrozon.utils.network.Result.Companion.success
+import timber.log.Timber
 
 @Singleton
 class UserAuthRepositoryImpl @Inject constructor(private val userAuthRemoteDataSource: UserAuthRemoteDataSource,
@@ -39,6 +40,7 @@ class UserAuthRepositoryImpl @Inject constructor(private val userAuthRemoteDataS
             val request = LoginRequest(username = userName, password = password)
             val response = userAuthRemoteDataSource.loginUser(request)
             if (response.status == Result.Status.SUCCESS) {
+                Timber.d("sahdksdh")
                 dao.insertUser(response.data!!.toUserDb())
                 emit(success(response.data!!.toUser()))
             } else if (response.status == Result.Status.ERROR) {
