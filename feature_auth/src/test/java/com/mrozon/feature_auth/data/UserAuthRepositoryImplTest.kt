@@ -7,10 +7,6 @@ import com.mrozon.utils.network.Result.Companion.loading
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.test.TestCoroutineDispatcher
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.setMain
 import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
@@ -18,9 +14,11 @@ import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 import com.mrozon.utils.network.Result.Companion.error
 import com.mrozon.utils.network.Result.Companion.success
+import kotlinx.coroutines.test.*
 import okhttp3.MediaType
 import okhttp3.ResponseBody
 import org.junit.Before
+import org.junit.runners.model.Statement
 import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.junit.MockitoJUnit
@@ -175,14 +173,32 @@ class UserAuthRepositoryImplTest {
 
 @ExperimentalCoroutinesApi
 class CoroutineTestRule(val testDispatcher: TestCoroutineDispatcher = TestCoroutineDispatcher()) : TestWatcher() {
-    override fun starting(description: Description?) {
-        super.starting(description)
-        Dispatchers.setMain(testDispatcher)
+
+    private val testCoroutinesScope = TestCoroutineScope(testDispatcher)
+
+//    override fun starting(description: Description?) {
+//        super.starting(description)
+//        Dispatchers.setMain(testDispatcher)
+//    }
+//
+//    override fun finished(description: Description?) {
+//        super.finished(description)
+//        Dispatchers.resetMain()
+//        testDispatcher.cleanupTestCoroutines()
+//    }
+
+    override fun apply(base: Statement, description: Description?) = object : Statement() {
+        override fun evaluate() {
+            Dispatchers.setMain(testDispatcher)
+            base.evaluate()
+            Dispatchers.resetMain()
+            testCoroutinesScope.cleanupTestCoroutines()
+        }
     }
 
-    override fun finished(description: Description?) {
-        super.finished(description)
-        Dispatchers.resetMain()
-        testDispatcher.cleanupTestCoroutines()
+    fun runBlockingTest(block: suspend TestCoroutineScope.() -> Unit) {
+        testCoroutinesScope.runBlockingTest{
+            block()
+        }
     }
 }

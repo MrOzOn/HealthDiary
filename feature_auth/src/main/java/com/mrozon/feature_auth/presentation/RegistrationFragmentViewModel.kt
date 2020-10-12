@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mrozon.core_api.entity.User
+import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.feature_auth.data.UserAuthRepository
 import com.mrozon.feature_auth.data.UserAuthRepositoryImpl
 import com.mrozon.utils.base.BaseViewModel
@@ -16,9 +17,11 @@ import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 class RegistrationFragmentViewModel @Inject constructor(
-    private val repository: UserAuthRepository
+    private val repository: UserAuthRepository,
+    private val coroutineContextProvider: CoroutineContextProvider
 ): BaseViewModel() {
 
     private val _error = MutableLiveData<String?>()
@@ -88,9 +91,9 @@ class RegistrationFragmentViewModel @Inject constructor(
     fun registerUser() {
         val psw = passwordChannel.value
         val user = User(email = emailChannel.value, firstname = firstNameChannel.value, lastname = lastNameChannel.value)
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch(coroutineContextProvider.IO) {
             repository.registerUser(user,psw).collect {
-                withContext(Dispatchers.Main) {
+                withContext(coroutineContextProvider.Main) {
                     _registeredUser.value = it
                 }
             }
