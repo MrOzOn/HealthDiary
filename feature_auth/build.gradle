@@ -13,7 +13,7 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.mrozon.feature_auth.MockTestRunner"//"androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
     }
 
@@ -64,6 +64,10 @@ dependencies {
     testImplementation androidXCoreTest
     //Instrumental Test
     androidTestImplementation junitInstrumental
+    androidTestImplementation androidXRulesTest
+    androidTestImplementation androidXRunnerTest
     androidTestImplementation espressoCore
+    androidTestImplementation androidXFragmentTest
+    kaptAndroidTest daggerCompiler
 
 }
