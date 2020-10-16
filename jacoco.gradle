@@ -1,0 +1,41 @@
+apply plugin: 'jacoco-android'
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
+
+jacocoAndroidUnitTestReport {
+    excludes += [
+            '**/R.class',
+            '**/R$*.class',
+            '**/BuildConfig.*',
+            '**/Manifest*.*',
+            '**/*Test*.*',
+            '**/*Fragment*.*',
+            '**/android/databinding/*',
+            '**/androidx/databinding/*',
+            '**/*Binding*.*',
+            '**/di/module/*',
+            '**/*MapperImpl*.*',
+            '**/*$ViewInjector*.*',
+            '**/*$ViewBinder*.*',
+            '**/BuildConfig.*',
+            '**/*Component*.*',
+            '**/*BR*.*',
+            '**/Manifest*.*',
+            '**/*$Lambda$*.*',
+            '**/*Companion*.*',
+            '**/*Module.*',
+            '**/*Dagger*.*',
+            '**/*MembersInjector*.*',
+            '**/*_Factory*.*',
+            '**/*_Provide*Factory*.*',
+            '**/*Extensions*.*',
+            '**/*$Result.*', /* filtering `sealed` and `data` classes */
+            '**/*$Result$*.*'/* filtering `sealed` and `data` classes */
+    ]
+}
