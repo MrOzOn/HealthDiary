@@ -1,14 +1,8 @@
 ext {
 
 
-//    jsr330Version = '1'
     daggerVersion = '2.25.2'
     roomVersion = '2.1.0'
-//    picassoVersion = '2.71828'
-//    flexLayoutVersion = '1.1.1'
-//    viewPager2Version = '1.0.0-rc01'
-//    coroutinesVersion = '1.1.1'
-//    materialVersion = '1.1.0-beta02'
     navigationVersion = '2.3.0'
     timberVersion = '4.7.1'
     retrofitVersion = '2.6.1'
@@ -19,9 +13,18 @@ ext {
     recyclerviewViersion = '1.2.0-alpha05'
     materialVersion = '1.2.1'
     lifecycleVersion = '2.3.0-alpha07'
+    junitVersion = "4.12"
+    mockitoCoreVersion = "2.28.2"
+    kotlinxCoroutinesTestVersion = "1.3.1"
+    junitInstrumentalVersion = "1.1.1"
+    espressoCoreVersion = "3.2.0"
+    legacySupportVersion = "1.0.0"
+    appCompatVersion = "1.2.0"
+    androidxCoreVersion = "1.3.1"
+    robolectricVersion = "4.4"
+    androidXCoreTestVersion = "2.1.0"
+    androidXTestVersion = "1.1.0"
 
-//    retrofit = "com.squareup.retrofit2:retrofit:$retrofitVersion"
-//    jsr330 = "javax.inject:javax.inject:$jsr330Version"
     // DI
     dagger = "com.google.dagger:dagger:$daggerVersion"
     daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVersion"
@@ -29,16 +32,6 @@ ext {
     room = "androidx.room:room-runtime:$roomVersion"
     roomKtx = "androidx.room:room-ktx:$roomVersion"
     roomCompiler = "androidx.room:room-compiler:$roomVersion"
-//    picasso = "com.squareup.picasso:picasso:$picassoVersion"
-//    flexLayout = "com.google.android:flexbox:$flexLayoutVersion"
-//    viewPager2 = "androidx.viewpager2:viewpager2:$viewPager2Version"
-//    coroutinesDependencies = [
-//            'coroutines_core'   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
-//            'coroutines_android': "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
-//    ]
-//
-//    material = "com.google.android.material:material:$materialVersion"
-
     // Navigation
     navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"
@@ -61,4 +54,22 @@ ext {
     lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
     lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     lifecycleViewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    // Testing
+    junit = "junit:junit:$junitVersion"
+    mockitoCore = "org.mockito:mockito-core:$mockitoCoreVersion"
+    kotlinxCoroutinesTest =  "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinxCoroutinesTestVersion"
+    junitInstrumental =  "androidx.test.ext:junit:$junitInstrumentalVersion"
+    espressoCore = "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    androidXRunnerTest = "androidx.test:runner:$androidXTestVersion"
+    androidXRulesTest = "androidx.test:rules:$androidXTestVersion"
+    robolectric = "org.robolectric:robolectric:$robolectricVersion"
+    androidXCoreTest = "androidx.arch.core:core-testing:$androidXCoreTestVersion"
+    androidXFragmentTest = "androidx.fragment:fragment-testing:$androidXTestVersion"
+    // Support Library AndroidX
+    legacySupport = "androidx.legacy:legacy-support-v4:$legacySupportVersion"
+    appCompat =  "androidx.appcompat:appcompat:$appCompatVersion"
+    androidxCore = "androidx.core:core-ktx:$androidxCoreVersion"
+    // Kotlin
+    kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
 }
