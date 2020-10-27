@@ -83,7 +83,6 @@ class LoginFragmentViewModelTest {
         val error = "Bla-bla!"
         viewModel.userNameChannel.offer(email)
         viewModel.userPasswordChannel.offer(password)
-        val user = User(email = email, firstname = "firstName", lastname = "lastName")
         Mockito.`when`(repository.loginUser(Mockito.anyString(), Mockito.anyString())).thenReturn(
             flowOf(Result.loading(), Result.error(error))
         )
