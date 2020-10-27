@@ -24,6 +24,7 @@ ext {
     robolectricVersion = "4.4"
     androidXCoreTestVersion = "2.1.0"
     androidXTestVersion = "1.1.0"
+    securityCryptoVersion = "1.1.0-alpha02"
 
     // DI
     dagger = "com.google.dagger:dagger:$daggerVersion"
@@ -71,5 +72,6 @@ ext {
     androidxCore = "androidx.core:core-ktx:$androidxCoreVersion"
     // Kotlin
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
+    //Crytpo
+    securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
 }

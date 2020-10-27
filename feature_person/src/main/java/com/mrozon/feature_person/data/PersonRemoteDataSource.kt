@@ -12,31 +12,26 @@ class PersonRemoteDataSource @Inject constructor(private val service: HealthDiar
 
     suspend fun getPersons()
             = getResult {
-                val token = "Token "+dao.getAccessToken()
-                service.getPersons(token)
+                service.getPersons()
             }
 
     suspend fun addPersons(personRequest: PersonRequest)
             = getResult {
-        val token = "Token "+dao.getAccessToken()
-        service.addPerson(token, personRequest)
+        service.addPerson(personRequest)
     }
 
     suspend fun deletePerson(id: Long)
             = getResult {
-        val token = "Token "+dao.getAccessToken()
-        service.deletePerson(token, id.toString())
+        service.deletePerson(id.toString())
     }
 
     suspend fun editPerson(id: Long, personRequest: PersonRequest)
             = getResult {
-        val token = "Token "+dao.getAccessToken()
-        service.editPerson(token, id.toString(), personRequest)
+        service.editPerson(id.toString(), personRequest)
     }
 
     suspend fun sharePerson(sharePersonRequest: SharePersonRequest)
             = getResult {
-        val token = "Token "+dao.getAccessToken()
-        service.sharePerson(token, sharePersonRequest)
+        service.sharePerson(sharePersonRequest)
     }
 }

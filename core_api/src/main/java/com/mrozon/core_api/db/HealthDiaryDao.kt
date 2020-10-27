@@ -18,9 +18,9 @@ interface HealthDiaryDao {
     @Delete
     suspend fun deleteUser(userDb: UserDb)
 
-    // TOKEN
-    @Query("SELECT user_token from user_table LIMIT 1")
-    fun getAccessToken(): String
+//    // TOKEN
+//    @Query("SELECT user_token from user_table LIMIT 1")
+//    fun getAccessToken(): String
 
     // PERSON
     @Query("SELECT * FROM person_table")

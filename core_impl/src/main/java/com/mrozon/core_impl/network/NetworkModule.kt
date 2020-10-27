@@ -4,6 +4,7 @@ import okhttp3.logging.HttpLoggingInterceptor.Level.BODY
 import okhttp3.logging.HttpLoggingInterceptor.Level.NONE
 import com.google.gson.Gson
 import com.mrozon.core_api.network.HealthDiaryService
+import com.mrozon.core_api.security.SecurityTokenService
 import com.mrozon.core_impl.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -30,9 +31,17 @@ class NetworkModule {
         HttpLoggingInterceptor().apply { level = if (BuildConfig.DEBUG) BODY else NONE }
 
     @Provides
-    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
+    fun provideOkHttpClient(interceptor: HttpLoggingInterceptor, security: SecurityTokenService): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(interceptor)
+            .addInterceptor { chain ->
+                val newRequestBuilder = chain.request().newBuilder()
+                val token = security.loadAccessToken()
+                if (token.isNotEmpty()) {
+                    newRequestBuilder.addHeader("Authorization", "Token $token")
+                }
+                chain.proceed(newRequestBuilder.build())
+            }
             .build()
 
     @Singleton

@@ -17,21 +17,20 @@ interface HealthDiaryService {
     suspend fun registerUser(@Body body: RegisterRequest): Response<RegisterResponse>
 
     @GET("patients/")
-    suspend fun getPersons(@Header("Authorization") token: String): Response<List<PersonResponse>>
+    suspend fun getPersons(): Response<List<PersonResponse>>
 
     @POST("patients/")
-    suspend fun addPerson(@Header("Authorization") token: String, @Body body: PersonRequest): Response<PersonResponse>
+    suspend fun addPerson(@Body body: PersonRequest): Response<PersonResponse>
 
     @DELETE("patients/{id}/")
-    suspend fun deletePerson(@Header("Authorization") token: String, @Path("id") id: String): Response<Unit>
+    suspend fun deletePerson(@Path("id") id: String): Response<Unit>
 
     @PUT("patients/{id}/")
-    suspend fun editPerson(@Header("Authorization") token: String,
-                           @Path("id") id: String,
+    suspend fun editPerson(@Path("id") id: String,
                            @Body body: PersonRequest): Response<PersonResponse>
 
     @POST("add-user-to-patient/")
-    suspend fun sharePerson(@Header("Authorization") token: String, @Body body: SharePersonRequest): Response<PersonResponse>
+    suspend fun sharePerson(@Body body: SharePersonRequest): Response<PersonResponse>
 
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,
