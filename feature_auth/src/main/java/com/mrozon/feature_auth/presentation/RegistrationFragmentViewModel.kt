@@ -66,7 +66,7 @@ class RegistrationFragmentViewModel @Inject constructor(
                 }
                     .collect {
                         job?.cancel()
-                        job = async(Dispatchers.Main) {
+                        job = async(coroutineContextProvider.Main) {
                             value = if (!EMAIL_ADDRESS.matcher(it[0]).matches())
                                 ValidateDataError.INCORRECT_EMAIL
                             else if (it[1].isEmpty())
