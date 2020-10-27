@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.mrozon.core_api.entity.User
+import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.feature_auth.data.UserAuthRepository
 import com.mrozon.feature_auth.data.UserAuthRepositoryImpl
 import com.mrozon.utils.base.BaseViewModel
@@ -18,7 +19,8 @@ import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
 class LoginFragmentViewModel @Inject constructor(
-    private val repository: UserAuthRepository
+    private val repository: UserAuthRepository,
+    private val coroutineContextProvider: CoroutineContextProvider
 ): BaseViewModel() {
 
     private val _loggedUser = MutableLiveData<Result<User>?>(null)
@@ -45,7 +47,7 @@ class LoginFragmentViewModel @Inject constructor(
                     }
                     .collect {
                         job?.cancel()
-                        job = async(Dispatchers.Main) {
+                        job = async(coroutineContextProvider.Main) {
                             value = validateInputData(it)
                         }
                     }
@@ -61,9 +63,9 @@ class LoginFragmentViewModel @Inject constructor(
     fun loginUser(){
         val userName = userNameChannel.value
         val psw = userPasswordChannel.value
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(coroutineContextProvider.IO){
             repository.loginUser(userName,psw).collect {
-                withContext(Dispatchers.Main) {
+                withContext(coroutineContextProvider.Main) {
                     _loggedUser.value = it
                 }
             }
