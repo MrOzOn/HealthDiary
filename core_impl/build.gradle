@@ -41,6 +41,7 @@ dependencies {
     implementation gson
     implementation converterGson
     implementation navigationFragment
+    implementation securityCrypto
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

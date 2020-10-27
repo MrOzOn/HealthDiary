@@ -3,6 +3,8 @@ package com.mrozon.core
 import com.mrozon.core_api.db.DatabaseProvider
 import com.mrozon.core_api.network.NetworkProvider
 import com.mrozon.core_api.providers.AppProvider
+import com.mrozon.core_api.security.SecurityTokenProvider
+import com.mrozon.core_impl.crypto.DaggerSecurityTokenComponent
 import com.mrozon.core_impl.db.DaggerDatabaseComponent
 import com.mrozon.core_impl.network.DaggerNetworkComponent
 
@@ -15,4 +17,7 @@ object CoreProvidersFactory {
         return DaggerNetworkComponent.create()
     }
 
+    fun createSecurityTokenBuilder(appProvider: AppProvider): SecurityTokenProvider {
+        return DaggerSecurityTokenComponent.builder().appProvider(appProvider).build()
+    }
 }
