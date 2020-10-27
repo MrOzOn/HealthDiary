@@ -17,7 +17,7 @@ fun LoginResponse.toUserDb(): UserDb {
         email = email,
         firstname = first_name,
         lastname = last_name,
-        token = token
+        token = ""
     )
 }
 

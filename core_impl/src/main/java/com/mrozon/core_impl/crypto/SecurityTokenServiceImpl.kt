@@ -14,6 +14,7 @@ class SecurityTokenServiceImpl @Inject constructor(
 
     companion object {
         const val FILE_NAME = "access_token"
+        const val FIELD_NAME = "token"
     }
 
     private var ssp: SharedPreferences
@@ -32,12 +33,12 @@ class SecurityTokenServiceImpl @Inject constructor(
     }
 
     override fun loadAccessToken(): String {
-        return ssp.getString("token","")?:""
+        return ssp.getString(FIELD_NAME,"")?:""
     }
 
     override fun saveAccessToken(string: String) {
         ssp.edit()
-            .putString("token",string)
+            .putString(FIELD_NAME,string)
             .apply()
     }
 }

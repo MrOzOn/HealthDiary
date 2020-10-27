@@ -13,8 +13,8 @@ object CoreProvidersFactory {
         return DaggerDatabaseComponent.builder().appProvider(appProvider).build()
     }
 
-    fun createNetworkBuilder(): NetworkProvider {
-        return DaggerNetworkComponent.create()
+    fun createNetworkBuilder(appProvider: AppProvider): NetworkProvider {
+        return DaggerNetworkComponent.builder().securityTokenProvider(createSecurityTokenBuilder(appProvider)).build()
     }
 
     fun createSecurityTokenBuilder(appProvider: AppProvider): SecurityTokenProvider {

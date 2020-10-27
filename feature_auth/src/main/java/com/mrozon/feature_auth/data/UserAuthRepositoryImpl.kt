@@ -4,6 +4,7 @@ import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import com.mrozon.core_api.network.model.*
+import com.mrozon.core_api.security.SecurityTokenService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -16,7 +17,8 @@ import timber.log.Timber
 
 @Singleton
 class UserAuthRepositoryImpl @Inject constructor(private val userAuthRemoteDataSource: UserAuthRemoteDataSource,
-                                                 private val dao: HealthDiaryDao
+                                                 private val dao: HealthDiaryDao,
+                                                 private val securityTokenService: SecurityTokenService
 
 ): UserAuthRepository {
 
@@ -40,7 +42,7 @@ class UserAuthRepositoryImpl @Inject constructor(private val userAuthRemoteDataS
             val request = LoginRequest(username = userName, password = password)
             val response = userAuthRemoteDataSource.loginUser(request)
             if (response.status == Result.Status.SUCCESS) {
-                Timber.d("sahdksdh")
+                securityTokenService.saveAccessToken(response.data!!.token)
                 dao.insertUser(response.data!!.toUserDb())
                 emit(success(response.data!!.toUser()))
             } else if (response.status == Result.Status.ERROR) {
