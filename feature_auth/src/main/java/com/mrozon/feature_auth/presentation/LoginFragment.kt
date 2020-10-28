@@ -70,23 +70,26 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         })
 
-        viewModel.loggedUser.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
-                when (result.status) {
-                    Result.Status.LOADING -> {
-                        binding?.progressBar?.visible(true)
-                    }
-                    Result.Status.SUCCESS -> {
-                        binding?.progressBar?.visible(false)
-                        navigator.navigateToListPerson(findNavController())
-                    }
-                    Result.Status.ERROR -> {
-                        binding?.progressBar?.visible(false)
-                        binding?.btnLogin?.shake()
-                        showError(result.message!!)
+        viewModel.loggedUser.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled().let { result ->
+                if(result!=null){
+                    when (result.status) {
+                        Result.Status.LOADING -> {
+                            binding?.progressBar?.visible(true)
+                        }
+                        Result.Status.SUCCESS -> {
+                            binding?.progressBar?.visible(false)
+                            navigator.navigateToListPerson(findNavController())
+                        }
+                        Result.Status.ERROR -> {
+                            binding?.progressBar?.visible(false)
+                            binding?.btnLogin?.shake()
+                            showError(result.message!!)
+                        }
                     }
                 }
             }
+
         })
 
     }

@@ -1,5 +1,6 @@
 package com.mrozon.feature_auth.presentation
 
+import android.util.EventLog
 import android.util.Patterns.EMAIL_ADDRESS
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +9,7 @@ import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.feature_auth.data.UserAuthRepository
 import com.mrozon.feature_auth.data.UserAuthRepositoryImpl
+import com.mrozon.utils.Event
 import com.mrozon.utils.base.BaseViewModel
 import com.mrozon.utils.network.Result
 //import com.mrozon.utils.extension.asFlow
@@ -24,12 +26,12 @@ class RegistrationFragmentViewModel @Inject constructor(
     private val coroutineContextProvider: CoroutineContextProvider
 ): BaseViewModel() {
 
-    private val _error = MutableLiveData<String?>()
-    val error: LiveData<String?>
+    private val _error = MutableLiveData<Event<String>>()
+    val error: LiveData<Event<String>>
         get() = _error
 
-    private val _registeredUser = MutableLiveData<Result<User>?>(null)
-    val registeredUser: LiveData<Result<User>?>
+    private val _registeredUser = MutableLiveData<Event<Result<User>>>()
+    val registeredUser: LiveData<Event<Result<User>>>
         get() = _registeredUser
 
     @ExperimentalCoroutinesApi
@@ -94,7 +96,7 @@ class RegistrationFragmentViewModel @Inject constructor(
         viewModelScope.launch(coroutineContextProvider.IO) {
             repository.registerUser(user,psw).collect {
                 withContext(coroutineContextProvider.Main) {
-                    _registeredUser.value = it
+                    _registeredUser.value = Event(it)
                 }
             }
         }

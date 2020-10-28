@@ -8,6 +8,7 @@ import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.feature_auth.data.UserAuthRepository
 import com.mrozon.feature_auth.data.UserAuthRepositoryImpl
+import com.mrozon.utils.Event
 import com.mrozon.utils.base.BaseViewModel
 import com.mrozon.utils.network.Result
 //import com.mrozon.utils.extension.asFlow
@@ -23,8 +24,8 @@ class LoginFragmentViewModel @Inject constructor(
     private val coroutineContextProvider: CoroutineContextProvider
 ): BaseViewModel() {
 
-    private val _loggedUser = MutableLiveData<Result<User>?>(null)
-    val loggedUser: LiveData<Result<User>?>
+    private val _loggedUser = MutableLiveData<Event<Result<User>>>()
+    val loggedUser: LiveData<Event<Result<User>>>
         get() = _loggedUser
 
     @ExperimentalCoroutinesApi
@@ -66,7 +67,7 @@ class LoginFragmentViewModel @Inject constructor(
         viewModelScope.launch(coroutineContextProvider.IO){
             repository.loginUser(userName,psw).collect {
                 withContext(coroutineContextProvider.Main) {
-                    _loggedUser.value = it
+                    _loggedUser.value = Event(it)
                 }
             }
         }

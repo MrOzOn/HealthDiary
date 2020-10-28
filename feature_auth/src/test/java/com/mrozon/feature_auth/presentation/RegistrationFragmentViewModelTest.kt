@@ -6,6 +6,7 @@ import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.feature_auth.data.CoroutineTestRule
 import com.mrozon.feature_auth.data.UserAuthRepository
+import com.mrozon.utils.Event
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.flowOf
@@ -38,7 +39,7 @@ class RegistrationFragmentViewModelTest {
     lateinit var repository: UserAuthRepository
 
     @Mock
-    lateinit var observer: Observer<Result<User>?>
+    lateinit var observer: Observer<Event<Result<User>>>
 
     @Mock
     lateinit var validateObserver: Observer<ValidateDataError>
@@ -75,8 +76,8 @@ class RegistrationFragmentViewModelTest {
 
         viewModel.registerUser()
 
-        Mockito.verify(observer).onChanged(Result.loading())
-        Mockito.verify(observer).onChanged(Result.success(user))
+        Mockito.verify(observer).onChanged(Event(Result.loading()))
+        Mockito.verify(observer).onChanged(Event(Result.success(user)))
     }
 
     @Test
@@ -98,8 +99,8 @@ class RegistrationFragmentViewModelTest {
 
         viewModel.registerUser()
 
-        Mockito.verify(observer).onChanged(Result.loading())
-        Mockito.verify(observer).onChanged(Result.error(error))
+        Mockito.verify(observer).onChanged(Event(Result.loading()))
+        Mockito.verify(observer).onChanged(Event(Result.error(error)))
     }
 
     @FlowPreview

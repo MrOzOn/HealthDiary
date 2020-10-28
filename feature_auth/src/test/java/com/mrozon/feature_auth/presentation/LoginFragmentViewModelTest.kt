@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.mrozon.core_api.entity.User
 import com.mrozon.feature_auth.data.CoroutineTestRule
 import com.mrozon.feature_auth.data.UserAuthRepository
+import com.mrozon.utils.Event
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
@@ -40,7 +41,7 @@ class LoginFragmentViewModelTest {
     lateinit var repository: UserAuthRepository
 
     @Mock
-    lateinit var observer: Observer<Result<User>?>
+    lateinit var observer: Observer<Event<Result<User>>>
 
     @Mock
     lateinit var validateObserver: Observer<Boolean>
@@ -72,8 +73,8 @@ class LoginFragmentViewModelTest {
 
         viewModel.loginUser()
 
-        Mockito.verify(observer).onChanged(Result.loading())
-        Mockito.verify(observer).onChanged(Result.success(user))
+        Mockito.verify(observer).onChanged(Event(Result.loading()))
+        Mockito.verify(observer).onChanged(Event(Result.success(user)))
     }
 
     @Test
@@ -89,8 +90,8 @@ class LoginFragmentViewModelTest {
 
         viewModel.loginUser()
 
-        Mockito.verify(observer).onChanged(Result.loading())
-        Mockito.verify(observer).onChanged(Result.error(error))
+        Mockito.verify(observer).onChanged(Event(Result.loading()))
+        Mockito.verify(observer).onChanged(Event(Result.error(error)))
     }
 
     @FlowPreview

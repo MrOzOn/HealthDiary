@@ -66,13 +66,14 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
     @FlowPreview
     override fun subscribeUi() {
 
-        viewModel.error.observe(viewLifecycleOwner, Observer {error ->
-            if(error!=null)
+        viewModel.error.observe(viewLifecycleOwner, Observer {event ->
+            event.getContentIfNotHandled()?.let { error ->
                 showError(error) {}
+            }
         })
 
-        viewModel.registeredUser.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
+        viewModel.registeredUser.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { result ->
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -80,8 +81,8 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
                     Result.Status.SUCCESS -> {
                         binding?.progressBar?.visible(false)
                         showInfo(getString(R.string.userRegistered)) {
-                                navigator.navigateToLoginUser(findNavController(), result.data?.email?:"")
-                            }
+                            navigator.navigateToLoginUser(findNavController(), result.data?.email?:"")
+                        }
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
