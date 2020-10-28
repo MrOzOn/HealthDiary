@@ -8,7 +8,9 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
+import timber.log.Timber
 
 abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
 {
@@ -67,7 +69,7 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
     }
 
     fun show(message: String) {
-        val snackbar = Snackbar.make(binding?.root!!,message,Snackbar.LENGTH_LONG)
+        val snackbar = Snackbar.make(binding?.root!!,message,LENGTH_LONG)
         snackbar.show()
     }
 }

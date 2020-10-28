@@ -2,7 +2,9 @@ package com.mrozon.feature_person.presentation
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -21,6 +23,12 @@ import javax.inject.Inject
 
 class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
 
+    companion object {
+        const val DELAY_EXIT_CONFIRM = 2000L
+    }
+
+    private var doubleBackToExitPressedOnce = false
+
     override fun getLayoutId(): Int = R.layout.fragment_list_person
 
     @Inject
@@ -36,6 +44,7 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         ListPersonFragmentComponent.injectFragment(this)
+        Timber.d("onAttach")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -79,4 +88,20 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
         })
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            finishIfConfirm()
+        }
+    }
+
+    private fun finishIfConfirm() {
+        if (doubleBackToExitPressedOnce)
+            requireActivity().finish()
+        doubleBackToExitPressedOnce = true
+        show(getString(R.string.confirm_exit))
+        Handler().postDelayed({
+            doubleBackToExitPressedOnce = false
+        }, DELAY_EXIT_CONFIRM)
+    }
 }

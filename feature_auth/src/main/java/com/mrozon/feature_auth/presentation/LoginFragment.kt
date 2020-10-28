@@ -20,6 +20,7 @@ import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import timber.log.Timber
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
@@ -37,6 +38,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         LoginFragmentComponent.injectFragment(this)
+        Timber.d("onAttach")
     }
 
     @ExperimentalCoroutinesApi

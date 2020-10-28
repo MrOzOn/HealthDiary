@@ -39,6 +39,7 @@ class RegistrationFragment: BaseFragment<FragmentRegistrationBinding>() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         RegistrationFragmentComponent.injectFragment(this)
+        Timber.d("onAttach")
     }
 
     @ExperimentalCoroutinesApi
