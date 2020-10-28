@@ -3,6 +3,7 @@ package com.mrozon.feature_auth.data
 import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.network.HealthDiaryService
 import com.mrozon.core_api.network.model.*
+import com.mrozon.core_api.security.SecurityTokenService
 import com.mrozon.utils.network.Result.Companion.loading
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -37,6 +38,9 @@ class UserAuthRepositoryImplTest {
     @Mock
     lateinit var dao: HealthDiaryDao
 
+    @Mock
+    lateinit var securityTokenService: SecurityTokenService
+
     lateinit var repository: UserAuthRepository
 
     @get:Rule
@@ -45,7 +49,7 @@ class UserAuthRepositoryImplTest {
     @Before
     fun setUp() {
         val source = UserAuthRemoteDataSource(apiService)
-        repository = UserAuthRepositoryImpl(source, dao)
+        repository = UserAuthRepositoryImpl(source, dao, securityTokenService)
     }
 
     @Test

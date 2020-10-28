@@ -20,6 +20,7 @@ import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import timber.log.Timber
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
@@ -37,6 +38,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         LoginFragmentComponent.injectFragment(this)
+        Timber.d("onAttach")
     }
 
     @ExperimentalCoroutinesApi
@@ -70,23 +72,26 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
             }
         })
 
-        viewModel.loggedUser.observe(viewLifecycleOwner, Observer { result ->
-            if(result!=null){
-                when (result.status) {
-                    Result.Status.LOADING -> {
-                        binding?.progressBar?.visible(true)
-                    }
-                    Result.Status.SUCCESS -> {
-                        binding?.progressBar?.visible(false)
-                        navigator.navigateToListPerson(findNavController())
-                    }
-                    Result.Status.ERROR -> {
-                        binding?.progressBar?.visible(false)
-                        binding?.btnLogin?.shake()
-                        showError(result.message!!)
+        viewModel.loggedUser.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled().let { result ->
+                if(result!=null){
+                    when (result.status) {
+                        Result.Status.LOADING -> {
+                            binding?.progressBar?.visible(true)
+                        }
+                        Result.Status.SUCCESS -> {
+                            binding?.progressBar?.visible(false)
+                            navigator.navigateToListPerson(findNavController())
+                        }
+                        Result.Status.ERROR -> {
+                            binding?.progressBar?.visible(false)
+                            binding?.btnLogin?.shake()
+                            showError(result.message!!)
+                        }
                     }
                 }
             }
+
         })
 
     }

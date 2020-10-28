@@ -89,7 +89,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
     override fun subscribeUi() {
 
         viewModel.cleared.observe(this, Observer { cleared ->
-            if (cleared) {
+            cleared.getContentIfNotHandled()?.let {
                 navController.navigate(R.id.action_global_loginFragment)
             }
         })
