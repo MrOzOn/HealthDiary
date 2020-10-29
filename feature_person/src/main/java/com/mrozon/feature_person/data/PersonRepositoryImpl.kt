@@ -41,7 +41,7 @@ class PersonRepositoryImpl @Inject constructor(private val dao: HealthDiaryDao,
                 personResponse.toPerson()
             }
             val personsDb = mapper.map(persons)
-            dao.deleteAllPerson()
+//            dao.deleteAllPerson()
             dao.insertAllPerson(personsDb)
         }
     )

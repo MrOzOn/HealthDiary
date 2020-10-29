@@ -93,8 +93,8 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             invalidateOptionsMenu(activity)
         })
 
-        viewModel.person.observe(viewLifecycleOwner, Observer { result ->
-            if (result != null) {
+        viewModel.person.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { result ->
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -111,8 +111,8 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             }
         })
 
-        viewModel.initPerson.observe(viewLifecycleOwner, Observer { result ->
-            if (result != null) {
+        viewModel.initPerson.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { result ->
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -132,7 +132,6 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
                             calendar.get(Calendar.MONTH),
                             calendar.get(Calendar.DAY_OF_MONTH)
                         )
-                        viewModel.initDone()
                         arguments?.putLong("current_id", result.data?.id ?: -1)
                         invalidateOptionsMenu(activity)
                     }
@@ -144,8 +143,8 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             }
         })
 
-        viewModel.deletedPerson.observe(viewLifecycleOwner, Observer { result ->
-            if (result != null) {
+        viewModel.deletedPerson.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { result ->
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -162,8 +161,8 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             }
         })
 
-        viewModel.sharePerson.observe(viewLifecycleOwner, Observer { result ->
-            if (result != null) {
+        viewModel.sharePerson.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { result ->
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
