@@ -16,6 +16,8 @@ import com.mrozon.feature_splash.R
 import com.mrozon.feature_splash.databinding.FragmentSplashBinding
 import com.mrozon.feature_splash.di.SplashFragmentComponent
 import com.mrozon.utils.base.BaseFragment
+import com.mrozon.utils.extension.visible
+import com.mrozon.utils.network.Result
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -39,14 +41,22 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     override fun subscribeUi() {
-        viewModel.currentUser.observe(viewLifecycleOwner, Observer {
-            if(it==null){
-                //auth user
-                navigator.navigateToAuth(findNavController())
-            }
-            else
-            {
-                navigator.navigateToListPerson(findNavController())
+        viewModel.currentUser.observe(viewLifecycleOwner, Observer { event ->
+            event.peekContent().let { result ->
+                when (result.status) {
+                    Result.Status.SUCCESS -> {
+                        if(result.data==null){
+                            navigator.navigateToAuth(findNavController())
+                        }
+                        else
+                        {
+                            navigator.navigateToListPerson(findNavController())
+                        }
+                    }
+                    else -> {
+
+                    }
+                }
             }
         })
     }
