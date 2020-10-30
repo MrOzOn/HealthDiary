@@ -23,7 +23,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_add_24"
-            app:useCompatPadding="true" />
+            app:useCompatPadding="true"
+            tools:ignore="ContentDescription" />
 
 
         <androidx.recyclerview.widget.RecyclerView

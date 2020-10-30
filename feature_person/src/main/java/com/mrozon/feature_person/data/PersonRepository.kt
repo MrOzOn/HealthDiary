@@ -7,7 +7,8 @@ import com.mrozon.utils.network.Result
 import kotlinx.coroutines.flow.Flow
 
 interface PersonRepository {
-    fun getPersons(): LiveData<Result<List<Person>>>
+    fun getPersons(): Flow<Result<List<Person>>>
+    fun refreshPersons(): Flow<Result<List<Person>>>
     fun addPerson(person: Person): Flow<Result<Person>>
     fun getPerson(id: Long): Flow<Result<Person>>
     fun deletePerson(id: Long): Flow<Result<Unit>>

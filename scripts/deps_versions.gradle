@@ -2,7 +2,7 @@ ext {
 
 
     daggerVersion = '2.25.2'
-    roomVersion = '2.1.0'
+    roomVersion = '2.2.0'
     navigationVersion = '2.3.0'
     timberVersion = '4.7.1'
     retrofitVersion = '2.6.1'
@@ -33,6 +33,7 @@ ext {
     room = "androidx.room:room-runtime:$roomVersion"
     roomKtx = "androidx.room:room-ktx:$roomVersion"
     roomCompiler = "androidx.room:room-compiler:$roomVersion"
+    roomCoroutines = "androidx.room:room-coroutines:$roomVersion"
     // Navigation
     navigationFragment = "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     navigationUi = "androidx.navigation:navigation-ui-ktx:$navigationVersion"

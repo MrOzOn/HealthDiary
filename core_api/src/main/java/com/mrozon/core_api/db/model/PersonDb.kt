@@ -21,5 +21,5 @@ data class PersonDb(
     var gender: Int = 0,
 
     @ColumnInfo(name = "user_born")
-    var born: Date
+    var born: Date = Date()
 )

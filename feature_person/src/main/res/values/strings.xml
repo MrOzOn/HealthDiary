@@ -16,4 +16,5 @@
     <string name="error_invalid_email">Invalid format username (e-mail)</string>
     <string name="share_done">Done</string>
     <string name="confirm_exit">Please click BACK again to exit</string>
+    <string name="refresh">Refresh</string>
 </resources>
