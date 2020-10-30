@@ -10,14 +10,14 @@ import com.mrozon.core_api.network.model.PersonRequest
 import com.mrozon.core_api.network.model.PersonResponse
 import com.mrozon.core_api.network.model.SharePersonRequest
 import com.mrozon.core_api.network.model.toPerson
+import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.core_api.resultLiveData
 import com.mrozon.utils.extension.toDateString
 import com.mrozon.utils.network.Result
 import com.mrozon.utils.network.Result.Companion.error
 import com.mrozon.utils.network.Result.Companion.loading
 import com.mrozon.utils.network.Result.Companion.success
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -28,23 +28,67 @@ class PersonRepositoryImpl @Inject constructor(private val dao: HealthDiaryDao,
         private val mapper: PersonToPersonDbMapper
 ): PersonRepository {
 
-    override fun getPersons() = resultLiveData(
-        databaseQuery = {
-            val personDb = dao.getPersons()
-            Transformations.map(personDb) {
-                mapper.reverseMap(it)
+    override fun getPersons(): Flow<Result<List<Person>>> {
+        return flow {
+            emit(loading())
+            val query = dao.getPersons()
+            val result = query.firstOrNull()
+            result?.let {
+                emit(success(mapper.reverseMap(it)))
             }
-        },
-        networkCall = { personRemoteDataSource.getPersons() },
-        saveCallResult = {
-            val persons = it.map { personResponse ->
-                personResponse.toPerson()
+            val networkResult = personRemoteDataSource.getPersons()
+            if (networkResult.status == Result.Status.SUCCESS) {
+                val data = networkResult.data!!
+                val persons = data.map { personResponse ->
+                    personResponse.toPerson()
+                }
+                val personsDb = mapper.map(persons)
+                dao.reloadPersons(personsDb)
+                emit(success(persons))
+            } else if (networkResult.status == Result.Status.ERROR) {
+                emit(error(networkResult.message!!))
             }
-            val personsDb = mapper.map(persons)
-            dao.deleteAllPerson()
-            dao.insertAllPerson(personsDb)
         }
-    )
+    }
+
+    override fun refreshPersons(): Flow<Result<List<Person>>> {
+        return flow {
+            emit(loading())
+            val networkResult = personRemoteDataSource.getPersons()
+            if (networkResult.status == Result.Status.SUCCESS) {
+                val data = networkResult.data!!
+                val persons = data.map { personResponse ->
+                    personResponse.toPerson()
+                }
+                val personsDb = mapper.map(persons)
+                dao.reloadPersons(personsDb)
+                emit(success(persons))
+            } else if (networkResult.status == Result.Status.ERROR) {
+                emit(error(networkResult.message!!))
+            }
+        }
+    }
+
+//    override fun getPersons() = resultLiveData(
+//        coroutineContext = coroutineContextProvider.IO,
+//        databaseQuery = {
+//            val personDb = dao.getPersons()
+//            Transformations.map(personDb) {
+//                mapper.reverseMap(it)
+//            }
+//        },
+//        networkCall = { personRemoteDataSource.getPersons() },
+//        saveCallResult = {
+//            val persons = it.map { personResponse ->
+//                personResponse.toPerson()
+//            }
+//            val personsDb = mapper.map(persons)
+////            dao.deleteAllPerson()
+//            dao.insertAllPerson(personsDb)
+//        }
+//    )
+
+
 
     override fun addPerson(person: Person): Flow<Result<Person>> {
         return flow {
@@ -65,8 +109,8 @@ class PersonRepositoryImpl @Inject constructor(private val dao: HealthDiaryDao,
 
     override fun getPerson(id: Long): Flow<Result<Person>> {
         return flow {
+            emit(loading())
             try {
-                emit(loading())
                 val response = dao.getPerson(id)
                 emit(success(mapper.reverseMap(response)!!))
             }
@@ -78,6 +122,7 @@ class PersonRepositoryImpl @Inject constructor(private val dao: HealthDiaryDao,
 
     override fun deletePerson(id: Long): Flow<Result<Unit>> {
         return flow {
+            emit(loading())
             val response = personRemoteDataSource.deletePerson(id)
             if (response.status == Result.Status.SUCCESS) {
                 dao.deletePerson(id)

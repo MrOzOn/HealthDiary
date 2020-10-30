@@ -64,6 +64,8 @@ dependencies {
     implementation cardview
     implementation recyclerview
     implementation material
+    //livaData
+    implementation lifecycleLivedata
     //Unit test
     testImplementation junit
     testImplementation mockitoCore

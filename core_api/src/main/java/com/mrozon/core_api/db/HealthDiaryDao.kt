@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.mrozon.core_api.db.model.PersonDb
 import com.mrozon.core_api.db.model.UserDb
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HealthDiaryDao {
@@ -24,7 +25,7 @@ interface HealthDiaryDao {
 
     // PERSON
     @Query("SELECT * FROM person_table")
-    fun getPersons(): LiveData<List<PersonDb>>
+    fun getPersons(): Flow<List<PersonDb>>
 
     @Query("SELECT * FROM person_table WHERE person_id=:id LIMIT 1")
     suspend fun getPerson(id: Long): PersonDb
@@ -40,4 +41,10 @@ interface HealthDiaryDao {
 
     @Query("DELETE FROM person_table")
     suspend fun deleteAllPerson()
+
+    @Transaction
+    suspend fun reloadPersons(persons: List<PersonDb>) {
+        deleteAllPerson()
+        insertAllPerson(persons)
+    }
 }

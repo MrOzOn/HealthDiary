@@ -4,9 +4,9 @@ import java.util.Date
 
 data class Person (
     val id: Long = 0L,
-    val name: String,
+    val name: String = "",
     val gender: Gender = Gender.MALE,
-    val born: Date
+    val born: Date = Date()
 )
 
 enum class Gender(val code: Int) {

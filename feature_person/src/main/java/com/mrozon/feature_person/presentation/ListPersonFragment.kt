@@ -3,19 +3,23 @@ package com.mrozon.feature_person.presentation
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
-import android.view.View
+import android.view.*
 import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.LARGE
 import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.navigation.ListPersonNavigator
 import com.mrozon.feature_person.R
 import com.mrozon.feature_person.databinding.FragmentListPersonBinding
 import com.mrozon.feature_person.di.ListPersonFragmentComponent
 import com.mrozon.utils.base.BaseFragment
+import com.mrozon.utils.extension.hideKeyboard
+import com.mrozon.utils.extension.isActiveNetwork
 import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import timber.log.Timber
@@ -47,6 +51,15 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
         Timber.d("onAttach")
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        setHasOptionsMenu(true)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter = ListPersonAdapter(object : ListPersonAdapter.ListPersonClickListener {
@@ -68,21 +81,39 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
         binding?.fabAddPerson?.setOnClickListener {
             navigator.navigateToEditPerson(findNavController(),getString(R.string.add_person),0)
         }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.list_person_menu, menu)
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        hideKeyboard()
+        when(item.itemId){
+            R.id.refreshPersonNetwork -> {
+                viewModel.refreshPersons()
+            }
+        }
+        return false
     }
 
     override fun subscribeUi() {
-        viewModel.persons.observe(viewLifecycleOwner, Observer { result ->
-            when (result.status) {
-                Result.Status.LOADING -> {
-                    binding?.progressBar?.visible(true)
-                }
-                Result.Status.SUCCESS -> {
-                    binding?.progressBar?.visible(false)
-                    adapter.submitList(result.data)
-                }
-                Result.Status.ERROR -> {
-                    binding?.progressBar?.visible(false)
-                    showError(result.message!!)
+        viewModel.persons.observe(viewLifecycleOwner, Observer { event ->
+            event.peekContent().let { result ->
+                when (result.status) {
+                    Result.Status.LOADING -> {
+                        binding?.progressBar?.visible(true)
+                    }
+                    Result.Status.SUCCESS -> {
+                        binding?.progressBar?.visible(false)
+                        adapter.submitList(result.data)
+                    }
+                    Result.Status.ERROR -> {
+                        binding?.progressBar?.visible(false)
+                        showError(result.message!!)
+                    }
                 }
             }
         })

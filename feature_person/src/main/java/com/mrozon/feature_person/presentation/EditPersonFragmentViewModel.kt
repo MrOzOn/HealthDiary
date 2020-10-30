@@ -9,6 +9,7 @@ import com.mrozon.core_api.entity.Gender
 import com.mrozon.core_api.entity.Person
 import com.mrozon.feature_person.R
 import com.mrozon.feature_person.data.PersonRepository
+import com.mrozon.utils.Event
 import com.mrozon.utils.base.BaseViewModel
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.*
@@ -21,26 +22,22 @@ import javax.inject.Inject
 
 class EditPersonFragmentViewModel @Inject constructor(val context: Context, val repository: PersonRepository): BaseViewModel() {
 
-//    private val _male = MutableLiveData<Boolean>(true)
-//    val male: LiveData<Boolean>
-//        get() = _male
-
     private var _male:Boolean = true
 
-    private var _person = MutableLiveData<Result<Person>?>(null)
-    val person: LiveData<Result<Person>?>
+    private var _person = MutableLiveData<Event<Result<Person>>>()
+    val person: LiveData<Event<Result<Person>>>
         get() = _person
 
-    private var _initPerson = MutableLiveData<Result<Person>?>(null)
-    val initPerson: LiveData<Result<Person>?>
+    private var _initPerson = MutableLiveData<Event<Result<Person>>>()
+    val initPerson: LiveData<Event<Result<Person>>>
         get() = _initPerson
 
-    private var _deletedPerson = MutableLiveData<Result<Unit>?>(null)
-    val deletedPerson: LiveData<Result<Unit>?>
+    private var _deletedPerson = MutableLiveData<Event<Result<Unit>>>()
+    val deletedPerson: LiveData<Event<Result<Unit>>>
         get() = _deletedPerson
 
-    private var _sharePerson = MutableLiveData<Result<Unit>?>(null)
-    val sharePerson: LiveData<Result<Unit>?>
+    private var _sharePerson = MutableLiveData<Event<Result<Unit>>>()
+    val sharePerson: LiveData<Event<Result<Unit>>>
         get() = _sharePerson
 
     @ExperimentalCoroutinesApi
@@ -78,13 +75,13 @@ class EditPersonFragmentViewModel @Inject constructor(val context: Context, val 
     @ExperimentalCoroutinesApi
     fun addPerson() {
         var gender = Gender.MALE
-        if(_male==false)
+        if(!_male)
             gender = Gender.FEMALE
         val personEntity = Person(name = personNameChannel.value, gender = gender, born = personDobChannel.value )
         viewModelScope.launch(Dispatchers.IO) {
             repository.addPerson(personEntity).collect {
                 withContext(Dispatchers.Main) {
-                    _person.value = it
+                    _person.value = Event(it)
                 }
             }
         }
@@ -94,21 +91,17 @@ class EditPersonFragmentViewModel @Inject constructor(val context: Context, val 
         viewModelScope.launch(Dispatchers.IO) {
             repository.getPerson(id).collect {
                 withContext(Dispatchers.Main) {
-                    _initPerson.value = it
+                    _initPerson.value = Event(it)
                 }
             }
         }
-    }
-
-    fun initDone() {
-        _initPerson.value = null
     }
 
     fun deletePerson(id: Long) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.deletePerson(id).collect {
                 withContext(Dispatchers.Main) {
-                    _deletedPerson.value = it
+                    _deletedPerson.value = Event(it)
                 }
             }
         }
@@ -123,7 +116,7 @@ class EditPersonFragmentViewModel @Inject constructor(val context: Context, val 
         viewModelScope.launch(Dispatchers.IO) {
             repository.editPerson(personEntity).collect {
                 withContext(Dispatchers.Main) {
-                    _person.value = it
+                    _person.value = Event(it)
                 }
             }
         }
@@ -132,18 +125,18 @@ class EditPersonFragmentViewModel @Inject constructor(val context: Context, val 
     fun sharePersonToUser(id: Long, userName: String) {
         if(userName.isEmpty())
         {
-            _sharePerson.value = Result.error(context.getString(R.string.error_empty_string))
+            _sharePerson.value = Event(Result.error(context.getString(R.string.error_empty_string)))
             return
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(userName).matches())
         {
-            _sharePerson.value = Result.error(context.getString(R.string.error_invalid_email))
+            _sharePerson.value = Event(Result.error(context.getString(R.string.error_invalid_email)))
             return
         }
         viewModelScope.launch(Dispatchers.IO) {
             repository.sharePerson(id, userName).collect {
                 withContext(Dispatchers.Main) {
-                    _sharePerson.value = it
+                    _sharePerson.value = Event(it)
                 }
             }
         }
