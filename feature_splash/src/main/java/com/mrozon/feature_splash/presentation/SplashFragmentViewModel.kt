@@ -1,11 +1,11 @@
 package com.mrozon.feature_splash.presentation
 
-import com.mrozon.feature_splash.data.LocalUserRepository
+import com.mrozon.feature_splash.data.PreloadDataRepository
 import com.mrozon.utils.base.BaseViewModel
 import javax.inject.Inject
 
 class SplashFragmentViewModel @Inject constructor(
-    localUser: LocalUserRepository
+    localUser: PreloadDataRepository
 ): BaseViewModel() {
 
     val currentUser = localUser.getLocalUser()

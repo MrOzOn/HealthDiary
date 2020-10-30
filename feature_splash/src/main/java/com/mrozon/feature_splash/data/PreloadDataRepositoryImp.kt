@@ -7,10 +7,10 @@ import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import javax.inject.Inject
 
-class LocalUserRepositoryImp @Inject constructor(
+class PreloadDataRepositoryImp @Inject constructor(
     private val healthDiaryDao: HealthDiaryDao,
     private val mapper: UserToUserDbMapper
-): LocalUserRepository {
+): PreloadDataRepository {
 
     override fun getLocalUser(): LiveData<User> {
         val userDb = healthDiaryDao.getUser()
