@@ -7,5 +7,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface PreloadDataRepository {
 
-    fun getLocalUser(): Flow<Result<User?>>
+    fun getPreloadData(): Flow<Result<User?>>
 }

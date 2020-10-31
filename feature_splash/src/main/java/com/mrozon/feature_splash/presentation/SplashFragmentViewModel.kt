@@ -27,7 +27,7 @@ class SplashFragmentViewModel @Inject constructor(
 
     init {
         viewModelScope.launch(coroutineContextProvider.IO){
-            repository.getLocalUser().collect {
+            repository.getPreloadData().collect {
                 withContext(coroutineContextProvider.Main) {
                     _currentUser.value = Event(it)
                 }
