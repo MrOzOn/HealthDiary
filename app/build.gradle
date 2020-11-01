@@ -65,4 +65,5 @@ dependencies {
     implementation project(':feature_splash')
     implementation project(':feature_auth')
     implementation project(':feature_person')
+    implementation project(':feature_measure_type')
 }

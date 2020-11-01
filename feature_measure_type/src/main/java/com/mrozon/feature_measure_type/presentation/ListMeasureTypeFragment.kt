@@ -24,6 +24,6 @@ class ListMeasureTypeFragment: BaseFragment<FragmentListMeasureTypeBinding>() {
     }
 
     override fun subscribeUi() {
-        TODO("Not yet implemented")
+//        TODO("Not yet implemented")
     }
 }
