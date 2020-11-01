@@ -28,6 +28,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    dataBinding {
+        enabled = true
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -61,6 +64,9 @@ dependencies {
     implementation cardview
     implementation recyclerview
     implementation material
+    implementation coil
+    implementation coilBase
+    implementation coilSvg
     //Unit test
     testImplementation junit
     testImplementation mockitoCore
