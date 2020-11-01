@@ -1,0 +1,77 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$project.rootDir/jacoco.gradle"
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+apply from: "$project.rootDir/scripts/deps_versions.gradle"
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation kotlinStdlib
+
+    api project(':core_api')
+    implementation project(':core')
+    implementation project(':utils')
+    //DAGGER
+    implementation dagger
+    kapt daggerCompiler
+    implementation constraintlayout
+    //Timber
+    implementation timber
+    implementation navigationFragment
+    implementation retrofit
+    //AndroidX
+    implementation legacySupport
+    implementation appCompat
+    implementation androidxCore
+    implementation cardview
+    implementation recyclerview
+    implementation material
+    //Unit test
+    testImplementation junit
+    testImplementation mockitoCore
+    testImplementation kotlinxCoroutinesTest
+    testImplementation robolectric
+    testImplementation androidXCoreTest
+    //Instrumental Test
+    androidTestImplementation junitInstrumental
+    androidTestImplementation androidXRulesTest
+    androidTestImplementation androidXRunnerTest
+    androidTestImplementation espressoCore
+    androidTestImplementation androidXFragmentTest
+    kaptAndroidTest daggerCompiler
+}
