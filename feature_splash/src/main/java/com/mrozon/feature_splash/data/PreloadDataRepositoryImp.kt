@@ -1,11 +1,19 @@
 package com.mrozon.feature_splash.data
 
+import android.content.Context
+import android.graphics.Insets.add
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.imageLoader
+import coil.request.CachePolicy
+import coil.request.ImageRequest
 import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.mapper.MeasureTypeToMeasureTypeDbMapper
 import com.mrozon.core_api.mapper.UserToUserDbMapper
+import com.mrozon.core_api.network.HealthDiaryService.Companion.ENDPOINT
 import com.mrozon.core_api.network.model.toMeasureType
 import com.mrozon.core_api.network.model.toPerson
 import com.mrozon.utils.network.Result
@@ -20,8 +28,15 @@ class PreloadDataRepositoryImp @Inject constructor(
     private val dao: HealthDiaryDao,
     private val remoteDataSource: PreloadDataRemoteDataSource,
     private val mapper: UserToUserDbMapper,
-    private val mapperMT: MeasureTypeToMeasureTypeDbMapper
+    private val mapperMT: MeasureTypeToMeasureTypeDbMapper,
+    private val context: Context
 ): PreloadDataRepository {
+
+    private val imageLoader = ImageLoader.Builder(context)
+        .componentRegistry {
+            add(SvgDecoder(context))
+        }
+        .build()
 
     override fun getPreloadData(): Flow<Result<User?>> {
         return flow {
@@ -30,6 +45,7 @@ class PreloadDataRepositoryImp @Inject constructor(
             if (networkResult.status == Result.Status.SUCCESS) {
                 val data = networkResult.data!!
                 val measureTypes = data.map { measureType ->
+                    preloadNetworkImage(measureType.url)
                     measureType.toMeasureType()
                 }
                 val measureTypesDb = mapperMT.map(measureTypes)
@@ -45,6 +61,14 @@ class PreloadDataRepositoryImp @Inject constructor(
                 emit(Result.success(mapper.reverseMap(userDb)))
             }
         }
+    }
+
+    private fun preloadNetworkImage(url: String){
+        val request = ImageRequest.Builder(context)
+            .data(ENDPOINT+url)
+            .memoryCachePolicy(CachePolicy.DISABLED)
+            .build()
+        imageLoader.enqueue(request)
     }
 
 }

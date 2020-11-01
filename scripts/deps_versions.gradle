@@ -25,6 +25,7 @@ ext {
     androidXCoreTestVersion = "2.1.0"
     androidXTestVersion = "1.1.0"
     securityCryptoVersion = "1.1.0-alpha02"
+    coilVersion = "1.0.0"
 
     // DI
     dagger = "com.google.dagger:dagger:$daggerVersion"
@@ -75,4 +76,8 @@ ext {
     kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     //Crytpo
     securityCrypto = "androidx.security:security-crypto:$securityCryptoVersion"
+    //Coil
+    coil = "io.coil-kt:coil:$coilVersion"
+    coilBase = "io.coil-kt:coil-base:$coilVersion"
+    coilSvg = "io.coil-kt:coil-svg:$coilVersion"
 }
