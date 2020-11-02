@@ -6,4 +6,9 @@
         android:title="@string/list_persons"
         />
 
+    <item android:id="@+id/show_measure_types"
+        android:icon="@drawable/ic_measure_type_24"
+        android:title="@string/list_measure_types"
+        />
+
 </menu>

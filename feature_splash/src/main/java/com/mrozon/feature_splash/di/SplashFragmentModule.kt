@@ -6,8 +6,8 @@ import com.mrozon.core_api.db.HealthDiaryDao
 import com.mrozon.core_api.mapper.UserToUserDbMapper
 import com.mrozon.core_api.viewmodel.ViewModelKey
 import com.mrozon.feature_splash.presentation.SplashFragmentViewModel
-import com.mrozon.feature_splash.data.LocalUserRepository
-import com.mrozon.feature_splash.data.LocalUserRepositoryImp
+import com.mrozon.feature_splash.data.PreloadDataRepository
+import com.mrozon.feature_splash.data.PreloadDataRepositoryImp
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -25,6 +25,6 @@ interface SplashFragmentModule {
     fun viewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
 
     @Binds
-    fun provideLocalUserRepository(repository: LocalUserRepositoryImp): LocalUserRepository
+    fun providePreloadDataRepository(repository: PreloadDataRepositoryImp): PreloadDataRepository
 
 }

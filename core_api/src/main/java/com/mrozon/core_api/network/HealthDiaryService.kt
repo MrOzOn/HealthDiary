@@ -6,8 +6,8 @@ import retrofit2.http.*
 
 interface HealthDiaryService {
     companion object {
-//        const val ENDPOINT = "http://10.0.2.2:8000/"
-        const val ENDPOINT = "https://hdb.mr-ozon-1982.tk/"
+        const val ENDPOINT = "http://10.0.2.2:8000/"
+//        const val ENDPOINT = "https://hdb.mr-ozon-1982.tk/"
     }
 
     @POST("login/")
@@ -31,6 +31,9 @@ interface HealthDiaryService {
 
     @POST("add-user-to-patient/")
     suspend fun sharePerson(@Body body: SharePersonRequest): Response<PersonResponse>
+
+    @GET("indicatortypes/")
+    suspend fun getMeasureTypes(): Response<List<MeasureTypeResponse>>
 
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,

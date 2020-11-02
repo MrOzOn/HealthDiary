@@ -12,15 +12,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.navigation.NavigationView
+import com.mrozon.core_api.entity.User
 import com.mrozon.core_api.providers.AppWithFacade
 import com.mrozon.healthdiary.R
 import com.mrozon.healthdiary.databinding.ActivityMainBinding
 import com.mrozon.healthdiary.di.main.MainActivityComponent
 import com.mrozon.utils.base.BaseActivity
+import com.mrozon.utils.network.Result
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -56,7 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
         navView = binding.navView
         navController = findNavController(R.id.nav_host_fragment)
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.listPersonFragment),
+            setOf(R.id.listPersonFragment, R.id.listMeasureTypeFragment),
             binding.drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -66,6 +69,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
                 R.id.show_person -> {
                     if(currentDestinationId!=R.id.listPersonFragment)
                         navController.navigate(R.id.action_global_listPersonFragment)
+                }
+                R.id.show_measure_types -> {
+                    if(currentDestinationId!=R.id.listMeasureTypeFragment)
+                        navController.navigate(R.id.action_global_listMeasureTypeFragment)
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -94,13 +101,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
             }
         })
 
-        viewModel.currentUser.observe(this, Observer { user ->
-            val headerView = binding.navView.getHeaderView(0)
-            val tvUserEmail = headerView.findViewById<TextView>(R.id.tvUserEmail)
-            val tvUserName = headerView.findViewById<TextView>(R.id.tvUserName)
-            val ivLogout = headerView.findViewById<ImageView>(R.id.ivLogout)
 
-            if (user == null) {
+        viewModel.currentUser.observe(this, Observer { user ->
+            showUserProfile(user)
+        })
+    }
+
+    private fun showUserProfile(user: User?) {
+        val headerView = binding.navView.getHeaderView(0)
+        val tvUserEmail = headerView.findViewById<TextView>(R.id.tvUserEmail)
+        val tvUserName = headerView.findViewById<TextView>(R.id.tvUserName)
+        val ivLogout = headerView.findViewById<ImageView>(R.id.ivLogout)
+
+        if (user == null) {
                 Timber.d("user is null")
                 supportActionBar?.hide()
                 drawerLayout.setDrawerLockMode(LOCK_MODE_LOCKED_CLOSED)
@@ -116,8 +129,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(){
                         drawerLayout.closeDrawer(GravityCompat.START)
                     }
                     viewModel.logoutUser(user)
+                    showUserProfile(null)
                 }
             }
-        })
     }
 }
