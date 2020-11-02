@@ -32,11 +32,11 @@ class PreloadDataRepositoryImp @Inject constructor(
     private val context: Context
 ): PreloadDataRepository {
 
-    private val imageLoader = ImageLoader.Builder(context)
-        .componentRegistry {
-            add(SvgDecoder(context))
-        }
-        .build()
+//    private val imageLoader = ImageLoader.Builder(context)
+//        .componentRegistry {
+//            add(SvgDecoder(context))
+//        }
+//        .build()
 
     override fun getPreloadData(): Flow<Result<User?>> {
         return flow {
@@ -64,6 +64,7 @@ class PreloadDataRepositoryImp @Inject constructor(
     }
 
     private fun preloadNetworkImage(url: String){
+        val imageLoader = context.imageLoader
         val request = ImageRequest.Builder(context)
             .data(ENDPOINT+url)
             .memoryCachePolicy(CachePolicy.DISABLED)

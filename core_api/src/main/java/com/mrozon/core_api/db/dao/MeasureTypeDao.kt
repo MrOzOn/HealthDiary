@@ -3,6 +3,7 @@ package com.mrozon.core_api.db.dao
 import androidx.room.*
 import com.mrozon.core_api.db.model.MeasureTypeDb
 import com.mrozon.core_api.db.model.PersonDb
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MeasureTypeDao {
@@ -18,5 +19,8 @@ interface MeasureTypeDao {
         deleteAllMeasureType()
         insertAllMeasureType(measureTypes)
     }
+
+    @Query("SELECT * FROM measure_type_table")
+    fun getMeasureTypes(): Flow<List<MeasureTypeDb>>
 
 }
