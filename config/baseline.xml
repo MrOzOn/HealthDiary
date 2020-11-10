@@ -1,0 +1,1586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="5" by="lint 3.6.4" client="gradle" variant="all" version="3.6.4">
+
+    <issue
+        id="ObsoleteLintCustomCheck"
+        message="Lint found an issue registry (`androidx.appcompat.AppCompatIssueRegistry`) which requires a newer API level. That means that the custom lint checks are intended for a newer lint version; please upgrade">
+        <location
+            file="../../../../.gradle/caches/transforms-2/files-2.1/add0082a5c733e5ca1c3d7a204f48ffa/appcompat-1.2.0/jars/lint.jar"/>
+    </issue>
+
+    <issue
+        id="ObsoleteLintCustomCheck"
+        message="Lint found an issue registry (`com.mrozon.lintrepo.CustomLintRegistry`) which did not specify the Lint API version it was compiled with.&#xA;&#xA;**This means that the lint checks are likely not compatible.**&#xA;&#xA;If you are the author of this lint check, make your lint `IssueRegistry` class contain&#xA;  override val api: Int = com.android.tools.lint.detector.api.CURRENT_API&#xA;or from Java,&#xA;  @Override public int getApi() { return com.android.tools.lint.detector.api.ApiKt.CURRENT_API; }&#xA;&#xA;If you are just using lint checks from a third party library you have no control over, you can disable these lint checks (if they misbehave) like this:&#xA;&#xA;    android {&#xA;        lintOptions {&#xA;            disable &quot;RawColorInResources&quot;,&#xA;                    &quot;VerySimpleNamingVariables&quot;&#xA;        }&#xA;    }&#xA;"
+        includedVariants="debug"
+        excludedVariants="release,staging">
+        <location
+            file="build/intermediates/lint_jar/global/lint.jar"/>
+    </issue>
+
+    <issue
+        id="UnusedAttribute"
+        message="Attribute `networkSecurityConfig` is only used in API level 24 and higher (current min is 21)"
+        errorLine1="        android:networkSecurityConfig=&quot;@xml/network_security_config&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="15"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="InflateParams"
+        message="Avoid passing `null` as the view root (needed to resolve layout parameters on the inflated layout&apos;s root element)"
+        errorLine1="            val view = layoutInflater.inflate(R.layout.dialog_share, null)"
+        errorLine2="                                                                     ~~~~">
+        <location
+            file="../feature_person/src/main/java/com/mrozon/feature_person/presentation/EditPersonFragment.kt"
+            line="228"
+            column="70"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.3.1 is available: 1.3.2"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.3.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="40"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of junit:junit than 4.12 is available: 4.13.1"
+        errorLine1="    testImplementation &apos;junit:junit:4.12&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="41"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.1.1 is available: 1.1.2"
+        errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="42"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.2.0 is available: 3.3.0"
+        errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.2.0&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="43"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.3.1 is available: 1.3.2"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.3.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="53"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of junit:junit than 4.12 is available: 4.13.1"
+        errorLine1="    testImplementation &apos;junit:junit:4.12&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="54"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.1.1 is available: 1.1.2"
+        errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="55"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.3.1 is available: 1.3.2"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.3.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="56"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.2.0 is available: 3.3.0"
+        errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.2.0&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="56"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of junit:junit than 4.12 is available: 4.13.1"
+        errorLine1="    testImplementation &apos;junit:junit:4.12&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="57"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.3.1 is available: 1.3.2"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.3.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="58"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.1.1 is available: 1.1.2"
+        errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="58"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.2.0 is available: 3.3.0"
+        errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.2.0&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="59"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of junit:junit than 4.12 is available: 4.13.1"
+        errorLine1="    testImplementation &apos;junit:junit:4.12&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="59"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.1.1 is available: 1.1.2"
+        errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="60"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.2.0 is available: 3.3.0"
+        errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.2.0&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="61"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.3.1 is available: 1.3.2"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.3.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="70"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.core:core-ktx than 1.3.1 is available: 1.3.2"
+        errorLine1="    implementation &apos;androidx.core:core-ktx:1.3.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="70"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of junit:junit than 4.12 is available: 4.13.1"
+        errorLine1="    testImplementation &apos;junit:junit:4.12&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="71"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of junit:junit than 4.12 is available: 4.13.1"
+        errorLine1="    testImplementation &apos;junit:junit:4.12&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="71"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.1.1 is available: 1.1.2"
+        errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="72"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.ext:junit than 1.1.1 is available: 1.1.2"
+        errorLine1="    androidTestImplementation &apos;androidx.test.ext:junit:1.1.1&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="72"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.2.0 is available: 3.3.0"
+        errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.2.0&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="73"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="GradleDependency"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.2.0 is available: 3.3.0"
+        errorLine1="    androidTestImplementation &apos;androidx.test.espresso:espresso-core:3.2.0&apos;"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="build.gradle"
+            line="73"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ExtraText"
+        message="Unexpected text found in layout file: &quot;/&quot;">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="ExtraText"
+        message="Unexpected text found in layout file: &quot;/&quot;">
+        <location
+            file="src/main/AndroidManifest.xml"
+            line="6"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1887 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="    &lt;path android:fillColor=&quot;#FF000000&quot; android:pathData=&quot;M507.921,445.34c-34.766,-24.516 -76.772,-41.947 -122.504,-51.296c10.094,-7.34 19.397,-16.031 27.721,-25.86l142.126,-66.532c7.149,-3.346 11.108,-11.128 9.6,-18.876c-0.558,-2.85 -14.024,-70.631 -51.66,-139.402C461.871,49.578 390.223,0 306.001,0c-84.219,0 -155.87,49.578 -207.205,143.375c-37.635,68.769 -51.102,136.551 -51.659,139.402c-1.508,7.748 2.45,15.53 9.599,18.876l142.129,66.532c8.324,9.83 17.627,18.521 27.721,25.86c-45.735,9.349 -87.738,26.78 -122.505,51.293c-55.989,39.478 -86.822,92.553 -86.822,149.448c0,9.506 7.705,17.212 17.212,17.212h543.06c9.508,0 17.212,-7.707 17.212,-17.212C594.744,537.892 563.911,484.817 507.921,445.34zM456.912,577.575v-48.378c0,-9.506 -7.704,-17.212 -17.212,-17.212c-9.506,0 -17.212,7.707 -17.212,17.212v48.378H189.511v-48.378c0,-9.506 -7.704,-17.212 -17.212,-17.212c-9.506,0 -17.212,7.707 -17.212,17.212v48.378H52.922c5.637,-38.98 30.348,-75.439 70.998,-104.101c19.173,-13.52 40.908,-24.625 64.443,-33.117c15.582,13.655 61.154,48.746 118.007,48.746c0.871,0 1.757,-0.009 2.631,-0.026c39.181,-0.749 75.213,-18.014 107.16,-51.323c26.424,8.774 50.729,20.775 71.924,35.719c40.647,28.662 65.359,65.12 70.996,104.101H456.912V577.575zM229.62,428.557c24.39,-5.276 50.068,-8.015 76.383,-8.015c24.326,0 48.104,2.345 70.831,6.866c-21.331,17.583 -44.213,26.735 -68.265,27.247C276.77,455.34 248.285,441.027 229.62,428.557zM189.514,243.933c0,-9.506 -7.707,-17.212 -17.212,-17.212c-9.508,0 -17.212,7.707 -17.212,17.212c0,25.581 4.676,49.903 13.071,71.872L83.93,276.375c5.57,-22.162 19.338,-69.469 45.065,-116.472C174.562,76.641 234.117,34.425 306.001,34.425c71.674,0 131.099,41.984 176.624,124.782c25.892,47.09 39.818,94.865 45.438,117.171l-84.222,39.427c8.395,-21.969 13.074,-46.291 13.074,-71.872c0,-9.506 -7.707,-17.212 -17.212,-17.212c-9.508,0 -17.212,7.707 -17.212,17.212c0,78.4 -52.257,142.185 -116.487,142.185C241.771,386.118 189.514,322.333 189.514,243.933z&quot;/>"
+        errorLine2="                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_female_avatar.xml"
+            line="3"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1008 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="    &lt;path android:fillColor=&quot;#FF000000&quot; android:pathData=&quot;M277.664,208.01h-16.123c31.146,-20.152 51.804,-55.194 51.804,-94.972C313.345,50.708 262.637,0 200.307,0S87.269,50.708 87.269,113.038c0,39.778 20.656,74.82 51.804,94.972H122.95c-41.434,0 -75.143,33.707 -75.143,75.141v104.963c0,6.904 5.597,12.5 12.5,12.5h280c6.903,0 12.5,-5.596 12.5,-12.5V283.15C352.807,241.717 319.098,208.01 277.664,208.01zM112.269,113.038c0,-48.544 39.493,-88.038 88.038,-88.038c48.544,0 88.038,39.494 88.038,88.038c0,48.543 -39.494,88.036 -88.038,88.036C151.762,201.074 112.269,161.581 112.269,113.038zM236.88,219.998l-36.573,36.574l-36.573,-36.573c11.477,3.935 23.779,6.075 36.573,6.075S225.404,223.934 236.88,219.998zM327.807,375.613h-34v-60.059c0,-6.904 -5.597,-12.5 -12.5,-12.5s-12.5,5.596 -12.5,12.5v60.059h-137v-60.059c0,-6.904 -5.597,-12.5 -12.5,-12.5s-12.5,5.596 -12.5,12.5v60.059h-34V283.15c0,-27.647 22.494,-50.141 50.143,-50.141h18.439l50.079,50.078c2.441,2.441 5.64,3.661 8.839,3.661s6.396,-1.22 8.839,-3.661l50.079,-50.078h18.439c27.648,0 50.143,22.492 50.143,50.141V375.613z&quot;/>"
+        errorLine2="                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_male_avatar.xml"
+            line="3"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="VectorPath"
+        message="Very long vector path (1237 characters), which is bad for performance. Considering reducing precision, removing minor details or rasterizing vector."
+        errorLine1="      android:pathData=&quot;M50,0C22.429,0 0,22.429 0,50C0,77.571 22.429,100 50,100C50.504,100 50.996,99.938 51.5,99.925L51.675,99.958C51.813,99.983 51.946,100 52.083,100C52.275,100 52.471,99.975 52.654,99.921L52.888,99.854C79.113,98.342 100,76.596 100,50C100,22.429 77.571,0 50,0ZM79.717,84.829C79.521,84.192 79.079,83.654 78.438,83.442L67.471,79.792C63.642,78.196 61.858,72.067 61.442,69.608C64.279,66.971 66.9,63.042 66.9,59.492C66.9,58.283 67.242,57.821 67.175,57.808C67.825,57.646 68.354,57.183 68.604,56.562C68.808,56.05 70.604,51.471 70.604,48.383C70.604,48.212 70.583,48.042 70.542,47.879C70.279,46.833 69.667,45.779 68.75,45.121V35.421C68.75,29.425 66.925,26.912 64.992,25.458C64.558,22.475 61.363,16.671 50,16.671C38.384,16.671 31.25,27.592 31.25,35.421V45.121C30.334,45.779 29.721,46.833 29.459,47.879C29.417,48.046 29.396,48.217 29.396,48.383C29.396,51.471 31.192,56.05 31.396,56.562C31.646,57.183 31.975,57.579 32.625,57.741C32.759,57.82 33.1,58.287 33.1,59.491C33.1,63.041 35.721,66.97 38.559,69.608C38.146,72.062 36.38,78.187 32.671,79.737L21.559,83.441C20.921,83.654 20.463,84.179 20.263,84.816C10.425,76.404 4.158,63.929 4.158,50C4.158,24.729 24.721,4.167 49.992,4.167C75.263,4.167 95.825,24.729 95.825,50C95.833,63.933 89.563,76.417 79.717,84.829Z&quot;"
+        errorLine2="                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_userprofile.xml"
+            line="7"
+            column="25"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.color_snack_error` appears to be unused"
+        errorLine1="    &lt;color name=&quot;color_snack_error&quot;>#F44336&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../utils/src/main/res/values/colors.xml"
+            line="3"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.color.color_snack_info` appears to be unused"
+        errorLine1="    &lt;color name=&quot;color_snack_info&quot;>#00c853&lt;/color>"
+        errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../utils/src/main/res/values/colors.xml"
+            line="4"
+            column="12"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.Ok` appears to be unused"
+        errorLine1="    &lt;string name=&quot;Ok&quot;>@android:string/ok&lt;/string>"
+        errorLine2="            ~~~~~~~~~">
+        <location
+            file="../utils/src/main/res/values/strings.xml"
+            line="3"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.hello_blank_fragment` appears to be unused"
+        errorLine1="    &lt;string name=&quot;hello_blank_fragment&quot;>Hello blank fragment&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../feature_splash/src/main/res/values/strings.xml"
+            line="3"
+            column="13"/>
+        <location
+            file="../feature_auth/src/main/res/values/strings.xml"
+            line="2"
+            column="13"/>
+        <location
+            file="../feature_person/src/main/res/values/strings.xml"
+            line="2"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.male` appears to be unused"
+        errorLine1="    &lt;string name=&quot;male&quot;>Male&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~">
+        <location
+            file="../feature_person/src/main/res/values/strings.xml"
+            line="6"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.female` appears to be unused"
+        errorLine1="    &lt;string name=&quot;female&quot;>Female&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="../feature_person/src/main/res/values/strings.xml"
+            line="7"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.etBorn` appears to be unused"
+        errorLine1="    &lt;string name=&quot;etBorn&quot;>Type date of born&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~">
+        <location
+            file="../feature_person/src/main/res/values/strings.xml"
+            line="8"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.error_empty_string` appears to be unused"
+        errorLine1="    &lt;string name=&quot;error_empty_string&quot;>Empty field&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../feature_person/src/main/res/values/strings.xml"
+            line="15"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="UnusedResources"
+        message="The resource `R.string.error_invalid_email` appears to be unused"
+        errorLine1="    &lt;string name=&quot;error_invalid_email&quot;>Invalid format username (e-mail)&lt;/string>"
+        errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="../feature_person/src/main/res/values/strings.xml"
+            line="16"
+            column="13"/>
+    </issue>
+
+    <issue
+        id="TypographyEllipsis"
+        message="Replace &quot;...&quot; with ellipsis character (…, &amp;#8230;) ?"
+        errorLine1="    &lt;string name=&quot;tvLogoStatus&quot;>Loading profile...&lt;/string>"
+        errorLine2="                                ^">
+        <location
+            file="src/main/res/values/strings.xml"
+            line="5"
+            column="33"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#FF000000&quot; android:pathData=&quot;M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_check_white_24dp.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#E24C4B&quot; android:pathData=&quot;M227.556,227.556m-227.556,0a227.556,227.556 0,1 1,455.112 0a227.556,227.556 0,1 1,-455.112 0&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_error.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#D1403F&quot; android:pathData=&quot;M455.111,227.556c0,125.156 -102.4,227.556 -227.556,227.556c-72.533,0 -136.533,-32.711 -177.778,-85.333c38.4,31.289 88.178,49.778 142.222,49.778c125.156,0 227.556,-102.4 227.556,-227.556c0,-54.044 -18.489,-103.822 -49.778,-142.222C422.4,91.022 455.111,155.022 455.111,227.556z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_error.xml"
+            line="4"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#FFFFFF&quot; android:pathData=&quot;M331.378,331.378c-8.533,8.533 -22.756,8.533 -31.289,0l-72.533,-72.533l-72.533,72.533c-8.533,8.533 -22.756,8.533 -31.289,0c-8.533,-8.533 -8.533,-22.756 0,-31.289l72.533,-72.533l-72.533,-72.533c-8.533,-8.533 -8.533,-22.756 0,-31.289c8.533,-8.533 22.756,-8.533 31.289,0l72.533,72.533l72.533,-72.533c8.533,-8.533 22.756,-8.533 31.289,0c8.533,8.533 8.533,22.756 0,31.289l-72.533,72.533l72.533,72.533C339.911,308.622 339.911,322.844 331.378,331.378z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_error.xml"
+            line="5"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#FF000000&quot; android:pathData=&quot;M507.921,445.34c-34.766,-24.516 -76.772,-41.947 -122.504,-51.296c10.094,-7.34 19.397,-16.031 27.721,-25.86l142.126,-66.532c7.149,-3.346 11.108,-11.128 9.6,-18.876c-0.558,-2.85 -14.024,-70.631 -51.66,-139.402C461.871,49.578 390.223,0 306.001,0c-84.219,0 -155.87,49.578 -207.205,143.375c-37.635,68.769 -51.102,136.551 -51.659,139.402c-1.508,7.748 2.45,15.53 9.599,18.876l142.129,66.532c8.324,9.83 17.627,18.521 27.721,25.86c-45.735,9.349 -87.738,26.78 -122.505,51.293c-55.989,39.478 -86.822,92.553 -86.822,149.448c0,9.506 7.705,17.212 17.212,17.212h543.06c9.508,0 17.212,-7.707 17.212,-17.212C594.744,537.892 563.911,484.817 507.921,445.34zM456.912,577.575v-48.378c0,-9.506 -7.704,-17.212 -17.212,-17.212c-9.506,0 -17.212,7.707 -17.212,17.212v48.378H189.511v-48.378c0,-9.506 -7.704,-17.212 -17.212,-17.212c-9.506,0 -17.212,7.707 -17.212,17.212v48.378H52.922c5.637,-38.98 30.348,-75.439 70.998,-104.101c19.173,-13.52 40.908,-24.625 64.443,-33.117c15.582,13.655 61.154,48.746 118.007,48.746c0.871,0 1.757,-0.009 2.631,-0.026c39.181,-0.749 75.213,-18.014 107.16,-51.323c26.424,8.774 50.729,20.775 71.924,35.719c40.647,28.662 65.359,65.12 70.996,104.101H456.912V577.575zM229.62,428.557c24.39,-5.276 50.068,-8.015 76.383,-8.015c24.326,0 48.104,2.345 70.831,6.866c-21.331,17.583 -44.213,26.735 -68.265,27.247C276.77,455.34 248.285,441.027 229.62,428.557zM189.514,243.933c0,-9.506 -7.707,-17.212 -17.212,-17.212c-9.508,0 -17.212,7.707 -17.212,17.212c0,25.581 4.676,49.903 13.071,71.872L83.93,276.375c5.57,-22.162 19.338,-69.469 45.065,-116.472C174.562,76.641 234.117,34.425 306.001,34.425c71.674,0 131.099,41.984 176.624,124.782c25.892,47.09 39.818,94.865 45.438,117.171l-84.222,39.427c8.395,-21.969 13.074,-46.291 13.074,-71.872c0,-9.506 -7.707,-17.212 -17.212,-17.212c-9.508,0 -17.212,7.707 -17.212,17.212c0,78.4 -52.257,142.185 -116.487,142.185C241.771,386.118 189.514,322.333 189.514,243.933z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_female_avatar.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#3DDC84&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="8"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="11"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="14"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="16"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="19"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="21"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="24"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="26"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="29"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="31"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="34"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="36"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="39"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="41"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="44"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="46"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="49"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="51"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="54"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="56"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="59"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="61"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="64"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="66"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="69"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="71"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="74"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="76"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="79"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="81"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="84"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="86"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="89"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="91"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="94"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="96"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="99"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="101"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="104"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="106"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="109"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="111"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="114"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="116"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="119"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="121"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="124"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="126"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="129"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="131"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="134"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="136"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="139"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="141"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="144"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="146"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="149"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="151"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="154"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="156"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="159"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="161"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="164"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#00000000&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="166"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#33FFFFFF&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_launcher_background.xml"
+            line="169"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="                    android:color=&quot;#44000000&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable-v24/ic_launcher_foreground.xml"
+            line="16"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="                    android:color=&quot;#00000000&quot;"
+        errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable-v24/ic_launcher_foreground.xml"
+            line="19"
+            column="21"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:fillColor=&quot;#FFFFFF&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable-v24/ic_launcher_foreground.xml"
+            line="25"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:strokeColor=&quot;#00000000&quot; />"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable-v24/ic_launcher_foreground.xml"
+            line="29"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#FF000000&quot; android:pathData=&quot;M277.664,208.01h-16.123c31.146,-20.152 51.804,-55.194 51.804,-94.972C313.345,50.708 262.637,0 200.307,0S87.269,50.708 87.269,113.038c0,39.778 20.656,74.82 51.804,94.972H122.95c-41.434,0 -75.143,33.707 -75.143,75.141v104.963c0,6.904 5.597,12.5 12.5,12.5h280c6.903,0 12.5,-5.596 12.5,-12.5V283.15C352.807,241.717 319.098,208.01 277.664,208.01zM112.269,113.038c0,-48.544 39.493,-88.038 88.038,-88.038c48.544,0 88.038,39.494 88.038,88.038c0,48.543 -39.494,88.036 -88.038,88.036C151.762,201.074 112.269,161.581 112.269,113.038zM236.88,219.998l-36.573,36.574l-36.573,-36.573c11.477,3.935 23.779,6.075 36.573,6.075S225.404,223.934 236.88,219.998zM327.807,375.613h-34v-60.059c0,-6.904 -5.597,-12.5 -12.5,-12.5s-12.5,5.596 -12.5,12.5v60.059h-137v-60.059c0,-6.904 -5.597,-12.5 -12.5,-12.5s-12.5,5.596 -12.5,12.5v60.059h-34V283.15c0,-27.647 22.494,-50.141 50.143,-50.141h18.439l50.079,50.078c2.441,2.441 5.64,3.661 8.839,3.661s6.396,-1.22 8.839,-3.661l50.079,-50.078h18.439c27.648,0 50.143,22.492 50.143,50.141V375.613z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_male_avatar.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#8DC640&quot; android:pathData=&quot;M405.493,412.764c-69.689,56.889 -287.289,56.889 -355.556,0c-69.689,-56.889 -62.578,-300.089 0,-364.089s292.978,-64 355.556,0S475.182,355.876 405.493,412.764z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_success.xml"
+            line="3"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillAlpha=&quot;0.2&quot; android:fillColor=&quot;#FFFFFF&quot;"
+        errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_success.xml"
+            line="4"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="    &lt;path android:fillColor=&quot;#FFFFFF&quot; android:pathData=&quot;M195.004,354.453c-9.956,0 -19.911,-4.267 -25.6,-12.8l-79.644,-102.4c-11.378,-14.222 -8.533,-34.133 5.689,-45.511s34.133,-8.533 45.511,5.689l54.044,69.689l119.467,-155.022c11.378,-14.222 31.289,-17.067 45.511,-5.689s17.067,31.289 5.689,45.511L220.604,341.653C213.493,348.764 204.96,354.453 195.004,354.453z&quot;/>"
+        errorLine2="          ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_success.xml"
+            line="6"
+            column="11"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="      android:fillColor=&quot;#000000&quot;/>"
+        errorLine2="      ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/ic_userprofile.xml"
+            line="8"
+            column="7"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="                android:textColor=&quot;#000000&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/item_measure_type.xml"
+            line="50"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="                android:textColor=&quot;#000000&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/item_person.xml"
+            line="51"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:centerColor=&quot;#009688&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/side_nav_bar.xml"
+            line="5"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:endColor=&quot;#00695C&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/side_nav_bar.xml"
+            line="6"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:startColor=&quot;#4DB6AC&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/drawable/side_nav_bar.xml"
+            line="7"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:textColor=&quot;#FFFFFF&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/view_nav_header.xml"
+            line="27"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="RawColorInResources"
+        message="Using row color in tags"
+        errorLine1="        android:textColor=&quot;#FFFFFF&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/view_nav_header.xml"
+            line="38"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="    &lt;EditText"
+        errorLine2="     ~~~~~~~~">
+        <location
+            file="src/main/res/layout/dialog_share.xml"
+            line="13"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_edit_person.xml"
+            line="25"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_login.xml"
+            line="28"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_login.xml"
+            line="42"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_registration.xml"
+            line="28"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_registration.xml"
+            line="43"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_registration.xml"
+            line="58"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_registration.xml"
+            line="73"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="Autofill"
+        message="Missing `autofillHints` attribute"
+        errorLine1="            &lt;EditText"
+        errorLine2="             ~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_registration.xml"
+            line="88"
+            column="14"/>
+    </issue>
+
+    <issue
+        id="ClickableViewAccessibility"
+        message="Custom view `GenderSwitch` overrides `onTouchEvent` but not `performClick`"
+        errorLine1="    override fun onTouchEvent(event: MotionEvent?): Boolean {"
+        errorLine2="                 ~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/mrozon/feature_person/customview/GenderSwitch.kt"
+            line="137"
+            column="18"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="    &lt;ImageView"
+        errorLine2="     ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/fragment_my_info_dialog.xml"
+            line="9"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="    &lt;ImageView"
+        errorLine2="     ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/view_nav_header.xml"
+            line="9"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="ContentDescription"
+        message="Missing `contentDescription` attribute on image"
+        errorLine1="    &lt;ImageView"
+        errorLine2="     ~~~~~~~~~">
+        <location
+            file="src/main/res/layout/view_nav_header.xml"
+            line="44"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+        errorLine1="                tvUserName.text = &quot;${user.firstname}  ${user.lastname}&quot;"
+        errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/java/com/mrozon/healthdiary/presentation/main/MainActivity.kt"
+            line="126"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="RtlHardcoded"
+        message="Consider replacing `android:layout_marginRight` with `android:layout_marginEnd=&quot;16dp&quot;` to better support right-to-left layouts"
+        errorLine1="                android:layout_marginRight=&quot;16dp&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/item_measure_type.xml"
+            line="46"
+            column="17"/>
+    </issue>
+
+</issues>

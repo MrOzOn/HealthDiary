@@ -37,13 +37,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-
+    lintOptions {
+        ignoreTestSources true
+        abortOnError true
+        xmlReport false
+        baselineFile file("$project.rootDir/config/baseline.xml")
+        checkDependencies true
+    }
 }
 
 apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
+    lintChecks project(':lint_repo')
     api project(':core_api')
     implementation project(':core')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
