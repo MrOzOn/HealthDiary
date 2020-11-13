@@ -65,8 +65,7 @@ class ListPersonFragment : BaseFragment<FragmentListPersonBinding>() {
         adapter = ListPersonAdapter(object : ListPersonAdapter.ListPersonClickListener {
             override fun onClick(person: Person) {
                 Timber.d("click to ${person.name}")
-                //TODO add logic for click item
-                show("will be soon))")
+                navigator.navigateToMeasureForPerson(findNavController(), person.id)
             }
 
             override fun onLongClick(person: Person) {

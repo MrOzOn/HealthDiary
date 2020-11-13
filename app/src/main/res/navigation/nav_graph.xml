@@ -90,6 +90,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_listPersonFragment_to_tabMeasureFragment"
+            app:destination="@id/tabMeasureFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -127,5 +134,11 @@
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right"/>
+
+    <fragment
+        android:id="@+id/tabMeasureFragment"
+        android:name="com.mrozon.feature_measure.presentation.TabMeasureFragment"
+        tools:layout="@layout/fragment_tab_measure"
+        android:label="TabMeasureFragment" />
 
 </navigation>
