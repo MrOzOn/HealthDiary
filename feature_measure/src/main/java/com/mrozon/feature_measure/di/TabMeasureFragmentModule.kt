@@ -3,6 +3,8 @@ package com.mrozon.feature_measure.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mrozon.core_api.viewmodel.ViewModelKey
+import com.mrozon.feature_measure.data.MeasureRepository
+import com.mrozon.feature_measure.data.MeasureRepositoryImpl
 import com.mrozon.feature_measure.presentation.TabMeasureFragmentViewModel
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,7 @@ interface TabMeasureFragmentModule {
 
     @Binds
     fun viewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
+
+    @Binds
+    fun providePersonRepository(repository: MeasureRepositoryImpl): MeasureRepository
 }
