@@ -26,6 +26,7 @@ ext {
     androidXTestVersion = "1.1.0"
     securityCryptoVersion = "1.1.0-alpha02"
     coilVersion = "1.0.0"
+    viewpager2Version = "1.0.0"
 
     // DI
     dagger = "com.google.dagger:dagger:$daggerVersion"
@@ -53,6 +54,7 @@ ext {
     cardview =  "androidx.cardview:cardview:$cardviewVersion"
     recyclerview = "androidx.recyclerview:recyclerview:$recyclerviewViersion"
     material = "com.google.android.material:material:$materialVersion"
+    viewpager2 =  "androidx.viewpager2:viewpager2:$viewpager2Version"
     // Livecycle
     lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
     lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"

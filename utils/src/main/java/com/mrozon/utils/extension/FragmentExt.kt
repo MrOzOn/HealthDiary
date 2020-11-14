@@ -24,6 +24,12 @@ fun Fragment.hideKeyboard() {
     }
 }
 
+fun Fragment.setTitleActionBar(title: String){
+    if(activity is AppCompatActivity){
+        (activity as AppCompatActivity).supportActionBar?.title = title
+    }
+}
+
 fun Fragment.isActiveNetwork(): Boolean {
     val cm = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val activeNetwork: NetworkInfo? = cm.activeNetworkInfo

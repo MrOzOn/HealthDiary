@@ -3,16 +3,25 @@ package com.mrozon.feature_measure.presentation
 import android.content.Context
 import android.os.Bundle
 import android.view.View
+import android.widget.TableLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabItem
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
+import com.google.android.material.tabs.TabLayoutMediator
 import com.mrozon.core_api.entity.Gender
 import com.mrozon.feature_measure.R
 import com.mrozon.feature_measure.databinding.FragmentTabMeasureBinding
 import com.mrozon.feature_measure.di.TabMeasureFragmentComponent
 import com.mrozon.utils.base.BaseFragment
+import com.mrozon.utils.extension.setTitleActionBar
 import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
 import timber.log.Timber
@@ -54,8 +63,16 @@ class TabMeasureFragment: BaseFragment<FragmentTabMeasureBinding>() {
                         if(arguments?.containsKey("id") == true)
                             arguments?.remove("id")
                         binding?.progressBar?.visible(false)
-                        show(result.data?.name!!)
-                        //TODO logic for show selected person and prepare tab items
+                        setTitleActionBar(result.data?.name!!)
+
+//                        binding?.measureTypesTabs?.tabMode = MODE_SCROLLABLE
+//                        binding?.measureTypesTabs?.addTab(TabLayout.Tab(),0)
+//                        binding?.measureTypesTabs?.addTab(TabLayout.Tab(),1)
+//                        binding?.measureTypesTabs?.addTab(TabLayout.Tab(),2)
+
+//                       TabLayoutMediator(binding?.measureTypesTabs!!, binding?.viewpager!!) { tab, position ->
+//                            tab.text = "position: $position"
+//                       }
 
                     }
                     Result.Status.ERROR -> {

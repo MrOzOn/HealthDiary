@@ -64,6 +64,7 @@ dependencies {
     implementation cardview
     implementation recyclerview
     implementation material
+    implementation viewpager2
     implementation coil
     implementation coilBase
     implementation coilSvg
