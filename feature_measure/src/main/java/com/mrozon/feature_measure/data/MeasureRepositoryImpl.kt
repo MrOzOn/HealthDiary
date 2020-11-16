@@ -1,6 +1,7 @@
 package com.mrozon.feature_measure.data
 
 import com.mrozon.core_api.db.HealthDiaryDao
+import com.mrozon.core_api.entity.Measure
 import com.mrozon.core_api.entity.MeasureType
 import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.mapper.MeasureTypeToMeasureTypeDbMapper
@@ -30,6 +31,10 @@ class MeasureRepositoryImpl @Inject constructor(
                 emit(Result.error(e.message!!))
             }
         }
+    }
+
+    override fun loadMeasure(personId: Long, measureTypeId: Long): Flow<Result<List<Measure>>> {
+        TODO("Not yet implemented")
     }
 
 
