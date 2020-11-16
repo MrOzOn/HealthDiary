@@ -15,24 +15,26 @@
             android:id="@+id/measureTypesTabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabMode="fixed"
             android:background="@color/design_default_color_primary"
-            app:tabContentStart="56dp"
-            app:tabIconTint="@color/tab_color_selector"
-            app:tabIndicatorColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabIconTint="@color/tab_color_selector"
+            app:tabIndicatorColor="@color/white"
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed">
 
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
-            app:layout_anchor="@id/measureTypesTabs"
-            app:layout_anchorGravity="top"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/measureTypesTabs" />
 
         <ProgressBar
             android:id="@+id/progressBar"

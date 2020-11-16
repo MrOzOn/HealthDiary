@@ -61,6 +61,22 @@ class TabMeasureFragment: BaseFragment<FragmentTabMeasureBinding>() {
         if(id>0){
             viewModel.loadProfilePersonAndMeasureTypes(id)
         }
+//        binding?.measureTypesTabs?.isClickable = true
+//        binding?.measureTypesTabs?.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                Timber.d("onTabSelected ${tab?.position}")
+////                binding?.viewpager?.setCurrentItem(tab?.position!!)
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//                Timber.d("onTabUnselected")
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//                Timber.d("onTabReselected")
+//            }
+//
+//        })
     }
 
     override fun onDestroy() {

@@ -23,8 +23,14 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                 putLong(ARG_PERSON_ID, personId)
                 putLong(ARG_MEASURE_TYPE_ID, measureTypeId)
             }
+            Timber.d("getInstance measureTypeId=$measureTypeId")
             return fragment
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.d("onResume")
     }
 
     override fun getLayoutId(): Int = R.layout.fragment_list_measure
