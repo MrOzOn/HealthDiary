@@ -3,6 +3,7 @@ package com.mrozon.feature_measure.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.mrozon.core_api.entity.MeasureType
 import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.providers.CoroutineContextProvider
 import com.mrozon.feature_measure.data.MeasureRepository
@@ -19,15 +20,15 @@ class TabMeasureFragmentViewModel @Inject constructor(
     private val coroutineContextProvider: CoroutineContextProvider
 ): BaseViewModel() {
 
-    private var _selectedPerson = MutableLiveData<Event<Result<Person>>>()
-    val selectedPerson: LiveData<Event<Result<Person>>>
-        get() = _selectedPerson
+    private var _selectedPersonAndMeasureTypes = MutableLiveData<Event<Result<Pair<Person, List<MeasureType>>>>>()
+    val selectedPersonAndMeasureTypes: LiveData<Event<Result<Pair<Person, List<MeasureType>>>>>
+        get() = _selectedPersonAndMeasureTypes
 
-    fun loadProfilePerson(id: Long) {
+    fun loadProfilePersonAndMeasureTypes(id: Long) {
             viewModelScope.launch(coroutineContextProvider.IO) {
-                repository.getPerson(id).collect {
+                repository.loadProfilePersonAndMeasureTypes(id).collect {
                     withContext(coroutineContextProvider.Main) {
-                        _selectedPerson.value = Event(it)
+                        _selectedPersonAndMeasureTypes.value = Event(it)
                     }
                 }
             }

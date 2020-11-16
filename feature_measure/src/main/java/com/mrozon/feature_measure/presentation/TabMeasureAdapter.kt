@@ -12,12 +12,7 @@ class TabMeasureAdapter(
     override fun getItemCount(): Int = measureTypes.size
 
     override fun createFragment(position: Int): Fragment {
-//        val fragment = DemoObjectFragment()
-//        fragment.arguments = Bundle().apply {
-//            // Our object is just an integer :-P
-//            putInt(ARG_OBJECT, position + 1)
-//        }
-//        return fragment
-        TODO("Not yet implemented createFragment for current Measure for current person")
+        val id = measureTypes[position].id
+        return ListMeasureFragment.getInstance(personId, id)
     }
 }

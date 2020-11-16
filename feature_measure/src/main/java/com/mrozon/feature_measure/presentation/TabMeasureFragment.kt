@@ -12,11 +12,18 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.load
+import coil.request.Disposable
+import coil.request.ImageRequest
+import coil.size.Scale
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.MODE_SCROLLABLE
 import com.google.android.material.tabs.TabLayoutMediator
 import com.mrozon.core_api.entity.Gender
+import com.mrozon.core_api.network.HealthDiaryService
 import com.mrozon.feature_measure.R
 import com.mrozon.feature_measure.databinding.FragmentTabMeasureBinding
 import com.mrozon.feature_measure.di.TabMeasureFragmentComponent
@@ -37,6 +44,8 @@ class TabMeasureFragment: BaseFragment<FragmentTabMeasureBinding>() {
 
     private val viewModel by viewModels<TabMeasureFragmentViewModel> { viewModelFactory }
 
+    private val disposables: List<Disposable> = mutableListOf()
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         TabMeasureFragmentComponent.injectFragment(this)
@@ -48,13 +57,20 @@ class TabMeasureFragment: BaseFragment<FragmentTabMeasureBinding>() {
 
         val id = arguments?.getLong("id", 0)?:0
         if(id>0){
-            viewModel.loadProfilePerson(id)
+            viewModel.loadProfilePersonAndMeasureTypes(id)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        disposables.forEach {
+            it.dispose()
         }
     }
 
     override fun subscribeUi() {
-        viewModel.selectedPerson.observe(viewLifecycleOwner, Observer { event ->
-            event.getContentIfNotHandled()?.let { result ->
+        viewModel.selectedPersonAndMeasureTypes.observe(viewLifecycleOwner, Observer { event ->
+            event.peekContent().let { result ->
                 when (result.status) {
                     Result.Status.LOADING -> {
                         binding?.progressBar?.visible(true)
@@ -63,17 +79,27 @@ class TabMeasureFragment: BaseFragment<FragmentTabMeasureBinding>() {
                         if(arguments?.containsKey("id") == true)
                             arguments?.remove("id")
                         binding?.progressBar?.visible(false)
-                        setTitleActionBar(result.data?.name!!)
+                        val person = result.data?.first
+                        val measureTypes = result.data?.second
+                        setTitleActionBar(person?.name?:"")
+                        binding?.viewpager?.adapter = TabMeasureAdapter(this,person?.id?:-1,
+                            measureTypes?: listOf())
 
-//                        binding?.measureTypesTabs?.tabMode = MODE_SCROLLABLE
-//                        binding?.measureTypesTabs?.addTab(TabLayout.Tab(),0)
-//                        binding?.measureTypesTabs?.addTab(TabLayout.Tab(),1)
-//                        binding?.measureTypesTabs?.addTab(TabLayout.Tab(),2)
-
-//                       TabLayoutMediator(binding?.measureTypesTabs!!, binding?.viewpager!!) { tab, position ->
-//                            tab.text = "position: $position"
-//                       }
-
+                        measureTypes?.let {
+                            TabLayoutMediator(binding?.measureTypesTabs!!, binding?.viewpager!!) { tab, position ->
+//                                tab.text = measureTypes[position].name
+                                val request = ImageRequest.Builder(requireContext())
+                                    .decoder(SvgDecoder(requireContext()))
+                                    .data(HealthDiaryService.ENDPOINT + measureTypes[position].url)
+                                    .size(48,48)
+                                    .scale(Scale.FILL)
+                                    .target { drawable ->
+                                        tab.icon = drawable
+                                    }
+                                    .build()
+                                disposables.plus(ImageLoader(requireContext()).enqueue(request))
+                            }.attach()
+                        }
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
