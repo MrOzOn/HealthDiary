@@ -1,11 +1,13 @@
 package com.mrozon.feature_measure.presentation
 
 import android.content.Context
+import android.graphics.*
 import android.os.Bundle
 import android.view.View
 import android.widget.TableLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
