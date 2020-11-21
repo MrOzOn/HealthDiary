@@ -1,6 +1,7 @@
 package com.mrozon.core_api.db.dao
 
 import androidx.room.*
+import com.mrozon.core_api.db.model.MeasureDb
 import com.mrozon.core_api.db.model.MeasureTypeDb
 import com.mrozon.core_api.db.model.PersonDb
 import kotlinx.coroutines.flow.Flow
@@ -8,22 +9,19 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MeasureDao {
 
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    suspend fun insertAllMeasureType(persons: List<MeasureTypeDb>)
-//
-//    @Query("DELETE FROM measure_type_table")
-//    suspend fun deleteAllMeasureType()
-//
-//    @Transaction
-//    suspend fun reloadMeasureType(measureTypes: List<MeasureTypeDb>) {
-//        deleteAllMeasureType()
-//        insertAllMeasureType(measureTypes)
-//    }
-//
-//    @Query("SELECT * FROM measure_type_table")
-//    fun getMeasureTypes(): Flow<List<MeasureTypeDb>>
-//
-//    @Query("SELECT * FROM measure_type_table")
-//    fun getListMeasureTypes(): List<MeasureTypeDb>
+    @Query("SELECT * FROM measure_table WHERE measure_person=:personId AND measure_mtype=:measureTypeId ORDER BY measure_value_added LIMIT 100")
+    fun getMeasures(personId: Long, measureTypeId: Long): List<MeasureDb>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAllMeasure(measures: List<MeasureDb>)
+
+    @Query("DELETE FROM measure_table")
+    suspend fun deleteAllMeasure()
+
+    @Transaction
+    suspend fun reloadMeasure(measures: List<MeasureDb>) {
+        deleteAllMeasure()
+        insertAllMeasure(measures)
+    }
 
 }

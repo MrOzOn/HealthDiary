@@ -11,3 +11,5 @@ data class Measure (
     val personId: Long,
     val measureTypeId: Long
 )
+
+typealias MeasureHistory = Triple<Person, MeasureType, List<Measure>>

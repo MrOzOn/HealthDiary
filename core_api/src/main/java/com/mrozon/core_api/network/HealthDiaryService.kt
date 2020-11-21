@@ -35,6 +35,10 @@ interface HealthDiaryService {
     @GET("indicatortypes/")
     suspend fun getMeasureTypes(): Response<List<MeasureTypeResponse>>
 
+    @GET("indicators/")
+    suspend fun getMeasure(@Query("type") type: Long,
+                           @Query("patient") patient: Long): Response<List<MeasureResponse>>
+
 //    @GET("lego/themes/")
 //    suspend fun getThemes(@Query("page") page: Int? = null,
 //                          @Query("page_size") pageSize: Int? = null,
