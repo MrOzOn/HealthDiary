@@ -1,0 +1,146 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "1fbfe00709ec7129d957473024f00645",
+    "entities": [
+      {
+        "tableName": "user_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_email` TEXT NOT NULL, `user_firstname` TEXT NOT NULL, `user_token` TEXT NOT NULL, `user_lastname` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "email",
+            "columnName": "user_email",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "firstname",
+            "columnName": "user_firstname",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "token",
+            "columnName": "user_token",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastname",
+            "columnName": "user_lastname",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "user_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "person_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`person_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `person_name` TEXT NOT NULL, `person_gender` INTEGER NOT NULL, `user_born` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "person_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "person_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gender",
+            "columnName": "person_gender",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "born",
+            "columnName": "user_born",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "person_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "measure_type_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`measure_type_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `measure_type_name` TEXT NOT NULL, `measure_type_mark` TEXT NOT NULL, `measure_type_regexp` TEXT NOT NULL, `measure_type_hint` TEXT NOT NULL, `measure_type_url` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "measure_type_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "measure_type_name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mark",
+            "columnName": "measure_type_mark",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "regexp",
+            "columnName": "measure_type_regexp",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hint",
+            "columnName": "measure_type_hint",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "measure_type_url",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "measure_type_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1fbfe00709ec7129d957473024f00645')"
+    ]
+  }
+}
