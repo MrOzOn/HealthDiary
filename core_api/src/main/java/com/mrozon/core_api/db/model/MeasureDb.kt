@@ -3,9 +3,12 @@ package com.mrozon.core_api.db.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
+import com.mrozon.core_api.db.BlobTransmogrifier
 import java.util.*
 
 @Entity(tableName = "measure_table")
+@TypeConverters(BlobTransmogrifier::class)
 data class MeasureDb (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "measure_id")
