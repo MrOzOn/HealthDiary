@@ -2,17 +2,20 @@ package com.mrozon.feature_measure.presentation
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
+import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mrozon.core_api.entity.Measure
 import com.mrozon.feature_measure.R
 import com.mrozon.feature_measure.databinding.FragmentListMeasureBinding
 import com.mrozon.feature_measure.di.TabMeasureFragmentComponent
 import com.mrozon.utils.base.BaseFragment
+import com.mrozon.utils.extension.hideKeyboard
 import com.mrozon.utils.extension.setTitleActionBar
 import com.mrozon.utils.extension.visible
 import com.mrozon.utils.network.Result
@@ -35,10 +38,39 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
         }
     }
 
+    private var adapter: ListMeasureAdapter? = null
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        setHasOptionsMenu(true)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val manager = LinearLayoutManager(context)
-        binding?.rvMeasure?.layoutManager = manager
+        binding?.rvMeasure?.apply {
+            layoutManager = manager
+            addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.list_measure_menu, menu)
+        return super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        hideKeyboard()
+        when(item.itemId){
+            R.id.refreshMeasuresNetwork -> {
+                viewModel.refreshMeasuresNetwork()
+            }
+        }
+        return false
     }
 
     override fun onResume() {
@@ -79,7 +111,7 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                         val measureType = result.data?.second
                         val measures = result.data?.third
                         Timber.d("measures contains ${measures?.size} items")
-                        val adapter = ListMeasureAdapter(measureType!!, object:
+                        adapter = ListMeasureAdapter(measureType!!, object:
                             ListMeasureAdapter.ListMeasureClickListener {
                             override fun onClick(measure: Measure) {
 
@@ -90,7 +122,25 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                             }
                         })
                         binding?.rvMeasure?.adapter = adapter
-                        adapter.submitList(measures)
+                        adapter?.submitList(measures)
+                    }
+                    Result.Status.ERROR -> {
+                        binding?.progressBar?.visible(false)
+                        showError(result.message!!)
+                    }
+                }
+            }
+        })
+
+        viewModel.measures.observe(viewLifecycleOwner, Observer { event ->
+            event.peekContent().let { result ->
+                when (result.status) {
+                    Result.Status.LOADING -> {
+                        binding?.progressBar?.visible(true)
+                    }
+                    Result.Status.SUCCESS -> {
+                        binding?.progressBar?.visible(false)
+                        adapter?.submitList(result.data)
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)

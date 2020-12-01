@@ -66,5 +66,28 @@ class MeasureRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun loadMeasureOnlyNetwork(personId: Long, measureTypeId: Long): Flow<Result<List<Measure>>> {
+        return  flow {
+            emit(Result.loading())
+            try {
+                val networkResult = dataSource.getMeasure(personId, measureTypeId)
+                if (networkResult.status == Result.Status.SUCCESS) {
+                    val data = networkResult.data!!
+                    val measureList = data.map { measureResponse ->
+                        measureResponse.toMeasure()
+                    }
+                    val measuresDb = mapperMeasure.map(measureList)
+                    dao.reloadMeasure(measuresDb)
+                    emit(Result.success(measureList))
+                } else if (networkResult.status == Result.Status.ERROR) {
+                    emit(Result.error(networkResult.message!!))
+                }
+            }
+            catch (e: Exception){
+                emit(Result.error(e.message!!))
+            }
+        }
+    }
+
 
 }

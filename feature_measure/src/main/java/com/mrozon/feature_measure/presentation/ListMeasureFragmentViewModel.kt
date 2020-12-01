@@ -3,6 +3,7 @@ package com.mrozon.feature_measure.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.mrozon.core_api.entity.Measure
 import com.mrozon.core_api.entity.MeasureHistory
 import com.mrozon.core_api.entity.MeasureType
 import com.mrozon.core_api.entity.Person
@@ -26,6 +27,10 @@ class ListMeasureFragmentViewModel @Inject constructor(
     val initialData: LiveData<Event<Result<MeasureHistory>>>
         get() = _initialData
 
+    private var _measures = MutableLiveData<Event<Result<List<Measure>>>>()
+    val measures: LiveData<Event<Result<List<Measure>>>>
+        get() = _measures
+
     fun initialLoadData(personId: Long, measureTypeId: Long) {
         if(_initialData.value == null) {
             viewModelScope.launch(coroutineContextProvider.IO) {
@@ -33,6 +38,20 @@ class ListMeasureFragmentViewModel @Inject constructor(
                     withContext(coroutineContextProvider.Main) {
                         _initialData.value = Event(it)
                     }
+                }
+            }
+        }
+    }
+
+    fun refreshMeasuresNetwork() {
+        if(_initialData.value == null)
+            return
+        val personId = _initialData.value?.peekContent()?.data?.first?.id?:-1
+        val measureTypeId = _initialData.value?.peekContent()?.data?.second?.id?:-1
+        viewModelScope.launch(coroutineContextProvider.IO) {
+            repository.loadMeasureOnlyNetwork(personId, measureTypeId).collect {
+                withContext(coroutineContextProvider.Main) {
+                    _measures.value = Event(it)
                 }
             }
         }

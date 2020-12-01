@@ -2,4 +2,5 @@
 <resources>
     <string name="ivTimeOfDay">Time of day</string>
     <string name="ivMeasureComment">comment</string>
+    <string name="refresh">Refresh</string>
 </resources>

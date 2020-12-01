@@ -12,4 +12,6 @@ interface MeasureRepository {
     fun loadProfilePersonAndMeasureTypes(id: Long): Flow<Result<Pair<Person,List<MeasureType>>>>
 
     fun loadMeasure(personId: Long, measureTypeId: Long): Flow<Result<MeasureHistory>>
+
+    fun loadMeasureOnlyNetwork(personId: Long, measureTypeId: Long): Flow<Result<List<Measure>>>
 }
