@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mrozon.core_api.viewmodel.ViewModelKey
 import com.mrozon.feature_measure.data.MeasureRepository
 import com.mrozon.feature_measure.data.MeasureRepositoryImpl
+import com.mrozon.feature_measure.presentation.EditMeasureFragmentViewModel
 import com.mrozon.feature_measure.presentation.ListMeasureFragmentViewModel
 import com.mrozon.feature_measure.presentation.TabMeasureFragmentViewModel
 import dagger.Binds
@@ -22,6 +23,11 @@ interface TabMeasureFragmentModule {
     @IntoMap
     @ViewModelKey(ListMeasureFragmentViewModel::class)
     fun bindListMeasureFragmentViewModel(viewmodel: ListMeasureFragmentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(EditMeasureFragmentViewModel::class)
+    fun bindEditMeasureFragmentViewModel(viewmodel: EditMeasureFragmentViewModel): ViewModel
 
     @Binds
     fun viewModelFactory(factory: DaggerViewModelFactory): ViewModelProvider.Factory
