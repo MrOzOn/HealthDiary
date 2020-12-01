@@ -32,10 +32,6 @@ class ListMeasureAdapter(private val measureType: MeasureType, private val click
             binding.layoutMeasure.setOnClickListener {
                 clickListener.onClick(item)
             }
-            binding.layoutMeasure.setOnLongClickListener{
-                clickListener.onLongClick(item)
-                true
-            }
             binding.executePendingBindings()
         }
 
@@ -62,6 +58,5 @@ class ListMeasureAdapter(private val measureType: MeasureType, private val click
 
     interface ListMeasureClickListener {
         fun onClick(measure: Measure)
-        fun onLongClick(measure: Measure)
     }
 }

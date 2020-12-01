@@ -28,4 +28,12 @@ interface NavigationModule {
     @Reusable
     @Binds
     fun editPersonNavigator(navigator: EditPersonNavigatorImpl): EditPersonNavigator
+
+    @Reusable
+    @Binds
+    fun editMeasureNavigator(navigator: EditMeasureNavigatorImpl): EditMeasureNavigator
+
+    @Reusable
+    @Binds
+    fun listMeasureNavigator(navigator: ListMeasureNavigatorImpl): ListMeasureNavigator
 }

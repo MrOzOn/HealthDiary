@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -114,11 +115,7 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                         adapter = ListMeasureAdapter(measureType!!, object:
                             ListMeasureAdapter.ListMeasureClickListener {
                             override fun onClick(measure: Measure) {
-
-                            }
-
-                            override fun onLongClick(measure: Measure) {
-
+                                //TODO sfjkdsh
                             }
                         })
                         binding?.rvMeasure?.adapter = adapter
