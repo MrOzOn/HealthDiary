@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mrozon.core_api.entity.Measure
+import com.mrozon.core_api.navigation.ListMeasureNavigator
+import com.mrozon.core_api.navigation.ListPersonNavigator
 import com.mrozon.feature_measure.R
 import com.mrozon.feature_measure.databinding.FragmentListMeasureBinding
 import com.mrozon.feature_measure.di.TabMeasureFragmentComponent
@@ -39,6 +41,9 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
         }
     }
 
+    @Inject
+    lateinit var navigator: ListMeasureNavigator
+
     private var adapter: ListMeasureAdapter? = null
 
     override fun onCreateView(
@@ -56,6 +61,9 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
         binding?.rvMeasure?.apply {
             layoutManager = manager
             addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+        }
+        binding?.fabAddMeasure?.setOnClickListener {
+            navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),0)
         }
     }
 
@@ -115,7 +123,7 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                         adapter = ListMeasureAdapter(measureType!!, object:
                             ListMeasureAdapter.ListMeasureClickListener {
                             override fun onClick(measure: Measure) {
-                                //TODO sfjkdsh
+                                //edit measure
                             }
                         })
                         binding?.rvMeasure?.adapter = adapter

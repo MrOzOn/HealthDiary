@@ -139,7 +139,11 @@
         android:id="@+id/tabMeasureFragment"
         android:name="com.mrozon.feature_measure.presentation.TabMeasureFragment"
         tools:layout="@layout/fragment_tab_measure"
-        android:label="TabMeasureFragment" />
+        android:label="TabMeasureFragment" >
+        <action
+            android:id="@+id/action_tabMeasureFragment_to_editMeasureFragment"
+            app:destination="@id/editMeasureFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/listMeasureFragment"

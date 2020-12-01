@@ -13,6 +13,6 @@ class ListMeasureNavigatorImpl @Inject constructor()
 
     override fun navigateToEditMeasure(navController: NavController, title: String, id: Long) {
         val bundle = bundleOf("title" to title, "id" to id)
-        navController.navigate(R.id.action_listMeasureFragment_to_editMeasureFragment, bundle)
+        navController.navigate(R.id.action_tabMeasureFragment_to_editMeasureFragment, bundle)
     }
 }
