@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="ivTimeOfDay">Time of day</string>
-    <string name="ivMeasureComment">comment</string>
+    <string name="ivMeasureComment">Comment</string>
     <string name="refresh">Refresh</string>
     <string name="add_measure">Add measure</string>
     <string name="delete_measure">Delete measure</string>
     <string name="save_measure">Save measure</string>
+    <string name="choose_date">Choose date</string>
+    <string name="choose_time">Choose Time</string>
+    <string name="measure_added">Measure added</string>
+    <string name="hint_value_added">%s ( in %s)</string>
 </resources>

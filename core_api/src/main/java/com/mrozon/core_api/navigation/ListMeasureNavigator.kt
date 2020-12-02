@@ -4,6 +4,6 @@ import androidx.navigation.NavController
 
 interface ListMeasureNavigator {
 
-    fun navigateToEditMeasure(navController: NavController, title: String, id: Long)
+    fun navigateToEditMeasure(navController: NavController, title: String, id: Long, personId: Long, measureTypeId: Long )
 
 }

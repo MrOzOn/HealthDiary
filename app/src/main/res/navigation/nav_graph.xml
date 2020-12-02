@@ -170,6 +170,12 @@
         <argument
             android:name="id"
             app:argType="long" />
+        <argument
+            android:name="personId"
+            app:argType="long" />
+        <argument
+            android:name="measureTypeId"
+            app:argType="long" />
         <action
             android:id="@+id/action_editMeasureFragment_to_listMeasureFragment"
             app:destination="@id/listMeasureFragment"

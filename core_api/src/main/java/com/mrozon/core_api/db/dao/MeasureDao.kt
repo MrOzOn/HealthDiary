@@ -12,6 +12,9 @@ interface MeasureDao {
     @Query("SELECT * FROM measure_table WHERE measure_person=:personId AND measure_mtype=:measureTypeId ORDER BY measure_value_added LIMIT 100")
     fun getMeasures(personId: Long, measureTypeId: Long): List<MeasureDb>
 
+    @Query("SELECT * FROM measure_table WHERE measure_id=:id LIMIT 1")
+    fun getMeasure(id: Long): MeasureDb
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllMeasure(measures: List<MeasureDb>)
 

@@ -4,13 +4,19 @@ import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.timepicker.MaterialTimePicker
+import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
+import com.google.android.material.timepicker.TimeFormat
 import com.mrozon.feature_measure.R
 import com.mrozon.feature_measure.databinding.FragmentEditMeasureBinding
 import com.mrozon.feature_measure.di.TabMeasureFragmentComponent
 import com.mrozon.utils.base.BaseFragment
 import com.mrozon.utils.extension.hideKeyboard
 import com.mrozon.utils.extension.isActiveNetwork
+import com.mrozon.utils.extension.toDateString
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import timber.log.Timber
@@ -39,6 +45,53 @@ class EditMeasureFragment: BaseFragment<FragmentEditMeasureBinding>() {
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        arguments?.let {
+            val id = requireArguments().getLong("id", 0)
+            val personId = requireArguments().getLong("personId", 0)
+            val measureTypeId = requireArguments().getLong("measureTypeId", 0)
+
+            viewModel.initialLoadData(id, personId, measureTypeId)
+        }
+
+        binding?.buttonChooseDate?.setOnClickListener {
+            try {
+                val builder = MaterialDatePicker.Builder.datePicker()
+                    .apply {
+                        setInputMode(MaterialDatePicker.INPUT_MODE_CALENDAR)
+                        setSelection(viewModel.currentDatetime.value?.time)
+                    }
+                val picker = builder.build()
+                picker.addOnPositiveButtonClickListener {
+                    viewModel.changeDate(it)
+                }
+                picker.show(childFragmentManager, picker.toString())
+            } catch (e: IllegalArgumentException) {
+                Timber.e(e)
+                showError(e.message!!)
+            }
+        }
+
+        binding?.buttonChooseTime?.setOnClickListener {
+            try {
+                val picker = MaterialTimePicker.Builder()
+                    .setTimeFormat(TimeFormat.CLOCK_24H)
+                    .setInputMode(INPUT_MODE_CLOCK)
+                    .setHour(viewModel.currentHour)
+                    .setMinute(viewModel.currentMinute)
+                    .build()
+                picker.addOnPositiveButtonClickListener {
+                    viewModel.changeTime(picker.hour, picker.minute)
+                }
+                picker.show(childFragmentManager, picker.toString())
+            } catch (e: IllegalArgumentException) {
+                Timber.e(e)
+                showError(e.message!!)
+            }
+        }
+    }
+
     @ExperimentalCoroutinesApi
     @FlowPreview
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -58,6 +111,19 @@ class EditMeasureFragment: BaseFragment<FragmentEditMeasureBinding>() {
 
 
     override fun subscribeUi() {
-
+        viewModel.measureType.observe(viewLifecycleOwner, Observer { measureType ->
+            measureType?.let {
+                binding?.tilMeasureValue?.hint = getString(
+                    R.string.hint_value_added,
+                    it.name,
+                    it.mark
+                )
+            }
+        })
+        viewModel.currentDatetime.observe(viewLifecycleOwner, Observer { datetime ->
+            datetime?.let {
+                binding?.tvMeasureAddedDate?.text = it.toDateString("EEE, d MMM YY HH:mm:ss")
+            }
+        })
     }
 }

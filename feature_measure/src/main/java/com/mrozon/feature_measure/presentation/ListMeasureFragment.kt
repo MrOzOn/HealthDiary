@@ -62,8 +62,12 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
             layoutManager = manager
             addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
         }
-        binding?.fabAddMeasure?.setOnClickListener {
-            navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),0)
+        binding?.fabAddMeasure?.setOnClickListener { _ ->
+            arguments?.let {
+                val personId = requireArguments().getLong(ARG_PERSON_ID, 0)
+                val measureTypeId = requireArguments().getLong(ARG_MEASURE_TYPE_ID, 0)
+                navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),0, personId, measureTypeId)
+            }
         }
     }
 
@@ -123,7 +127,11 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                         adapter = ListMeasureAdapter(measureType!!, object:
                             ListMeasureAdapter.ListMeasureClickListener {
                             override fun onClick(measure: Measure) {
-                                //edit measure
+                                arguments?.let {
+                                    val personId = requireArguments().getLong(ARG_PERSON_ID, 0)
+                                    val measureTypeId = requireArguments().getLong(ARG_MEASURE_TYPE_ID, 0)
+                                    navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),measure.id, personId, measureTypeId)
+                                }
                             }
                         })
                         binding?.rvMeasure?.adapter = adapter

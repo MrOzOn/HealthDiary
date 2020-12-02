@@ -89,5 +89,35 @@ class MeasureRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun loadSelectedPersonAndMeasureTypes(
+        personId: Long,
+        measureTypeId: Long
+    ): Flow<Result<Pair<Person, MeasureType>>> {
+        return  flow {
+            emit(Result.loading())
+            try {
+                val personDb = dao.getPerson(personId)
+                val measureTypeDb = dao.getMeasureType(measureTypeId)
+                emit(Result.success(Pair(mapperPerson.reverseMap(personDb)!!, mapperMeasureType.reverseMap(measureTypeDb)!!)))
+            }
+            catch (e: Exception){
+                emit(Result.error(e.message!!))
+            }
+        }
+    }
+
+    override fun loadSelectedMeasure(id: Long): Flow<Result<Measure>> {
+        return  flow {
+            emit(Result.loading())
+            try {
+                val measureDb = dao.getMeasure(id)
+                emit(Result.success(mapperMeasure.reverseMap(measureDb)!!))
+            }
+            catch (e: Exception){
+                emit(Result.error(e.message!!))
+            }
+        }
+    }
+
 
 }
