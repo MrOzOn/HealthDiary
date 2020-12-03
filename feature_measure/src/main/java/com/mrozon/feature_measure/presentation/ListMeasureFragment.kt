@@ -91,6 +91,7 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
         arguments?.let {
             val personId = requireArguments().getLong(ARG_PERSON_ID, -1)
             val measureTypeId = requireArguments().getLong(ARG_MEASURE_TYPE_ID, -1)
+            Timber.d("onResume - $measureTypeId")
             viewModel.initialLoadData(personId, measureTypeId)
         }
     }
@@ -124,16 +125,17 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                         val measureType = result.data?.second
                         val measures = result.data?.third
                         Timber.d("measures contains ${measures?.size} items")
-                        adapter = ListMeasureAdapter(measureType!!, object:
-                            ListMeasureAdapter.ListMeasureClickListener {
-                            override fun onClick(measure: Measure) {
-                                arguments?.let {
-                                    val personId = requireArguments().getLong(ARG_PERSON_ID, 0)
-                                    val measureTypeId = requireArguments().getLong(ARG_MEASURE_TYPE_ID, 0)
-                                    navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),measure.id, personId, measureTypeId)
+                        if(adapter==null)
+                            adapter = ListMeasureAdapter(measureType!!, object:
+                                ListMeasureAdapter.ListMeasureClickListener {
+                                override fun onClick(measure: Measure) {
+                                    arguments?.let {
+                                        val personId = requireArguments().getLong(ARG_PERSON_ID, 0)
+                                        val measureTypeId = requireArguments().getLong(ARG_MEASURE_TYPE_ID, 0)
+                                        navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),measure.id, personId, measureTypeId)
+                                    }
                                 }
-                            }
-                        })
+                            })
                         binding?.rvMeasure?.adapter = adapter
                         adapter?.submitList(measures)
                     }

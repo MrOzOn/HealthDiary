@@ -15,6 +15,7 @@ import com.mrozon.utils.extension.toDateString
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -117,6 +118,7 @@ class MeasureRepositoryImpl @Inject constructor(
                 emit(Result.success(mapperMeasure.reverseMap(measureDb)!!))
             }
             catch (e: Exception){
+                Timber.e(e)
                 emit(Result.error(e.message!!))
             }
         }

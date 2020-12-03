@@ -32,7 +32,7 @@ class ListMeasureFragmentViewModel @Inject constructor(
         get() = _measures
 
     fun initialLoadData(personId: Long, measureTypeId: Long) {
-        if(_initialData.value == null) {
+//        if(_initialData.value == null) {
             viewModelScope.launch(coroutineContextProvider.IO) {
                 repository.loadMeasure(personId, measureTypeId).collect {
                     withContext(coroutineContextProvider.Main) {
@@ -40,7 +40,7 @@ class ListMeasureFragmentViewModel @Inject constructor(
                     }
                 }
             }
-        }
+//        }
     }
 
     fun refreshMeasuresNetwork() {

@@ -180,5 +180,23 @@ class EditMeasureFragment: BaseFragment<FragmentEditMeasureBinding>() {
                 ActivityCompat.invalidateOptionsMenu(activity)
             }
         })
+        viewModel.goToListMeasure.observe(viewLifecycleOwner, Observer { event ->
+            event.getContentIfNotHandled()?.let { result ->
+                when (result.status) {
+                    Result.Status.LOADING -> {
+                        binding?.progressBar?.visible(true)
+                    }
+                    Result.Status.SUCCESS -> {
+                        binding?.progressBar?.visible(false)
+                        //TODO go to list measures
+                        show("Success!")
+                    }
+                    Result.Status.ERROR -> {
+                        binding?.progressBar?.visible(false)
+                        showError(result.message!!)
+                    }
+                }
+            }
+        })
     }
 }
