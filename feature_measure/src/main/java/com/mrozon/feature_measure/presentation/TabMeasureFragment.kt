@@ -117,6 +117,15 @@ class TabMeasureFragment: BaseFragment<FragmentTabMeasureBinding>() {
                                     .build()
                                 disposables.plus(ImageLoader(requireContext()).enqueue(request))
                             }.attach()
+                            val measureTypeId = requireArguments().getLong("measureTypeId", 0)
+                            if(measureTypeId>0){
+                                for ((index, value) in measureTypes.withIndex()) {
+                                    if (value.id==measureTypeId) {
+                                        binding?.viewpager?.currentItem = index
+                                        break
+                                    }
+                                }
+                            }
                         }
                     }
                     Result.Status.ERROR -> {

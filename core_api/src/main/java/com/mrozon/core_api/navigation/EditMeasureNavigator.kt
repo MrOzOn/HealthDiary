@@ -4,5 +4,5 @@ import androidx.navigation.NavController
 
 interface EditMeasureNavigator {
 
-    fun navigateToListMeasure(navController: NavController)
+    fun navigateToListMeasure(navController: NavController, id: Long, measureTypeId: Long)
 }

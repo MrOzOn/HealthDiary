@@ -142,22 +142,18 @@
         android:label="TabMeasureFragment" >
         <action
             android:id="@+id/action_tabMeasureFragment_to_editMeasureFragment"
-            app:destination="@id/editMeasureFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/listMeasureFragment"
-        android:name="com.mrozon.feature_measure.presentation.ListMeasureFragment"
-        tools:layout="@layout/fragment_list_measure"
-        android:label="ListMeasureFragment" >
-        <action
-            android:id="@+id/action_listMeasureFragment_to_editMeasureFragment"
             app:destination="@id/editMeasureFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/listMeasureFragment"
+        android:name="com.mrozon.feature_measure.presentation.ListMeasureFragment"
+        tools:layout="@layout/fragment_list_measure"
+        android:label="ListMeasureFragment" />
 
     <fragment
         android:id="@+id/editMeasureFragment"
@@ -178,7 +174,7 @@
             app:argType="long" />
         <action
             android:id="@+id/action_editMeasureFragment_to_listMeasureFragment"
-            app:destination="@id/listMeasureFragment"
+            app:destination="@id/tabMeasureFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

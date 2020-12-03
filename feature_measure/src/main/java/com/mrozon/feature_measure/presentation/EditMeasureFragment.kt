@@ -7,10 +7,13 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.MaterialTimePicker.INPUT_MODE_CLOCK
 import com.google.android.material.timepicker.TimeFormat
+import com.mrozon.core_api.navigation.EditMeasureNavigator
+import com.mrozon.core_api.navigation.ListMeasureNavigator
 import com.mrozon.feature_measure.R
 import com.mrozon.feature_measure.databinding.FragmentEditMeasureBinding
 import com.mrozon.feature_measure.di.TabMeasureFragmentComponent
@@ -28,6 +31,9 @@ class EditMeasureFragment: BaseFragment<FragmentEditMeasureBinding>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var navigator: EditMeasureNavigator
 
     private val viewModel by viewModels<EditMeasureFragmentViewModel> { viewModelFactory }
 
@@ -188,8 +194,8 @@ class EditMeasureFragment: BaseFragment<FragmentEditMeasureBinding>() {
                     }
                     Result.Status.SUCCESS -> {
                         binding?.progressBar?.visible(false)
-                        //TODO go to list measures
-                        show("Success!")
+                        navigator.navigateToListMeasure(findNavController(), viewModel.person.value?.id?:0, viewModel.measureType.value?.id?:0)
+
                     }
                     Result.Status.ERROR -> {
                         binding?.progressBar?.visible(false)
