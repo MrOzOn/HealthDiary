@@ -19,4 +19,10 @@ interface MeasureRepository {
 
     fun loadSelectedMeasure(id: Long): Flow<Result<Measure>>
 
+    fun deleteMeasure(id: Long): Flow<Result<Unit>>
+
+    fun addMeasure(measure: Measure): Flow<Result<Unit>>
+
+    fun editMeasure(measure: Measure): Flow<Result<Unit>>
+
 }

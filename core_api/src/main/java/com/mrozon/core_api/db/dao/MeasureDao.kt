@@ -27,4 +27,9 @@ interface MeasureDao {
         insertAllMeasure(measures)
     }
 
+    @Query("DELETE FROM measure_table WHERE measure_id=:id")
+    suspend fun deleteMeasure(id: Long)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMeasure(measureDb: MeasureDb)
 }

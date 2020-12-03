@@ -8,7 +8,10 @@ import com.mrozon.core_api.entity.Person
 import com.mrozon.core_api.mapper.MeasureToMeasureDbMapper
 import com.mrozon.core_api.mapper.MeasureTypeToMeasureTypeDbMapper
 import com.mrozon.core_api.mapper.PersonToPersonDbMapper
+import com.mrozon.core_api.network.model.MeasureRequest
 import com.mrozon.core_api.network.model.toMeasure
+import com.mrozon.core_api.network.model.toPerson
+import com.mrozon.utils.extension.toDateString
 import com.mrozon.utils.network.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -118,6 +121,69 @@ class MeasureRepositoryImpl @Inject constructor(
             }
         }
     }
+
+    override fun deleteMeasure(id: Long): Flow<Result<Unit>> {
+        return flow {
+            emit(Result.loading())
+            val response = dataSource.deleteMeasure(id)
+            if (response.status == Result.Status.SUCCESS) {
+                dao.deleteMeasure(id)
+                emit(Result.success())
+            } else if (response.status == Result.Status.ERROR) {
+                emit(Result.error(response.message!!))
+            }
+        }
+    }
+
+    override fun addMeasure(measure: Measure): Flow<Result<Unit>> {
+        return flow {
+            emit(Result.loading())
+            val observing = dao.getSuspendUser().id
+            val request = MeasureRequest (
+                value1 = measure.value1,
+                value2 = measure.value2,
+                value_added = measure.valueAdded.toDateString(format = "yyyy-MM-dd'T'HH:mm:ss"),
+                comments = measure.comment,
+                type = measure.measureTypeId,
+                patient = measure.personId,
+                observing = observing
+            )
+            val response = dataSource.addMeasure(request)
+            if (response.status == Result.Status.SUCCESS) {
+                val measureDb = mapperMeasure.map(response.data?.toMeasure())
+                dao.insertMeasure(measureDb!!)
+                emit(Result.success())
+            } else if (response.status == Result.Status.ERROR) {
+                emit(Result.error(response.message!!))
+            }
+        }
+    }
+
+    override fun editMeasure(measure: Measure): Flow<Result<Unit>> {
+        return flow {
+            emit(Result.loading())
+            val observing = dao.getSuspendUser().id
+            val request = MeasureRequest (
+                value1 = measure.value1,
+                value2 = measure.value2,
+                value_added = measure.valueAdded.toDateString(format = "yyyy-MM-dd'T'HH:mm:ss"),
+                comments = measure.comment,
+                type = measure.measureTypeId,
+                patient = measure.personId,
+                observing = observing
+            )
+            val response = dataSource.editMeasure(measure.id, request)
+            if (response.status == Result.Status.SUCCESS) {
+                val measureDb = mapperMeasure.map(response.data?.toMeasure())
+                dao.insertMeasure(measureDb!!)
+                emit(Result.success())
+            } else if (response.status == Result.Status.ERROR) {
+                emit(Result.error(response.message!!))
+            }
+        }
+    }
+
+
 
 
 }

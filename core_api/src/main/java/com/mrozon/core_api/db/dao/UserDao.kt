@@ -14,6 +14,9 @@ interface UserDao {
     @Query("SELECT * FROM user_table LIMIT 1")
     fun getLiveUser(): LiveData<UserDb>
 
+    @Query("SELECT * FROM user_table LIMIT 1")
+    suspend fun getSuspendUser(): UserDb
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(userDb: UserDb)
 

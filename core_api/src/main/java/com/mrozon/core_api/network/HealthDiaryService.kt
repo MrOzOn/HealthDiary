@@ -39,17 +39,13 @@ interface HealthDiaryService {
     suspend fun getMeasure(@Query("type") type: Long,
                            @Query("patient") patient: Long): Response<List<MeasureResponse>>
 
-//    @GET("lego/themes/")
-//    suspend fun getThemes(@Query("page") page: Int? = null,
-//                          @Query("page_size") pageSize: Int? = null,
-//                          @Query("ordering") order: String? = null): Response<ResultsResponse<LegoTheme>>
-//
-//    @GET("lego/sets/")
-//    suspend fun getSets(@Query("page") page: Int? = null,
-//                        @Query("page_size") pageSize: Int? = null,
-//                        @Query("theme_id") themeId: Int? = null,
-//                        @Query("ordering") order: String? = null): Response<ResultsResponse<LegoSet>>
-//
-//    @GET("lego/sets/{id}/")
-//    suspend fun getSet(@Path("id") id: String): Response<LegoSet>
+    @DELETE("indicators/{id}/")
+    suspend fun deleteMeasure(@Path("id") id: String): Response<Unit>
+
+    @POST("indicators/")
+    suspend fun addMeasure(@Body body: MeasureRequest): Response<MeasureResponse>
+
+    @PUT("indicators/{id}/")
+    suspend fun editMeasure(@Path("id") id: String,
+                           @Body body: MeasureRequest): Response<MeasureResponse>
 }
