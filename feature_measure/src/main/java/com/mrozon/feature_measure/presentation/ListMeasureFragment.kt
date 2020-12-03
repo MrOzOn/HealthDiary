@@ -132,7 +132,7 @@ class ListMeasureFragment : BaseFragment<FragmentListMeasureBinding>() {
                                     arguments?.let {
                                         val personId = requireArguments().getLong(ARG_PERSON_ID, 0)
                                         val measureTypeId = requireArguments().getLong(ARG_MEASURE_TYPE_ID, 0)
-                                        navigator.navigateToEditMeasure(findNavController(),getString(R.string.add_measure),measure.id, personId, measureTypeId)
+                                        navigator.navigateToEditMeasure(findNavController(),getString(R.string.edit_measure),measure.id, personId, measureTypeId)
                                     }
                                 }
                             })

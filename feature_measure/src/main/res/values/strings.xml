@@ -11,4 +11,5 @@
     <string name="measure_added">Measure added</string>
     <string name="hint_value_added">%s ( in %s)</string>
     <string name="error_value">Incorrect value, needed %s</string>
+    <string name="edit_measure">Edit measure</string>
 </resources>
