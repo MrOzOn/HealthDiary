@@ -49,7 +49,8 @@ class MeasureRepositoryImpl @Inject constructor(
                 val person = mapperPerson.reverseMap(dao.getPerson(personId))!!
                 val measureType = mapperMeasureType.reverseMap(dao.getMeasureType(measureTypeId))!!
                 val measures = mapperMeasure.reverseMap(dao.getMeasures(personId, measureTypeId))
-                emit(Result.success(Triple(person, measureType, measures)))
+
+                emit(Result.success(Triple(person, measureType, measures.sortedByDescending { it.valueAdded })))
 
                 val networkResult = dataSource.getMeasure(personId, measureTypeId)
                 if (networkResult.status == Result.Status.SUCCESS) {

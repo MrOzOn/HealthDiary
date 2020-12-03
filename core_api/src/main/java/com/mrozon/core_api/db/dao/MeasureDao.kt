@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MeasureDao {
 
-    @Query("SELECT * FROM measure_table WHERE measure_person=:personId AND measure_mtype=:measureTypeId ORDER BY measure_value_added DESC LIMIT 100")
+    @Query("SELECT * FROM measure_table WHERE measure_person=:personId AND measure_mtype=:measureTypeId ORDER BY measure_value_added DESC")
     fun getMeasures(personId: Long, measureTypeId: Long): List<MeasureDb>
 
     @Query("SELECT * FROM measure_table WHERE measure_id=:id LIMIT 1")
