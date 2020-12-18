@@ -3,7 +3,10 @@ package com.mrozon.lintrepo
 import com.android.tools.lint.detector.api.*
 import com.android.utils.forEach
 import com.sun.org.apache.xerces.internal.dom.AttrImpl
+import com.sun.org.apache.xerces.internal.dom.AttrNSImpl
+import org.w3c.dom.Attr
 import org.w3c.dom.Element
+import org.w3c.dom.Node
 
 class RawColorDetector: ResourceXmlDetector() {
 
@@ -23,6 +26,13 @@ class RawColorDetector: ResourceXmlDetector() {
 
         )
 
+        val INTERESTED_TAGS = listOf(
+            "color",
+            "background",
+            "background",
+            "tint"
+        )
+
     }
 
     override fun getApplicableElements(): Collection<String>? = XmlScannerConstants.ALL
@@ -32,13 +42,17 @@ class RawColorDetector: ResourceXmlDetector() {
             if(node.hasAttributes()){
                 node.attributes.forEach { item ->
                     val name = (item as AttrImpl).name
-                    if(name.contains("color", true)){
-                        item.nodeValue?.let {
-                            if(item.nodeValue[0] == '#')
-                                context.report(
-                                    ISSUE_RAW_COLOR_RESOURCES,
-                                    element, context.getLocation(item), "Using row color in tags"
-                                )
+                    INTERESTED_TAGS.forEach { tag ->
+                        if (name.contains(tag, true)) {
+                            item.nodeValue?.let { nodeName ->
+                                if (nodeName.startsWith("#"))
+                                    context.report(
+                                        ISSUE_RAW_COLOR_RESOURCES,
+                                        element,
+                                        context.getLocation(item),
+                                        "Using row color in tags"
+                                    )
+                            }
                         }
                     }
                 }
