@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>EmptyDefaultConstructor:BaseViewModel.kt$BaseViewModel$()</ID>
+    <ID>MagicNumber:MyInfoDialog.kt$MyInfoDialog$400</ID>
+    <ID>NewLineAtEndOfFile:BaseDataSource.kt$com.mrozon.utils.base.BaseDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:BaseMapper.kt$com.mrozon.utils.base.BaseMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:Event.kt$com.mrozon.utils.Event.kt</ID>
+    <ID>NewLineAtEndOfFile:FragmentExt.kt$com.mrozon.utils.extension.FragmentExt.kt</ID>
+    <ID>NewLineAtEndOfFile:MyInfoDialog.kt$com.mrozon.utils.base.MyInfoDialog.kt</ID>
+    <ID>NewLineAtEndOfFile:Result.kt$com.mrozon.utils.network.Result.kt</ID>
+    <ID>NewLineAtEndOfFile:TypeExt.kt$com.mrozon.utils.extension.TypeExt.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewExt.kt$com.mrozon.utils.extension.ViewExt.kt</ID>
+    <ID>ReturnCount:BaseDataSource.kt$BaseDataSource$protected suspend fun &lt;T&gt; getResult(call: suspend () -&gt; Response&lt;T&gt;): Result&lt;T&gt;</ID>
+    <ID>TooGenericExceptionCaught:BaseDataSource.kt$BaseDataSource$e: Exception</ID>
+    <ID>TopLevelPropertyNaming:TypeExt.kt$const val defaultFormat = "yyyy-MM-dd"</ID>
+    <ID>UnnecessaryAbstractClass:BaseDataSource.kt$BaseDataSource</ID>
+  </CurrentIssues>
+</SmellBaseline>

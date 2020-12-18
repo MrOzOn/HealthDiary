@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexMethod:EditPersonFragment.kt$EditPersonFragment$@ExperimentalCoroutinesApi @FlowPreview override fun subscribeUi()</ID>
+    <ID>LongMethod:EditPersonFragment.kt$EditPersonFragment$@ExperimentalCoroutinesApi @FlowPreview override fun subscribeUi()</ID>
+    <ID>MagicNumber:EditPersonFragment.kt$EditPersonFragment$2020</ID>
+    <ID>MagicNumber:GenderSwitch.kt$GenderSwitch$2.5</ID>
+    <ID>MagicNumber:GenderSwitch.kt$GenderSwitch$75</ID>
+    <ID>MaxLineLength:EditPersonFragmentViewModel.kt$EditPersonFragmentViewModel : BaseViewModel</ID>
+    <ID>MaxLineLength:EditPersonFragmentViewModel.kt$EditPersonFragmentViewModel$val personEntity = Person(id = id, name = personNameChannel.value, gender = gender, born = personDobChannel.value )</ID>
+    <ID>MaxLineLength:ListPersonAdapter.kt$ListPersonAdapter : ListAdapter</ID>
+    <ID>NestedBlockDepth:GenderSwitch.kt$GenderSwitch$override fun onTouchEvent(event: MotionEvent?): Boolean</ID>
+    <ID>NewLineAtEndOfFile:DaggerViewModelFactory.kt$com.mrozon.feature_person.di.DaggerViewModelFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:EditPersonFragment.kt$com.mrozon.feature_person.presentation.EditPersonFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:EditPersonFragmentComponent.kt$com.mrozon.feature_person.di.EditPersonFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:EditPersonFragmentModule.kt$com.mrozon.feature_person.di.EditPersonFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:EditPersonFragmentViewModel.kt$com.mrozon.feature_person.presentation.EditPersonFragmentViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:GenderSwitch.kt$com.mrozon.feature_person.customview.GenderSwitch.kt</ID>
+    <ID>NewLineAtEndOfFile:ListPersonFragment.kt$com.mrozon.feature_person.presentation.ListPersonFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ListPersonFragmentComponent.kt$com.mrozon.feature_person.di.ListPersonFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:ListPersonFragmentModule.kt$com.mrozon.feature_person.di.ListPersonFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ListPersonFragmentViewModel.kt$com.mrozon.feature_person.presentation.ListPersonFragmentViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonRemoteDataSource.kt$com.mrozon.feature_person.data.PersonRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonRepository.kt$com.mrozon.feature_person.data.PersonRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonRepositoryImpl.kt$com.mrozon.feature_person.data.PersonRepositoryImpl.kt</ID>
+    <ID>PackageNaming:BindingUtils.kt$package com.mrozon.feature_person.presentation</ID>
+    <ID>PackageNaming:DaggerViewModelFactory.kt$package com.mrozon.feature_person.di</ID>
+    <ID>PackageNaming:EditPersonFragment.kt$package com.mrozon.feature_person.presentation</ID>
+    <ID>PackageNaming:EditPersonFragmentComponent.kt$package com.mrozon.feature_person.di</ID>
+    <ID>PackageNaming:EditPersonFragmentModule.kt$package com.mrozon.feature_person.di</ID>
+    <ID>PackageNaming:EditPersonFragmentViewModel.kt$package com.mrozon.feature_person.presentation</ID>
+    <ID>PackageNaming:GenderSwitch.kt$package com.mrozon.feature_person.customview</ID>
+    <ID>PackageNaming:ListPersonAdapter.kt$package com.mrozon.feature_person.presentation</ID>
+    <ID>PackageNaming:ListPersonFragment.kt$package com.mrozon.feature_person.presentation</ID>
+    <ID>PackageNaming:ListPersonFragmentComponent.kt$package com.mrozon.feature_person.di</ID>
+    <ID>PackageNaming:ListPersonFragmentModule.kt$package com.mrozon.feature_person.di</ID>
+    <ID>PackageNaming:ListPersonFragmentViewModel.kt$package com.mrozon.feature_person.presentation</ID>
+    <ID>PackageNaming:PersonRemoteDataSource.kt$package com.mrozon.feature_person.data</ID>
+    <ID>PackageNaming:PersonRepository.kt$package com.mrozon.feature_person.data</ID>
+    <ID>PackageNaming:PersonRepositoryImpl.kt$package com.mrozon.feature_person.data</ID>
+    <ID>TooGenericExceptionCaught:DaggerViewModelFactory.kt$DaggerViewModelFactory$e: Exception</ID>
+    <ID>TooGenericExceptionCaught:PersonRepositoryImpl.kt$PersonRepositoryImpl$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:DaggerViewModelFactory.kt$DaggerViewModelFactory$throw RuntimeException(e)</ID>
+    <ID>VariableNaming:EditPersonFragment.kt$EditPersonFragment$val current_id = arguments?.getLong("current_id", -1)?:-1</ID>
+    <ID>WildcardImport:EditPersonFragment.kt$import android.view.*</ID>
+    <ID>WildcardImport:EditPersonFragment.kt$import com.mrozon.utils.extension.*</ID>
+    <ID>WildcardImport:EditPersonFragmentViewModel.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:ListPersonFragment.kt$import android.view.*</ID>
+    <ID>WildcardImport:PersonRepositoryImpl.kt$import kotlinx.coroutines.flow.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

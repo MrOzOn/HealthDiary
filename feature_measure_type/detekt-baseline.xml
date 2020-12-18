@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>NewLineAtEndOfFile:DaggerViewModelFactory.kt$com.mrozon.feature_measure_type.di.DaggerViewModelFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:ListMeasureTypeFragment.kt$com.mrozon.feature_measure_type.presentation.ListMeasureTypeFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:ListMeasureTypeFragmentComponent.kt$com.mrozon.feature_measure_type.di.ListMeasureTypeFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:ListMeasureTypeFragmentModule.kt$com.mrozon.feature_measure_type.di.ListMeasureTypeFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:ListMeasureTypeFragmentViewModel.kt$com.mrozon.feature_measure_type.presentation.ListMeasureTypeFragmentViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeAdapter.kt$com.mrozon.feature_measure_type.presentation.MeasureTypeAdapter.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeRemoteDataSource.kt$com.mrozon.feature_measure_type.data.MeasureTypeRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeRepository.kt$com.mrozon.feature_measure_type.data.MeasureTypeRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeRepositoryImpl.kt$com.mrozon.feature_measure_type.data.MeasureTypeRepositoryImpl.kt</ID>
+    <ID>PackageNaming:BindingUtils.kt$package com.mrozon.feature_measure_type.presentation</ID>
+    <ID>PackageNaming:DaggerViewModelFactory.kt$package com.mrozon.feature_measure_type.di</ID>
+    <ID>PackageNaming:ListMeasureTypeFragment.kt$package com.mrozon.feature_measure_type.presentation</ID>
+    <ID>PackageNaming:ListMeasureTypeFragmentComponent.kt$package com.mrozon.feature_measure_type.di</ID>
+    <ID>PackageNaming:ListMeasureTypeFragmentModule.kt$package com.mrozon.feature_measure_type.di</ID>
+    <ID>PackageNaming:ListMeasureTypeFragmentViewModel.kt$package com.mrozon.feature_measure_type.presentation</ID>
+    <ID>PackageNaming:MeasureTypeAdapter.kt$package com.mrozon.feature_measure_type.presentation</ID>
+    <ID>PackageNaming:MeasureTypeRemoteDataSource.kt$package com.mrozon.feature_measure_type.data</ID>
+    <ID>PackageNaming:MeasureTypeRepository.kt$package com.mrozon.feature_measure_type.data</ID>
+    <ID>PackageNaming:MeasureTypeRepositoryImpl.kt$package com.mrozon.feature_measure_type.data</ID>
+    <ID>TooGenericExceptionCaught:DaggerViewModelFactory.kt$DaggerViewModelFactory$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:DaggerViewModelFactory.kt$DaggerViewModelFactory$throw RuntimeException(e)</ID>
+    <ID>VariableNaming:ListMeasureTypeFragmentViewModel.kt$ListMeasureTypeFragmentViewModel$private val _measure_types = MutableLiveData&lt;Event&lt;Result&lt;List&lt;MeasureType&gt;&gt;&gt;&gt;()</ID>
+    <ID>VariableNaming:ListMeasureTypeFragmentViewModel.kt$ListMeasureTypeFragmentViewModel$val measure_types: LiveData&lt;Event&lt;Result&lt;List&lt;MeasureType&gt;&gt;&gt;&gt; get() = _measure_types</ID>
+    <ID>WildcardImport:ListMeasureTypeFragment.kt$import android.view.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
