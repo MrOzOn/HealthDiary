@@ -1,6 +1,9 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'gitlab-ci-java8'
+        }
+    }
     stages {
         stage('Init') {
             steps {
@@ -14,52 +17,39 @@ pipeline {
                         url: 'https://github.com/MrOzOn/HealthDiary',
                         credentialsId: 'CRED_FOR_GITHUB'
                         ]]])
-                sh 'docker version'
-            }
-        }
-        stage('Build') {
-            agent {
-                docker {
-                    image 'gitlab-ci-java8'
-                    args '-u root:root'
-                }
-            }
-            // agent { dockerfile true }
-            steps {
-                sh './gradlew assembleDebug'
             }
         }
         stage('Static Analysis') {
-            agent {
-                docker {
-                    image 'gitlab-ci-java8'
-                    args '-u root:root'
+            failFast true
+            parallel {
+                stage('lint') {
+                    steps {
+                        echo './gradlew lintDebug'
+                    }
                 }
-            }
-            steps {
-                sh './gradlew detekt'
-                sh './gradlew lintDebug'
+                stage('detekt') {
+                    steps {
+                        sh './gradlew detekt'
+                    }
+                }
             }
         }
         stage('Test') {
-            agent {
-                docker {
-                    image 'gitlab-ci-java8'
-                    args '-u root:root'
+            failFast true
+            parallel {
+                stage('default') {
+                    steps {
+                        echo './gradlew testDebugUnitTest'
+                    }
                 }
-            }
-            steps {
-                sh './gradlew testDebugUnitTest'
-                sh './gradlew jacocoTestDebugUnitTestReport'
+                stage('jacoco') {
+                    steps {
+                        sh './gradlew jacocoTestDebugUnitTestReport'
+                    }
+                }
             }
         }
         stage('Signing APK') {
-            agent {
-                docker {
-                    image 'gitlab-ci-java8'
-                    args '-u root:root'
-                }
-            }
             steps {
                 prepareProperties()
                 sh './gradlew assembleRelease'
