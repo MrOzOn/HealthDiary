@@ -1,5 +1,6 @@
 package com.mrozon.utils.base
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
-abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
+abstract class BaseFragment<T : ViewDataBinding>: Fragment()
 {
 //    ViewTreeObserver.OnGlobalLayoutListener {
 
@@ -68,6 +69,7 @@ abstract class BaseFragment<T : ViewDataBinding>: Fragment()//,
             .show(requireActivity().supportFragmentManager, MyInfoDialog.TAG)
     }
 
+    @SuppressLint("WrongConstant")
     fun show(message: String) {
         val snackbar = Snackbar.make(binding?.root!!,message,LENGTH_LONG)
         snackbar.show()

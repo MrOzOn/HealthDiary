@@ -1,0 +1,105 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ConstructorParameterNaming:LoginResponse.kt$LoginResponse$val first_name: String</ID>
+    <ID>ConstructorParameterNaming:LoginResponse.kt$LoginResponse$val last_name: String</ID>
+    <ID>ConstructorParameterNaming:LoginResponse.kt$LoginResponse$val user_id: Int</ID>
+    <ID>ConstructorParameterNaming:PersonResponse.kt$PersonResponse$val created_date: String</ID>
+    <ID>ConstructorParameterNaming:RegisterRequest.kt$RegisterRequest$val first_name: String</ID>
+    <ID>ConstructorParameterNaming:RegisterRequest.kt$RegisterRequest$val last_name: String</ID>
+    <ID>ConstructorParameterNaming:RegisterResponse.kt$RegisterResponse$val first_name: String</ID>
+    <ID>ConstructorParameterNaming:RegisterResponse.kt$RegisterResponse$val last_login: Any</ID>
+    <ID>ConstructorParameterNaming:RegisterResponse.kt$RegisterResponse$val last_name: String</ID>
+    <ID>ConstructorParameterNaming:SharePersonRequest.kt$SharePersonRequest$val patient_id: Int</ID>
+    <ID>NewLineAtEndOfFile:AppProvider.kt$com.mrozon.core_api.providers.AppProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:AppWithFacade.kt$com.mrozon.core_api.providers.AppWithFacade.kt</ID>
+    <ID>NewLineAtEndOfFile:BlobTransmogrifier.kt$com.mrozon.core_api.db.BlobTransmogrifier.kt</ID>
+    <ID>NewLineAtEndOfFile:CoroutineContextProvider.kt$com.mrozon.core_api.providers.CoroutineContextProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:DatabaseProvider.kt$com.mrozon.core_api.db.DatabaseProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:EditPersonNavigator.kt$com.mrozon.core_api.navigation.EditPersonNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:HealthDiaryDao.kt$com.mrozon.core_api.db.HealthDiaryDao.kt</ID>
+    <ID>NewLineAtEndOfFile:HealthDiaryDatabaseContract.kt$com.mrozon.core_api.db.HealthDiaryDatabaseContract.kt</ID>
+    <ID>NewLineAtEndOfFile:HealthDiaryService.kt$com.mrozon.core_api.network.HealthDiaryService.kt</ID>
+    <ID>NewLineAtEndOfFile:ListPersonNavigator.kt$com.mrozon.core_api.navigation.ListPersonNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginNavigator.kt$com.mrozon.core_api.navigation.LoginNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginRequest.kt$com.mrozon.core_api.network.model.LoginRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginResponse.kt$com.mrozon.core_api.network.model.LoginResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureType.kt$com.mrozon.core_api.entity.MeasureType.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeDao.kt$com.mrozon.core_api.db.dao.MeasureTypeDao.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeDb.kt$com.mrozon.core_api.db.model.MeasureTypeDb.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeResponse.kt$com.mrozon.core_api.network.model.MeasureTypeResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:MeasureTypeToMeasureTypeDbMapper.kt$com.mrozon.core_api.mapper.MeasureTypeToMeasureTypeDbMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:NavigatorProvider.kt$com.mrozon.core_api.navigation.NavigatorProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkProvider.kt$com.mrozon.core_api.network.NetworkProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:Person.kt$com.mrozon.core_api.entity.Person.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonDao.kt$com.mrozon.core_api.db.dao.PersonDao.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonDb.kt$com.mrozon.core_api.db.model.PersonDb.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonRequest.kt$com.mrozon.core_api.network.model.PersonRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonResponse.kt$com.mrozon.core_api.network.model.PersonResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:PersonToPersonDbMapper.kt$com.mrozon.core_api.mapper.PersonToPersonDbMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:ProvidersFacade.kt$com.mrozon.core_api.providers.ProvidersFacade.kt</ID>
+    <ID>NewLineAtEndOfFile:RegisterRequest.kt$com.mrozon.core_api.network.model.RegisterRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:RegisterResponse.kt$com.mrozon.core_api.network.model.RegisterResponse.kt</ID>
+    <ID>NewLineAtEndOfFile:RegistrationNavigator.kt$com.mrozon.core_api.navigation.RegistrationNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:SecurityTokenProvider.kt$com.mrozon.core_api.security.SecurityTokenProvider.kt</ID>
+    <ID>NewLineAtEndOfFile:SecurityTokenService.kt$com.mrozon.core_api.security.SecurityTokenService.kt</ID>
+    <ID>NewLineAtEndOfFile:SharePersonRequest.kt$com.mrozon.core_api.network.model.SharePersonRequest.kt</ID>
+    <ID>NewLineAtEndOfFile:SingleSourceOfTruthStrategy.kt$com.mrozon.core_api.SingleSourceOfTruthStrategy.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashNavigator.kt$com.mrozon.core_api.navigation.SplashNavigator.kt</ID>
+    <ID>NewLineAtEndOfFile:User.kt$com.mrozon.core_api.entity.User.kt</ID>
+    <ID>NewLineAtEndOfFile:UserDao.kt$com.mrozon.core_api.db.dao.UserDao.kt</ID>
+    <ID>NewLineAtEndOfFile:UserDb.kt$com.mrozon.core_api.db.model.UserDb.kt</ID>
+    <ID>NewLineAtEndOfFile:UserToUserDbMapper.kt$com.mrozon.core_api.mapper.UserToUserDbMapper.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewModelKey.kt$com.mrozon.core_api.viewmodel.ViewModelKey.kt</ID>
+    <ID>NewLineAtEndOfFile:ViewModelsFactoryProvider.kt$com.mrozon.core_api.viewmodel.ViewModelsFactoryProvider.kt</ID>
+    <ID>PackageNaming:AppProvider.kt$package com.mrozon.core_api.providers</ID>
+    <ID>PackageNaming:AppWithFacade.kt$package com.mrozon.core_api.providers</ID>
+    <ID>PackageNaming:BlobTransmogrifier.kt$package com.mrozon.core_api.db</ID>
+    <ID>PackageNaming:CoroutineContextProvider.kt$package com.mrozon.core_api.providers</ID>
+    <ID>PackageNaming:DatabaseProvider.kt$package com.mrozon.core_api.db</ID>
+    <ID>PackageNaming:EditPersonNavigator.kt$package com.mrozon.core_api.navigation</ID>
+    <ID>PackageNaming:HealthDiaryDao.kt$package com.mrozon.core_api.db</ID>
+    <ID>PackageNaming:HealthDiaryDatabaseContract.kt$package com.mrozon.core_api.db</ID>
+    <ID>PackageNaming:HealthDiaryService.kt$package com.mrozon.core_api.network</ID>
+    <ID>PackageNaming:ListPersonNavigator.kt$package com.mrozon.core_api.navigation</ID>
+    <ID>PackageNaming:LoginNavigator.kt$package com.mrozon.core_api.navigation</ID>
+    <ID>PackageNaming:LoginRequest.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:LoginResponse.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:MeasureType.kt$package com.mrozon.core_api.entity</ID>
+    <ID>PackageNaming:MeasureTypeDao.kt$package com.mrozon.core_api.db.dao</ID>
+    <ID>PackageNaming:MeasureTypeDb.kt$package com.mrozon.core_api.db.model</ID>
+    <ID>PackageNaming:MeasureTypeResponse.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:MeasureTypeToMeasureTypeDbMapper.kt$package com.mrozon.core_api.mapper</ID>
+    <ID>PackageNaming:NavigatorProvider.kt$package com.mrozon.core_api.navigation</ID>
+    <ID>PackageNaming:NetworkProvider.kt$package com.mrozon.core_api.network</ID>
+    <ID>PackageNaming:Person.kt$package com.mrozon.core_api.entity</ID>
+    <ID>PackageNaming:PersonDao.kt$package com.mrozon.core_api.db.dao</ID>
+    <ID>PackageNaming:PersonDb.kt$package com.mrozon.core_api.db.model</ID>
+    <ID>PackageNaming:PersonRequest.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:PersonResponse.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:PersonToPersonDbMapper.kt$package com.mrozon.core_api.mapper</ID>
+    <ID>PackageNaming:ProvidersFacade.kt$package com.mrozon.core_api.providers</ID>
+    <ID>PackageNaming:RegisterRequest.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:RegisterResponse.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:RegistrationNavigator.kt$package com.mrozon.core_api.navigation</ID>
+    <ID>PackageNaming:SecurityTokenProvider.kt$package com.mrozon.core_api.security</ID>
+    <ID>PackageNaming:SecurityTokenService.kt$package com.mrozon.core_api.security</ID>
+    <ID>PackageNaming:SharePersonRequest.kt$package com.mrozon.core_api.network.model</ID>
+    <ID>PackageNaming:SingleSourceOfTruthStrategy.kt$package com.mrozon.core_api</ID>
+    <ID>PackageNaming:SplashNavigator.kt$package com.mrozon.core_api.navigation</ID>
+    <ID>PackageNaming:User.kt$package com.mrozon.core_api.entity</ID>
+    <ID>PackageNaming:UserDao.kt$package com.mrozon.core_api.db.dao</ID>
+    <ID>PackageNaming:UserDb.kt$package com.mrozon.core_api.db.model</ID>
+    <ID>PackageNaming:UserToUserDbMapper.kt$package com.mrozon.core_api.mapper</ID>
+    <ID>PackageNaming:ViewModelKey.kt$package com.mrozon.core_api.viewmodel</ID>
+    <ID>PackageNaming:ViewModelsFactoryProvider.kt$package com.mrozon.core_api.viewmodel</ID>
+    <ID>VariableNaming:CoroutineContextProvider.kt$CoroutineContextProvider$open val IO: CoroutineContext by lazy { Dispatchers.IO }</ID>
+    <ID>VariableNaming:CoroutineContextProvider.kt$CoroutineContextProvider$open val Main: CoroutineContext by lazy { Dispatchers.Main }</ID>
+    <ID>WildcardImport:HealthDiaryService.kt$import com.mrozon.core_api.network.model.*</ID>
+    <ID>WildcardImport:HealthDiaryService.kt$import retrofit2.http.*</ID>
+    <ID>WildcardImport:MeasureTypeDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:PersonDao.kt$import androidx.room.*</ID>
+    <ID>WildcardImport:UserDao.kt$import androidx.room.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

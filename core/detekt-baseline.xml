@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>NewLineAtEndOfFile:CoreProvidersFactory.kt$com.mrozon.core.CoreProvidersFactory.kt</ID>
+  </CurrentIssues>
+</SmellBaseline>

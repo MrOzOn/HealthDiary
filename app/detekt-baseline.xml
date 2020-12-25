@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>MaxLineLength:FacadeComponent.kt$FacadeComponent.Companion$DaggerFacadeComponent.builder() .appProvider(AppComponent.create(application)) .databaseProvider(CoreProvidersFactory.createDatabaseBuilder(AppComponent.create(application))) .networkProvider(CoreProvidersFactory.createNetworkBuilder(AppComponent.create(application))) .securityTokenProvider(CoreProvidersFactory.createSecurityTokenBuilder(AppComponent.create(application)))</ID>
+    <ID>TooGenericExceptionCaught:DaggerViewModelFactory.kt$DaggerViewModelFactory$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:DaggerViewModelFactory.kt$DaggerViewModelFactory$throw RuntimeException(e)</ID>
+    <ID>WildcardImport:NavigationModule.kt$import com.mrozon.core_api.navigation.*</ID>
+    <ID>WildcardImport:NavigationModule.kt$import com.mrozon.healthdiary.navigation.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

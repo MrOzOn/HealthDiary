@@ -1,0 +1,2 @@
+-keep class com.mrozon.core_api.entity.* { *; }
+-keep class com.mrozon.core_api.network.model.* { *; }

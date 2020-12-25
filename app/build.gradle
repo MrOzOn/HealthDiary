@@ -17,10 +17,25 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            prepareProperties()
+            storeFile configStoreFile
+            storePassword configStorePassword
+            keyAlias configKeyAlias
+            keyPassword configKeyPassword
+        }
+    }
+
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        staging {
+            minifyEnabled true
+            signingConfig debug.signingConfig
         }
     }
     dataBinding {
@@ -33,13 +48,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-
+    lintOptions {
+        ignoreTestSources true
+        abortOnError true
+        xmlReport false
+        baselineFile file("$project.rootDir/config/baseline.xml")
+        checkDependencies true
+    }
 }
 
 apply from: "$project.rootDir/scripts/deps_versions.gradle"
 
 dependencies {
+    lintChecks project(':lint_repo')
     api project(':core_api')
     implementation project(':core')
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
@@ -55,7 +76,7 @@ dependencies {
     implementation material
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.core:core-ktx:1.3.1'
     testImplementation 'junit:junit:4.12'
@@ -66,4 +87,22 @@ dependencies {
     implementation project(':feature_auth')
     implementation project(':feature_person')
     implementation project(':feature_measure_type')
+}
+
+def prepareProperties() {
+    Properties properties = new Properties()
+    String filePath = ""
+    if (System.getenv("HUDSON_HOME")!=null) {
+        filePath = System.getenv("HUDSON_HOME") + "/.keystore/keystore.properties"
+    } else {
+        filePath = System.getenv("HOME") + "/.keystore/keystore.properties"
+    }
+    System.console().println(filePath)
+    file(filePath).with { fname ->
+        properties.load(fname.newDataInputStream())
+        ext.configStoreFile = file(fname.getParent() + "/" + properties['keystore'])
+        ext.configStorePassword = properties['keystore.password']
+        ext.configKeyAlias = properties['keyAlias']
+        ext.configKeyPassword = properties['keyPassword']
+    }
 }
