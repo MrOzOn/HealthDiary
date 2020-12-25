@@ -90,6 +90,13 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_listPersonFragment_to_tabMeasureFragment"
+            app:destination="@id/tabMeasureFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -127,5 +134,53 @@
         app:exitAnim="@anim/slide_out_left"
         app:popEnterAnim="@anim/slide_in_left"
         app:popExitAnim="@anim/slide_out_right"/>
+
+    <fragment
+        android:id="@+id/tabMeasureFragment"
+        android:name="com.mrozon.feature_measure.presentation.TabMeasureFragment"
+        tools:layout="@layout/fragment_tab_measure"
+        android:label="TabMeasureFragment" >
+        <action
+            android:id="@+id/action_tabMeasureFragment_to_editMeasureFragment"
+            app:destination="@id/editMeasureFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/listMeasureFragment"
+        android:name="com.mrozon.feature_measure.presentation.ListMeasureFragment"
+        tools:layout="@layout/fragment_list_measure"
+        android:label="ListMeasureFragment" />
+
+    <fragment
+        android:id="@+id/editMeasureFragment"
+        android:name="com.mrozon.feature_measure.presentation.EditMeasureFragment"
+        tools:layout="@layout/fragment_edit_measure"
+        android:label="{title}" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="long" />
+        <argument
+            android:name="personId"
+            app:argType="long" />
+        <argument
+            android:name="measureTypeId"
+            app:argType="long" />
+        <action
+            android:id="@+id/action_editMeasureFragment_to_listMeasureFragment"
+            app:destination="@id/tabMeasureFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

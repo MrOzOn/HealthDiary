@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="measure"
+            type="com.mrozon.core_api.entity.Measure" />
+        <variable
+            name="measureType"
+            type="com.mrozon.core_api.entity.MeasureType" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutMeasure">
+
+        <ImageView
+            android:id="@+id/ivTimeOfDay"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/ivTimeOfDay"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:time_of_day="@{measure}"
+            app:srcCompat="@drawable/ic_day" />
+
+
+        <ImageView
+            android:id="@+id/ivMeasureComment"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:contentDescription="@string/ivMeasureComment"
+            app:layout_constraintBottom_toTopOf="@+id/tvMeasureValue"
+            app:layout_constraintStart_toEndOf="@+id/ivTimeOfDay"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit" />
+
+        <TextView
+            android:id="@+id/tvMeasureValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            tools:text="120/70 мм рт.ст."
+            app:measure="@{measure}"
+            app:measure_type="@{measureType}"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivTimeOfDay"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnknownId" />
+
+        <TextView
+            android:id="@+id/tvMeasureDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center"
+            app:added_date="@{measure}"
+            android:textAlignment="center"
+            android:textColor="#99000000"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvMeasureValue"
+            tools:text="27 мар. 17:40" />
+
+        <TextView
+            android:id="@+id/tvMeasureComment"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@{measure.comment}"
+            tools:text="Это комментарий"
+            app:layout_constraintBottom_toTopOf="@+id/tvMeasureValue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivMeasureComment" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

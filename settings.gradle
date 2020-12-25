@@ -1,4 +1,5 @@
 include ':lint_repo'
+include ':feature_measure'
 include ':feature_measure_type'
 include ':feature_person'
 include ':feature_auth'

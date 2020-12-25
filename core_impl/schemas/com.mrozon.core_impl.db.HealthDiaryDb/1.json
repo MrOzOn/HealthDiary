@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "1fbfe00709ec7129d957473024f00645",
+    "identityHash": "2079a1d49cc2a92c04780e48139987df",
     "entities": [
       {
         "tableName": "user_table",
@@ -135,12 +135,68 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "measure_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`measure_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `measure_value1` TEXT NOT NULL, `measure_value2` TEXT NOT NULL, `measure_value_added` INTEGER NOT NULL, `measure_comment` TEXT NOT NULL, `measure_person` INTEGER NOT NULL, `measure_mtype` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "measure_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value1",
+            "columnName": "measure_value1",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value2",
+            "columnName": "measure_value2",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "added",
+            "columnName": "measure_value_added",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "comment",
+            "columnName": "measure_comment",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "personID",
+            "columnName": "measure_person",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "measureTypeId",
+            "columnName": "measure_mtype",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "measure_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1fbfe00709ec7129d957473024f00645')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '2079a1d49cc2a92c04780e48139987df')"
     ]
   }
 }

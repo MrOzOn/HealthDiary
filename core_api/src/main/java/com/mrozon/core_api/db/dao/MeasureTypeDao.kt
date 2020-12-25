@@ -23,4 +23,10 @@ interface MeasureTypeDao {
     @Query("SELECT * FROM measure_type_table")
     fun getMeasureTypes(): Flow<List<MeasureTypeDb>>
 
+    @Query("SELECT * FROM measure_type_table")
+    fun getListMeasureTypes(): List<MeasureTypeDb>
+
+    @Query("SELECT * FROM measure_type_table WHERE measure_type_id=:id LIMIT 1")
+    fun getMeasureType(id: Long): MeasureTypeDb
+
 }

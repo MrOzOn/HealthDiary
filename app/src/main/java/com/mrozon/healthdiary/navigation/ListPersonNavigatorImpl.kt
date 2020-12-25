@@ -14,4 +14,9 @@ class ListPersonNavigatorImpl @Inject constructor()
         val bundle = bundleOf("title" to title, "id" to id)
         navController.navigate(R.id.action_listPersonFragment_to_editPersonFragment, bundle)
     }
+
+    override fun navigateToMeasureForPerson(navController: NavController, id: Long) {
+        val bundle = bundleOf( "id" to id)
+        navController.navigate(R.id.action_listPersonFragment_to_tabMeasureFragment, bundle)
+    }
 }

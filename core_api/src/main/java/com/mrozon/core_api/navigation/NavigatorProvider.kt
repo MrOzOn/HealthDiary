@@ -6,4 +6,6 @@ interface NavigatorProvider {
     fun provideRegistrationNavigator(): RegistrationNavigator
     fun provideListPersonNavigator(): ListPersonNavigator
     fun provideEditPersonNavigator(): EditPersonNavigator
+    fun provideListMeasureNavigator(): ListMeasureNavigator
+    fun provideEditMeasureNavigator(): EditMeasureNavigator
 }
