@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>NewLineAtEndOfFile:DaggerViewModelFactory.kt$com.mrozon.feature_splash.di.DaggerViewModelFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:PreloadDataRemoteDataSource.kt$com.mrozon.feature_splash.data.PreloadDataRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:PreloadDataRepository.kt$com.mrozon.feature_splash.data.PreloadDataRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:PreloadDataRepositoryImp.kt$com.mrozon.feature_splash.data.PreloadDataRepositoryImp.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashFragmentComponent.kt$com.mrozon.feature_splash.di.SplashFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashFragmentModule.kt$com.mrozon.feature_splash.di.SplashFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:SplashFragmentViewModel.kt$com.mrozon.feature_splash.presentation.SplashFragmentViewModel.kt</ID>
+    <ID>PackageNaming:DaggerViewModelFactory.kt$package com.mrozon.feature_splash.di</ID>
+    <ID>PackageNaming:PreloadDataRemoteDataSource.kt$package com.mrozon.feature_splash.data</ID>
+    <ID>PackageNaming:PreloadDataRepository.kt$package com.mrozon.feature_splash.data</ID>
+    <ID>PackageNaming:PreloadDataRepositoryImp.kt$package com.mrozon.feature_splash.data</ID>
+    <ID>PackageNaming:SplashFragment.kt$package com.mrozon.feature_splash.presentation</ID>
+    <ID>PackageNaming:SplashFragmentComponent.kt$package com.mrozon.feature_splash.di</ID>
+    <ID>PackageNaming:SplashFragmentModule.kt$package com.mrozon.feature_splash.di</ID>
+    <ID>PackageNaming:SplashFragmentViewModel.kt$package com.mrozon.feature_splash.presentation</ID>
+    <ID>TooGenericExceptionCaught:DaggerViewModelFactory.kt$DaggerViewModelFactory$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:DaggerViewModelFactory.kt$DaggerViewModelFactory$throw RuntimeException(e)</ID>
+  </CurrentIssues>
+</SmellBaseline>

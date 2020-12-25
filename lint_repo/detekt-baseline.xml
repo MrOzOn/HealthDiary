@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>NestedBlockDepth:RawColorDetector.kt$RawColorDetector$override fun visitElement(context: XmlContext, element: Element)</ID>
+    <ID>NewLineAtEndOfFile:CustomLintRegistry.kt$com.mrozon.lintrepo.CustomLintRegistry.kt</ID>
+    <ID>NewLineAtEndOfFile:RawColorDetector.kt$com.mrozon.lintrepo.RawColorDetector.kt</ID>
+    <ID>NewLineAtEndOfFile:VerySimpleNamingVariablesDetector.kt$com.mrozon.lintrepo.VerySimpleNamingVariablesDetector.kt</ID>
+    <ID>WildcardImport:RawColorDetector.kt$import com.android.tools.lint.detector.api.*</ID>
+    <ID>WildcardImport:VerySimpleNamingVariablesDetector.kt$import com.android.tools.lint.detector.api.*</ID>
+    <ID>WildcardImport:VerySimpleNamingVariablesDetector.kt$import org.jetbrains.uast.*</ID>
+  </CurrentIssues>
+</SmellBaseline>

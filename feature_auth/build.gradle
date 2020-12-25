@@ -24,8 +24,13 @@ android {
             testCoverageEnabled true
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        staging {
+            initWith debug
+            minifyEnabled true
+            signingConfig debug.signingConfig
         }
     }
     dataBinding {
@@ -38,6 +43,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    lintOptions {
+        disable "NullSafeMutableLiveData"
+    }
+
 }
 
 apply from: "$project.rootDir/scripts/deps_versions.gradle"

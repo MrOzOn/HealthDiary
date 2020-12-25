@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>NewLineAtEndOfFile:DatabaseComponent.kt$com.mrozon.core_impl.db.DatabaseComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:DatabaseModule.kt$com.mrozon.core_impl.db.DatabaseModule.kt</ID>
+    <ID>NewLineAtEndOfFile:HealthDiaryDb.kt$com.mrozon.core_impl.db.HealthDiaryDb.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkComponent.kt$com.mrozon.core_impl.network.NetworkComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:NetworkModule.kt$com.mrozon.core_impl.network.NetworkModule.kt</ID>
+    <ID>NewLineAtEndOfFile:SecurityTokenComponent.kt$com.mrozon.core_impl.crypto.SecurityTokenComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:SecurityTokenModule.kt$com.mrozon.core_impl.crypto.SecurityTokenModule.kt</ID>
+    <ID>NewLineAtEndOfFile:SecurityTokenServiceImpl.kt$com.mrozon.core_impl.crypto.SecurityTokenServiceImpl.kt</ID>
+    <ID>PackageNaming:DatabaseComponent.kt$package com.mrozon.core_impl.db</ID>
+    <ID>PackageNaming:DatabaseModule.kt$package com.mrozon.core_impl.db</ID>
+    <ID>PackageNaming:HealthDiaryDb.kt$package com.mrozon.core_impl.db</ID>
+    <ID>PackageNaming:NetworkComponent.kt$package com.mrozon.core_impl.network</ID>
+    <ID>PackageNaming:NetworkModule.kt$package com.mrozon.core_impl.network</ID>
+    <ID>PackageNaming:SecurityTokenComponent.kt$package com.mrozon.core_impl.crypto</ID>
+    <ID>PackageNaming:SecurityTokenModule.kt$package com.mrozon.core_impl.crypto</ID>
+    <ID>PackageNaming:SecurityTokenServiceImpl.kt$package com.mrozon.core_impl.crypto</ID>
+  </CurrentIssues>
+</SmellBaseline>

@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>ComplexMethod:RegistrationFragment.kt$RegistrationFragment$@ExperimentalCoroutinesApi @FlowPreview override fun subscribeUi()</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$RegistrationFragmentViewModel.&lt;no name provided&gt;$3</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$RegistrationFragmentViewModel.&lt;no name provided&gt;$4</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$ValidateDataError.FIRST_NAME_EMPTY$40</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$ValidateDataError.INCORRECT_EMAIL$10</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$ValidateDataError.LAST_NAME_EMPTY$50</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$ValidateDataError.PASSWORD_AGAIN_EMPTY$21</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$ValidateDataError.PASSWORD_EMPTY$20</ID>
+    <ID>MagicNumber:RegistrationFragmentViewModel.kt$ValidateDataError.PASSWORD_NOT_EQUAL$30</ID>
+    <ID>MaxLineLength:RegistrationFragmentViewModel.kt$RegistrationFragmentViewModel$val user = User(email = emailChannel.value, firstname = firstNameChannel.value, lastname = lastNameChannel.value)</ID>
+    <ID>NewLineAtEndOfFile:DaggerViewModelFactory.kt$com.mrozon.feature_auth.di.DaggerViewModelFactory.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginFragment.kt$com.mrozon.feature_auth.presentation.LoginFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginFragmentComponent.kt$com.mrozon.feature_auth.di.LoginFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginFragmentModule.kt$com.mrozon.feature_auth.di.LoginFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:LoginFragmentViewModel.kt$com.mrozon.feature_auth.presentation.LoginFragmentViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:RegistrationFragment.kt$com.mrozon.feature_auth.presentation.RegistrationFragment.kt</ID>
+    <ID>NewLineAtEndOfFile:RegistrationFragmentComponent.kt$com.mrozon.feature_auth.di.RegistrationFragmentComponent.kt</ID>
+    <ID>NewLineAtEndOfFile:RegistrationFragmentModule.kt$com.mrozon.feature_auth.di.RegistrationFragmentModule.kt</ID>
+    <ID>NewLineAtEndOfFile:RegistrationFragmentViewModel.kt$com.mrozon.feature_auth.presentation.RegistrationFragmentViewModel.kt</ID>
+    <ID>NewLineAtEndOfFile:UserAuthRemoteDataSource.kt$com.mrozon.feature_auth.data.UserAuthRemoteDataSource.kt</ID>
+    <ID>NewLineAtEndOfFile:UserAuthRepository.kt$com.mrozon.feature_auth.data.UserAuthRepository.kt</ID>
+    <ID>NewLineAtEndOfFile:UserAuthRepositoryImpl.kt$com.mrozon.feature_auth.data.UserAuthRepositoryImpl.kt</ID>
+    <ID>PackageNaming:DaggerViewModelFactory.kt$package com.mrozon.feature_auth.di</ID>
+    <ID>PackageNaming:LoginFragment.kt$package com.mrozon.feature_auth.presentation</ID>
+    <ID>PackageNaming:LoginFragmentComponent.kt$package com.mrozon.feature_auth.di</ID>
+    <ID>PackageNaming:LoginFragmentModule.kt$package com.mrozon.feature_auth.di</ID>
+    <ID>PackageNaming:LoginFragmentViewModel.kt$package com.mrozon.feature_auth.presentation</ID>
+    <ID>PackageNaming:RegistrationFragment.kt$package com.mrozon.feature_auth.presentation</ID>
+    <ID>PackageNaming:RegistrationFragmentComponent.kt$package com.mrozon.feature_auth.di</ID>
+    <ID>PackageNaming:RegistrationFragmentModule.kt$package com.mrozon.feature_auth.di</ID>
+    <ID>PackageNaming:RegistrationFragmentViewModel.kt$package com.mrozon.feature_auth.presentation</ID>
+    <ID>PackageNaming:UserAuthRemoteDataSource.kt$package com.mrozon.feature_auth.data</ID>
+    <ID>PackageNaming:UserAuthRepository.kt$package com.mrozon.feature_auth.data</ID>
+    <ID>PackageNaming:UserAuthRepositoryImpl.kt$package com.mrozon.feature_auth.data</ID>
+    <ID>TooGenericExceptionCaught:DaggerViewModelFactory.kt$DaggerViewModelFactory$e: Exception</ID>
+    <ID>TooGenericExceptionThrown:DaggerViewModelFactory.kt$DaggerViewModelFactory$throw RuntimeException(e)</ID>
+    <ID>WildcardImport:LoginFragmentViewModel.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:RegistrationFragmentViewModel.kt$import kotlinx.coroutines.*</ID>
+    <ID>WildcardImport:UserAuthRepositoryImpl.kt$import com.mrozon.core_api.network.model.*</ID>
+  </CurrentIssues>
+</SmellBaseline>
