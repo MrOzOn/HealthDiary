@@ -3,7 +3,8 @@ package com.mrozon.utils.base
 import retrofit2.Response
 import timber.log.Timber
 import com.mrozon.utils.network.Result
-import org.json.JSONException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
 abstract class BaseDataSource {
@@ -13,25 +14,24 @@ abstract class BaseDataSource {
             val response = call()
             if (response.isSuccessful) {
                 val body = response.body()
-                if (body != null)
-                    return Result.success(body)
+                return if (body != null)
+                    Result.success(body)
                 else
-                    return Result.success()
+                    Result.success()
             }
             var errMessage = response.message()
             val errorBody= response.errorBody()
-            val textErrorBode = errorBody?.string()?:""
+            val textErrorBode = withContext(Dispatchers.IO) { errorBody?.string()?:"" }
             if(textErrorBode.startsWith("[")) {
                 errMessage = textErrorBode.trim('[',']').trim('"')
             }
             else {
                 val jObjError = JSONObject(textErrorBode)
                 if (jObjError.length() > 0) {
-                    val key = jObjError.names().get(0).toString()
+                    val key = jObjError.names()?.get(0).toString()
                     errMessage = jObjError[key].toString().trim('[', ']')
                 }
             }
-//            return error(" ${response.code()} $errMessage")
             return error(errMessage)
         } catch (e: Exception) {
             return error(e.message ?: e.toString())
@@ -41,7 +41,6 @@ abstract class BaseDataSource {
     private fun <T> error(message: String): Result<T> {
         Timber.e(message)
         return Result.error("Network error:\n $message")
-//        return Result.error("Network call has failed for a following reason:\n $message")
     }
 
 }
