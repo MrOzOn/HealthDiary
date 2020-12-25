@@ -35,18 +35,9 @@ pipeline {
             }
         }
         stage('Test') {
-            failFast true
-            parallel {
-                stage('default') {
-                    steps {
-                        echo './gradlew testDebugUnitTest'
-                    }
-                }
-                stage('jacoco') {
-                    steps {
-                        sh './gradlew jacocoTestDebugUnitTestReport'
-                    }
-                }
+            steps {
+                sh './gradlew testDebugUnitTest'
+                sh './gradlew jacocoTestDebugUnitTestReport'
             }
         }
         stage('Signing APK') {
