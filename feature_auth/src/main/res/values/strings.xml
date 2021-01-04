@@ -1,5 +1,5 @@
 <resources>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="etUsername">Type Your e-mail</string>
     <string name="etUserPassword">Type Your password</string>
     <string name="btnLogin">Login</string>
@@ -11,5 +11,5 @@
     <string name="equals_psw">passwords must match</string>
     <string name="uncorrect_email">uncorrect e-mail</string>
     <string name="empty_field">Empty filed</string>
-    <string name="userRegistered">Success! User registered\nNow login</string>
+    <string name="userRegistered">Success! User registered Now login</string>
 </resources>

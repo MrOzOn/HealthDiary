@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ivGender">Пол</string>
+    <string name="add_person">Добавить профиль</string>
+    <string name="hint_person_name">Введите название профиля</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="etBorn">Введите дату рождения</string>
+    <string name="tvDOB">Дата рождения</string>
+    <string name="edit_person">Редактировать профиль</string>
+    <string name="delete_person">Удалить профиль</string>
+    <string name="sharePersonToUser">Дать доступ к профилю другому пользователю</string>
+    <string name="dialog_share_txt">Вы хотите дать доступ к этому профилю?</string>
+    <string name="error_empty_string">Пустое поле</string>
+    <string name="error_invalid_email">Некорректный формат имени пользователя (e-mail)</string>
+    <string name="share_done">Готово</string>
+    <string name="confirm_exit">Нажмите еще раз НАЗАД чтобы выйти</string>
+    <string name="refresh">Обновить</string>
+</resources>

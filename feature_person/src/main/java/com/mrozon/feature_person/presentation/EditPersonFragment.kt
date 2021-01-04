@@ -229,11 +229,11 @@ class EditPersonFragment : BaseFragment<FragmentEditPersonBinding>() {
             setView(view)
             val etShareToUser = view.findViewById<EditText>(R.id.etShareToUser)
             setCancelable(false)
-            setPositiveButton("Ok") { dialog, p1 ->
+            setPositiveButton(R.string.Ok) { dialog, p1 ->
                 dialog.dismiss()
                 viewModel.sharePersonToUser(id, etShareToUser.text.toString())
             }
-            setNegativeButton("Cancel") { dialog, _ ->
+            setNegativeButton(R.string.cancel) { dialog, _ ->
                 dialog.dismiss()
             }
         }

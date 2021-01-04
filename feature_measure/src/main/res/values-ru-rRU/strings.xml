@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ivTimeOfDay">Time of day</string>
+    <string name="ivMeasureComment">Комментарий</string>
+    <string name="refresh">Обновить</string>
+    <string name="add_measure">Добавить измерение</string>
+    <string name="delete_measure">Удалить измерение</string>
+    <string name="save_measure">Сохранить измерение</string>
+    <string name="choose_date">Выбрать дату</string>
+    <string name="choose_time">Выбрать время</string>
+    <string name="measure_added">Измерение добавлено</string>
+    <string name="hint_value_added">%s ( в %s)</string>
+    <string name="error_value">Некорректное значение, нужно %s</string>
+    <string name="edit_measure">Редактировать измерение</string>
+</resources>

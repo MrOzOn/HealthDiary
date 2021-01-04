@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="etUsername">Введите Вашу эл.почту</string>
+    <string name="etUserPassword">Введите Ваш пароль</string>
+    <string name="btnLogin">Войти</string>
+    <string name="btnRegistration">Зарегистрироваться</string>
+    <string name="btnRegistrationCancel">Отмена</string>
+    <string name="etUserPasswordAgain">Повторите пароль</string>
+    <string name="etFirstName">Введите Ваше имя</string>
+    <string name="etLastName">Введите Вашу фамилию</string>
+    <string name="equals_psw">пароли должны совпадать</string>
+    <string name="uncorrect_email">некорректный эл.адрес</string>
+    <string name="empty_field">Пустое поле</string>
+    <string name="userRegistered">Успех! Пользователь зарегистрирован, входите</string>
+</resources>

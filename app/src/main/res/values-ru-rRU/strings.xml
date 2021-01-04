@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Дневник здоровья</string>
+    <string name="list_persons">Профили</string>
+    <string name="list_measure_types">Типы измерений</string>
+</resources>
