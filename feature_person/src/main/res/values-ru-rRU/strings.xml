@@ -17,4 +17,7 @@
     <string name="share_done">Готово</string>
     <string name="confirm_exit">Нажмите еще раз НАЗАД чтобы выйти</string>
     <string name="refresh">Обновить</string>
+    <string name="yo">лет</string>
+    <string name="yo1">год</string>
+    <string name="yo234">года</string>
 </resources>

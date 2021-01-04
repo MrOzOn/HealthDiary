@@ -25,7 +25,15 @@ fun ImageView.setGender(item: Person) {
 @BindingAdapter("name_with_age")
 fun TextView.setNameAge(item: Person) {
     val age = getAge(item.born)
-    text = "${item.name} ($age y.o.)"
+    var yo = context.getString(R.string.yo)
+    when (age % 10) {
+        1 -> yo = context.getString(R.string.yo1)
+        2,3,4 -> yo = context.getString(R.string.yo234)
+    }
+    when (age % 100) {
+        11,12,13,14 -> yo = context.getString(R.string.yo)
+    }
+    text = "${item.name} ($age $yo)"
 }
 
 private fun getAge(born: Date): Int {
