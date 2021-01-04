@@ -61,7 +61,7 @@ class EditMeasureFragmentViewModel @Inject constructor(
         }
 
     @ExperimentalCoroutinesApi
-    val commentChannel = ConflatedBroadcastChannel<String>()
+    val commentChannel = ConflatedBroadcastChannel<String>("")
 
     @ExperimentalCoroutinesApi
     val measureValueChannel = ConflatedBroadcastChannel<String>()
