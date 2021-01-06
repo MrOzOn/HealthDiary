@@ -70,6 +70,7 @@ dependencies {
     implementation legacySupport
     implementation appCompat
     implementation androidxCore
+    implementation material
     //Unit test
     testImplementation junit
     testImplementation mockitoCore
