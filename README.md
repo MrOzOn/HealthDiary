@@ -1,51 +1,53 @@
-# Дневник здоровья (HealthDiary)![логотип](./media/launch_icon.png)
+# HealthDiary![logo](./media/launch_icon.png)
 
-## Несколько скринов программы:
-<img src="./media/screen1.png" width="256"> <img src="./media/screen2.png" width="256"> <img src="./media/screen3.png" width="256">
+*Read this in other languages: [English](README.md), [Русский](README.ru.md).*
 
-Дневник для сохранения измерений важных показателей здоровья.<BR>
-Многопользовательское приложение, которое позволяет сохранять основные показатели здоровья человека.
-К таким показателям относятся:
-+ температура
-+ давление
-+ пульс
-+ сахар в крови
-+ сатурация 
-и другие
+## Screenshots:
+<img src="./media/screen1_en.png" width="256"> <img src="./media/screen2_en.png" width="256"> <img src="./media/screen3_en.png" width="256">
 
-## Основные возможности:
-+ личный кабинет пользователя
-+ создание списка наблюдаемых (профилей), людей для которых сохраняются показатели (измерения)
-+ создание общих профилей для нескольких пользователей
-+ ввод/изменение выбранного измерения
-+ просмотр раннее введенных измерений списком и на графике
+Diary for saving measurements of important health indicators.<BR>
+A multi-user application that allows you to save the main indicators of human health.
+Namely:
++ temperature
++ pressure
++ pulse
++ blood sugar
++ saturation 
+and others
 
-## Арихитектурное решение:
-+ многомодульное приложение с "чистой архитектурой" внутри каждого модуля
-+ единственным источником правды (SSOT) выступает локальная SQLite БД с использованием Room
-+ подключен статический анализатор кода [Detekt](https://github.com/detekt/detekt)
-+ для подсчета покрытия кода тестами подключен плагин на основе [JaCoCo](https://github.com/jacoco/jacoco)
-+ написаны модульные и инструментальные тесты на примере ТОЛЬКО одного модуля (фичи)
-+ написаны для демонстрации несколько собственных правил для Lint
-+ добавлен CI скрипт для [Jenkins](https://www.jenkins.io/)
+## Key features:
++ user's personal account
++ creating a list of profiles, people for whom measurements are saved
++ creating common profiles for multiple users
++ enter/change the selected dimension
++ viewing previously entered measurements in the list
 
-## Стек технологий:
+## Architectural solution:
++ multi-module application with "clean architecture" inside each module
++ single source of truth (SSOT) is a local SQLite database using Room framework
++ using static code analyzer [Detekt](https://github.com/detekt/detekt)
++ using plugin for calculate code coverage based on [JaCoCo](https://github.com/jacoco/jacoco)
++ using unit and instrumental tests ONLY one module (feauture) for example
++ writing to demonstratesome custom rules for Lint 
++ added CI script for [Jenkins](https://www.jenkins.io/)
+
+## Technology stack:
 + Kotlin
 + Dagger 2
 + MVVM
 + Coroutine
 + Android Navigation
-+ Architecture Components (Room для локального кеша данных)
++ Architecture Components (Room for local cache)
 + Retrofit
 
-## Серверная часть:
+## Backend:
 + Django
 + DRF (Django REST Framework)
-+ SQLite (используется на этапе разработки, т.к. ORM то потом можно выбрать MySQL или Postrges)
++ SQLite (used at the development stage, then you can choose MySQL or Postrges)
 
-## Список экранов:
-+ Регистрация/авторизация пользователя
-+ Предоставление доступа одним пользователям к профилям других
-+ Настройки типов измерений
-+ Добавить/редактировать измерение
-+ Просмотр измерений списком/графиком
+## Screen lists:
++ User registration/authorization
++ Granting access to one user to the profiles of others
++ Measurement type settings
++ Add/edit dimension
++ Viewing measurements in a list
